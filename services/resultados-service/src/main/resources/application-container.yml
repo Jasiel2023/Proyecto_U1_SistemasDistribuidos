@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: ${RESULTADOS_DB_URL:jdbc:postgresql://resultados-db:5432/resultadosdb}
+    username: ${RESULTADOS_DB_USER:resultados}
+    password: ${RESULTADOS_DB_PASSWORD:resultados}
+  rabbitmq:
+    host: ${RABBITMQ_HOST:rabbitmq}
+
+logging:
+  level:
+    ec.unl.votacion.resultados: INFO
