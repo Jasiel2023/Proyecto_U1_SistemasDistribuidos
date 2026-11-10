@@ -1,0 +1,25 @@
+spring:
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
+  rabbitmq:
+    listener:
+      simple:
+        auto-startup: true
+        concurrency: 3
+        max-concurrency: 5
+        prefetch: 20
+
+resultados:
+  websocket:
+    allowed-origins: http://localhost:8080,http://localhost:5173
+  cors:
+    allowed-origins: http://localhost:8080,http://localhost:5173
+
+logging:
+  level:
+    ec.unl.votacion.resultados: INFO
+    org.springframework.amqp: WARN

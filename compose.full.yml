@@ -2,3 +2,92 @@ name: votacion
 include:
   - docker-compose.yml
   - services/votacion-service/docker-compose.yml
+
+services:
+  resultados-db:
+    image: postgres:17-alpine
+    container_name: votacion-resultados-db
+    environment:
+      POSTGRES_DB: ${RESULTADOS_DB_NAME:-resultadosdb}
+      POSTGRES_USER: ${RESULTADOS_DB_USER:-resultados}
+      POSTGRES_PASSWORD: ${RESULTADOS_DB_PASSWORD:-resultados}
+    ports:
+      - "${RESULTADOS_DB_HOST_PORT:-5436}:5432"
+    volumes:
+      - resultados-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${RESULTADOS_DB_USER:-resultados} -d ${RESULTADOS_DB_NAME:-resultadosdb}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  resultados-service:
+    build:
+      context: ./services/resultados-service
+    container_name: votacion-resultados
+    environment:
+      SPRING_PROFILES_ACTIVE: container
+      RESULTADOS_DB_URL: jdbc:postgresql://resultados-db:5432/${RESULTADOS_DB_NAME:-resultadosdb}
+      RESULTADOS_DB_USER: ${RESULTADOS_DB_USER:-resultados}
+      RESULTADOS_DB_PASSWORD: ${RESULTADOS_DB_PASSWORD:-resultados}
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: 5672
+      RABBITMQ_USER: ${RABBITMQ_USER:-guest}
+      RABBITMQ_PASS: ${RABBITMQ_PASS:-guest}
+      RESULTADOS_EXCHANGE: ${RESULTADOS_EXCHANGE:-votacion.exchange}
+      RESULTADOS_ROUTING_KEY: ${RESULTADOS_ROUTING_KEY:-voto.emitido}
+      RESULTADOS_QUEUE: ${RESULTADOS_QUEUE:-votos.procesados}
+      RESULTADOS_DLQ: ${RESULTADOS_DLQ:-votos.procesados.dlq}
+      RESULTADOS_CORS_ALLOWED_ORIGINS: ${RESULTADOS_CORS_ALLOWED_ORIGINS:-http://localhost:5173,http://localhost:3000,http://localhost:8080}
+      RESULTADOS_WS_ALLOWED_ORIGINS: ${RESULTADOS_WS_ALLOWED_ORIGINS:-http://localhost:5173,http://localhost:3000,http://localhost:8080}
+    ports:
+      - "8083:8083"
+    depends_on:
+      resultados-db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8083/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 20s
+
+  api-gateway:
+    build:
+      context: ./services/api-gateway
+    container_name: votacion-gateway
+    environment:
+      RESULTADOS_URL: http://resultados-service:8083
+      RESULTADOS_WS_URL: ws://resultados-service:8083/ws
+      GATEWAY_WS_ALLOWED_ORIGINS: ${GATEWAY_WS_ALLOWED_ORIGINS:-http://localhost:5173,http://localhost:3000}
+    ports:
+      - "${GATEWAY_PORT:-8080}:8080"
+    depends_on:
+      resultados-service:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8080/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 15s
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: votacion-frontend
+    ports:
+      - "${FRONTEND_PORT:-3000}:80"
+    depends_on:
+      api-gateway:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://localhost/"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  resultados-db-data:
