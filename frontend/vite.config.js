@@ -7,7 +7,7 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/api': {
-        target: 'http://localhost:8080', // api-gateway
+        target: 'http://localhost:8080', // api-gateway (enruta /api/v1/auth y /api/votos)
         changeOrigin: true,
       },
       '/ws': {
