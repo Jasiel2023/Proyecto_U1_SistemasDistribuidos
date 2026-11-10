@@ -1,93 +1,205 @@
-# Proyecto_U1_SistemasDistribuidos
+# Sistema de Votación en Tiempo Real
 
-Sistema de votaciones en tiempo real. Este repositorio contiene actualmente el **módulo de Resultados** y la integración mínima necesaria con el gateway y el frontend.
+Proyecto de la asignatura **Sistemas Distribuidos (Unidad 1)**.
 
-## Estado
+Sistema de votación en tiempo real basado en **microservicios contenerizados**, que usa
+**colas de mensajes (RabbitMQ)** para desacoplar el procesamiento de votos y
+**WebSockets** para publicar los resultados en vivo, garantizando la **prevención del
+doble voto** ante una ingesta concurrente.
 
-- **Resultados aislado completo; integración pendiente (G4).**
-- G0–G3 cumplen con evidencia en `specs/001-resultados/validation.md`.
-- G4 está bloqueado: no existe productor real de Votación ni proveedor de Autenticación en el repositorio.
-- Autenticación, Usuarios y Votación no están implementados aquí; sus contratos son dependencias externas.
+## Integrantes
+- Arelys Ajila
+- Isael Rodríguez
+- Tayron Morales
+- Jasiel Quezada
+- Docente: Ing. Jose Guaman
 
-## Arquitectura implementada
+## Arquitectura
 
-```text
-Frontend React (5173 / nginx 3000)
-        |  /api, /ws
-        v
-api-gateway MVC (8080)
-        |  REST /api/resultados/**  +  puente WebSocket /ws
-        v
-resultados-service (8083) ---> PostgreSQL resultadosdb (5436)
-        ^
-        |  VotoEmitidoEvent v1 (RabbitMQ)
-Votación (productor externo, pendiente)
+| Componente | Puerto | Base de datos | Contenedor Postgres |
+|---|---|---|---|
+| `api-gateway` | 8080 | *(sin BD)* | — |
+| `autenticacion-service` | 8081 | `autenticaciondb` | `postgres-autenticacion` (5433) |
+| `votacion-service` | 8082 | `votaciondb` | `postgres-votacion` (5435) |
+| `resultados-service` | 8083 | `resultadosdb` | `postgres-resultados` (5436) |
+| `usuarios-service` | 8084 | `usuariosdb` | `postgres-usuarios` (5434) |
+| `frontend` (React) | 5173 / 80 | — | — |
+| `rabbitmq` | 5672 / 15672 | — | `votacion-rabbitmq` |
+
+### Tipos de comunicación
+- **Síncrona (REST):** el frontend llama al `api-gateway`, y este enruta a cada servicio.
+- **Asíncrona (RabbitMQ):** eventos entre servicios (nunca llamadas directas).
+- **Tiempo real (WebSocket):** `resultados-service` difunde el conteo en vivo.
+
+### Flujo del voto
+```
+Frontend ──REST──► api-gateway ──► votacion-service ──► votaciondb
+                                          │
+                                          └─ evento `voto.emitido` ─► RabbitMQ
+                                                                        │
+                                          resultados-service ◄──────────┘
+                                                    │
+                                                    └─ WebSocket ─► Frontend (en vivo)
 ```
 
-- `resultados-service`: consumo RabbitMQ idempotente, proyección persistente, REST de solo lectura y notificaciones STOMP.
-- `api-gateway`: enruta REST y actúa como puente WebSocket explícito para MVC.
-- `frontend`: feature React de resultados con recuperación REST y actualizaciones en vivo.
-- PostgreSQL propio de Resultados; sin acceso a bases de otros servicios.
-- Sin Redis en Resultados; la prevención de doble voto corresponde a Votación.
+### Mensajería (RabbitMQ)
+| Recurso | Nombre |
+|---|---|
+| Exchange | `votacion.exchange` |
+| Cola | `votos.procesados` |
+| Routing key | `voto.emitido` |
+| Evento | `VotoEmitidoEvent` |
 
-## Servicios y puertos
+## Tecnologías
+- **Backend:** Java 21 + Spring Boot 4 (Web, Data JPA, AMQP, WebSocket, Flyway, Actuator)
+- **Mensajería:** RabbitMQ
+- **Base de datos:** PostgreSQL 16 (una instancia por servicio)
+- **Frontend:** React (Vite)
+- **Infraestructura:** Docker + Docker Compose
 
-| Componente | Puerto local | Evidencia |
-|---|---|---|
-| Frontend (Vite / nginx) | 5173 / 3000 | `frontend/` |
-| API Gateway | 8080 | `services/api-gateway/` |
-| Resultados | 8083 | `services/resultados-service/` |
-| PostgreSQL Resultados | 5436 | `compose.full.yml` |
-| RabbitMQ | 5672 / 15672 | `compose.full.yml` |
-
-## Inicio rápido
-
-Requisitos: Docker Desktop, JDK 21, Node.js 20+.
-
-```powershell
-Copy-Item .env.example .env
-docker compose -f compose.full.yml up -d --build
+## Estructura del repositorio
+```
+Proyecto_U1_SistemasDistribuidos/
+├── docker-compose.yml          # infra compartida (RabbitMQ)
+├── compose.full.yml            # junta todo el sistema (entrega final)
+├── .env                        # variables/secretos (NO se sube a Git)
+├── .env.example                # plantilla de variables
+├── services/
+│   ├── api-gateway/            # punto de entrada (Spring Cloud Gateway)
+│   │   ├── application.yml
+│   │   └── ...
+│   └── votacion-service/
+│       ├── docker-compose.yml  # SOLO su BD + su contenedor
+│       ├── Dockerfile
+│       └── src/
+└── frontend/                   # React + Vite (una sola app)
+    ├── package.json
+    ├── vite.config.js
+    └── src/
+        ├── api/client.js       # cliente axios (compartido)
+        ├── components/         # UI común
+        └── features/
+            ├── autenticacion/
+            ├── votacion/
+            ├── resultados/
+            └── usuarios/
 ```
 
-- Frontend: `http://localhost:3000`
-- Gateway: `http://localhost:8080/api/resultados/elecciones/{uuid}`
-- WebSocket: `ws://localhost:8080/ws`
-- RabbitMQ Management: `http://localhost:15672`
+## Requisitos previos
+- **Docker** y **Docker Compose** (obligatorio)
+- **Java 21** (solo si desarrollas un microservicio desde el IDE)
+- **Node.js 20+** (solo si desarrollas el frontend)
 
-Publicar fixtures y consultar:
+> Los proyectos Spring Boot traen el wrapper `mvnw`, así que **no necesitas instalar Maven**.
 
-```powershell
-$eleccion = [guid]::NewGuid().ToString()
-node scripts\resultados\publicar-fixtures.mjs --eleccion $eleccion --votos 6 --duplicados 2
-Invoke-RestMethod "http://localhost:3000/api/resultados/elecciones/$eleccion"
+## Cómo levantar el proyecto
+
+### 1. Configura tus variables
+Copia la plantilla y ajusta si quieres:
+```bash
+cp .env.example .env
 ```
 
-Instrucciones completas, pruebas, DLQ y diagnóstico: `specs/001-resultados/quickstart.md`.
+### 2. Levantar TODO el sistema (entrega)
+```bash
+docker compose up
+```
+> Mientras el proyecto esté en construcción, algunos servicios/frontend aún no existen.
+> Usa la opción 3 para trabajar solo en tu parte.
 
-## Contratos
-
-- Evento: `specs/001-resultados/contracts/voto-emitido.v1.schema.json` (**propuesto**).
-- REST: `specs/001-resultados/contracts/resultados.openapi.yaml`.
-- WebSocket: `specs/001-resultados/contracts/websocket.md`.
-- Modelo de datos: `specs/001-resultados/data-model.md`.
-
-## Pruebas
-
-```powershell
-$env:JAVA_HOME = "C:\Users\Are\AppData\Local\Programs\Eclipse Adoptium\jdk-21.0.9.10-hotspot"
-cd services\resultados-service
-.\mvnw.cmd -B test          # 28 pruebas, PostgreSQL y RabbitMQ reales
-cd ..\..\frontend
-npm test                    # 6 pruebas
-npm run build
-cd ..
-docker compose -f compose.full.yml config --quiet
+### 3. Levantar SOLO tu microservicio (desarrollo diario)
+Cada quien trabaja con **su** fragmento, sin tocar el de los demás:
+```bash
+docker compose -f docker-compose.yml -f services/votacion-service/docker-compose.yml up -d
 ```
 
-## Documentación
+### 4. Ejecutar un microservicio desde el IDE (sin Docker para el servicio)
+```bash
+cd services/votacion-service
+./mvnw spring-boot:run
+```
+Igual para cualquier otro servicio, p. ej. el gateway:
+```bash
+cd services/api-gateway
+./mvnw spring-boot:run
+```
 
-- Especificación: `specs/001-resultados/spec.md`
-- Plan: `specs/001-resultados/plan.md`
-- Tareas: `specs/001-resultados/tasks.md`
-- Validación y puertas: `specs/001-resultados/validation.md`
-- Investigación y límites: `specs/001-resultados/research.md`
+## Frontend (React + Vite)
+
+Es **una sola aplicación** en `frontend/`, organizada por **features** (una carpeta por
+dominio/microservicio) para que cada integrante trabaje sin chocar con los demás.
+
+### Instalar y ejecutar
+```bash
+cd frontend
+npm install        # instala dependencias
+npm run dev        # servidor de desarrollo: http://localhost:5173
+```
+Dependencias principales: `axios` (REST), `react-router-dom` (rutas),
+`@stomp/stompjs` + `sockjs-client` (WebSocket de resultados en vivo).
+
+> Importante: instala **dentro de `frontend/`**, no en la raíz del repo.
+
+### Estructura y "dueños"
+```
+frontend/src/
+├── api/client.js        # ⚠️ COMPARTIDO: cliente axios base (baseURL '/api')
+├── components/          # UI común
+└── features/
+    ├── autenticacion/   # dueño: quien haga autenticación
+    ├── votacion/        # dueño: quien haga votación
+    ├── resultados/      # dueño: quien haga resultados en vivo
+    └── usuarios/        # dueño: quien haga usuarios
+```
+Cada integrante edita **solo su carpeta** `features/<x>/`.
+
+### Proxy de desarrollo (`vite.config.js`)
+Evita problemas de CORS reenviando las llamadas:
+- `/api` → `http://localhost:8080` (`api-gateway`)
+- `/ws`  → `http://localhost:8083` (`resultados-service`, WebSocket)
+
+### Reglas para no generar conflictos
+- Archivos **compartidos** (`package.json`, `vite.config.js`, `router.jsx`,
+  `api/client.js`): editarlos **una persona a la vez**.
+- Instalar todas las dependencias comunes **de una vez** (un commit compartido).
+- No importar código de la carpeta de otro; usar `api/client.js` y `components/`.
+
+### Producción (Docker)
+El frontend se compila (`npm run build`) y se sirve con **nginx** en un contenedor.
+Su `Dockerfile` y su fragmento `frontend/docker-compose.yml` se agregan en la fase de
+dockerización.
+
+## Convenciones del equipo
+
+### Nombres
+- Microservicio: `<dominio>-service` en **español** (ej. `votacion-service`).
+- Base de datos: `<dominio>db` (ej. `votaciondb`).
+- Paquete base: `ec.unl.votacion.<dominio>`.
+
+### Reglas de arquitectura
+- **Cada microservicio** tiene su carpeta, su `pom.xml`, su **Dockerfile**, su
+  **fragmento `docker-compose.yml`** y su **propia base de datos**.
+- **Nunca** un servicio accede directamente a la BD de otro.
+- Cada servicio define sus tablas con **migraciones Flyway** (`src/main/resources/db/migration`).
+- Comunicación entre servicios **solo por RabbitMQ** (procesos asíncronos).
+
+### Cómo agregar un microservicio nuevo
+1. Crea `services/<nombre>/` con su proyecto Spring Boot.
+2. Añade su `docker-compose.yml` (su Postgres + su contenedor).
+3. Agrega su línea al `include:` de `compose.full.yml`.
+4. Mueve su migración `V1__...sql` y su `Dockerfile`.
+
+## Estado actual
+- [x] Infraestructura (RabbitMQ) y estructura por fragmentos
+- [x] Esqueleto de `votacion-service` (conectado a `votaciondb`)
+- [x] `api-gateway` (Spring Cloud Gateway, enrutando `/api/votos` → `votacion-service`)
+- [x] Frontend React base (Vite + estructura por features)
+- [ ] Flujo REST del voto + productor RabbitMQ (`votacion-service`)
+- [ ] `resultados-service` (consumidor + WebSocket)
+- [ ] `autenticacion-service` y `usuarios-service`
+- [ ] Dockerfiles + `compose.full.yml` completo (`docker compose up`)
+
+## Flujo de trabajo con Git
+- Cada integrante trabaja en **su propia rama** (ej. `jasiel-dev`).
+- No subir **nunca** el archivo `.env` (ya está en `.gitignore`).
+- Antes de commitear: `git status` y verificar que no aparezcan `.env` ni `target/`.

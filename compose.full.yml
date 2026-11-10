@@ -1,4 +1,8 @@
 name: votacion
+include:
+  - docker-compose.yml
+  - services/votacion-service/docker-compose.yml
+name: votacion
 
 services:
   resultados-db:

@@ -1,0 +1,20 @@
+services:
+  postgres-votacion:
+    image: postgres:16
+    container_name: votacion-postgres-votacion
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: votaciondb
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d votaciondb"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - postgres_votacion_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_votacion_data:
