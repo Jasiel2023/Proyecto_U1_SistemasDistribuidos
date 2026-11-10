@@ -12,6 +12,7 @@ import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 
 import java.time.Instant;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "votos")
@@ -22,15 +23,18 @@ public class Voto {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "votacion_id", nullable = false)
-    private Votacion votacion;
+    @JoinColumn(name = "eleccion_id", nullable = false)
+    private Eleccion eleccion;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "opcion_id", nullable = false)
-    private Opcion opcion;
+    @JoinColumn(name = "candidato_id", nullable = false)
+    private Candidato candidato;
 
-    @Column(name = "usuario_id", nullable = false)
-    private Long usuarioId;
+    @Column(name = "id_usuario", nullable = false)
+    private Long idUsuario;
+
+    @Column(nullable = false)
+    private LocalTime hora;
 
     @Column(name = "emitido_en", nullable = false)
     private Instant emitidoEn;
@@ -38,10 +42,11 @@ public class Voto {
     protected Voto() {
     }
 
-    public Voto(Votacion votacion, Opcion opcion, Long usuarioId) {
-        this.votacion = votacion;
-        this.opcion = opcion;
-        this.usuarioId = usuarioId;
+    public Voto(Eleccion eleccion, Candidato candidato, Long idUsuario) {
+        this.eleccion = eleccion;
+        this.candidato = candidato;
+        this.idUsuario = idUsuario;
+        this.hora = LocalTime.now();
         this.emitidoEn = Instant.now();
     }
 
@@ -56,16 +61,20 @@ public class Voto {
         return id;
     }
 
-    public Votacion getVotacion() {
-        return votacion;
+    public Eleccion getEleccion() {
+        return eleccion;
     }
 
-    public Opcion getOpcion() {
-        return opcion;
+    public Candidato getCandidato() {
+        return candidato;
     }
 
-    public Long getUsuarioId() {
-        return usuarioId;
+    public Long getIdUsuario() {
+        return idUsuario;
+    }
+
+    public LocalTime getHora() {
+        return hora;
     }
 
     public Instant getEmitidoEn() {

@@ -1,8 +1,8 @@
 package ec.unl.votacion.votacion_service.exception;
 
-public class VotoDuplicadoException extends VotacionDomainException {
+public class VotoDuplicadoException extends EleccionDomainException {
 
-    public VotoDuplicadoException(Long usuarioId, Long votacionId) {
-        super("El usuario " + usuarioId + " ya voto en la votacion " + votacionId);
+    public VotoDuplicadoException(Long idUsuario, Long eleccionId) {
+        super("El usuario " + idUsuario + " ya voto en la eleccion " + eleccionId);
     }
 }

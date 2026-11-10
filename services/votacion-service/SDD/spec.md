@@ -2,13 +2,13 @@
 
 ## 1. Alcance
 
-El servicio recibe un voto por REST, valida que la votacion y la opcion sean
+El servicio recibe un voto por REST, valida que la eleccion y el candidato sean
 validas, registra el sufragio en `votaciondb`, evita el doble voto y publica un
 evento para el procesamiento de resultados.
 
 Fuera del alcance de esta primera version quedan autenticacion, administracion
 de usuarios, conteo final y WebSockets. La identidad del votante llega como
-`usuarioId` y sera validada por el servicio de autenticacion cuando ese modulo
+`idUsuario` y sera validada por el servicio de autenticacion cuando ese modulo
 este disponible.
 
 El trabajo se divide en dos partes coordinadas:
@@ -24,26 +24,29 @@ conteos en vivo pertenece a `frontend/src/features/resultados/`.
 
 ## 2. Modelo de dominio minimo
 
-### Votacion
+### Eleccion
 
 - `id`: identificador unico.
-- `nombre`: nombre visible de la votacion.
-- `estado`: `ABIERTA` o `CERRADA`.
-- `fecha_inicio` y `fecha_fin`: periodo opcional de validez.
+- `titulo`: titulo visible de la eleccion.
+- `fecha`: fecha de la eleccion.
+- `hora_inicio` y `hora_fin`: horario de la eleccion.
+- `esta_activa`: indica si la eleccion recibe votos.
 
-### Opcion
+### Candidato
 
 - `id`: identificador unico.
-- `votacion_id`: votacion propietaria.
-- `nombre`: nombre de la opcion o candidato.
-- `activa`: indica si puede recibir votos.
+- `eleccion_id`: eleccion propietaria.
+- `nombre`: nombre del candidato.
+- `partido_politico`: partido politico del candidato.
+- `activo`: indica si puede recibir votos.
 
 ### Voto
 
 - `id`: identificador unico.
-- `votacion_id`: votacion a la que pertenece.
-- `opcion_id`: opcion seleccionada.
-- `usuario_id`: identificador del votante.
+- `eleccion_id`: eleccion a la que pertenece.
+- `candidato_id`: candidato seleccionado.
+- `id_usuario`: identificador del votante.
+- `hora`: hora del voto.
 - `emitido_en`: fecha y hora UTC de registro.
 
 ## 3. Estructura MVC y capas
@@ -85,13 +88,43 @@ Reglas de dependencia:
 
 Restricciones obligatorias del dominio:
 
-- una opcion debe pertenecer a la votacion indicada;
-- solo se vota en una votacion `ABIERTA`;
-- solo se vota por una opcion activa;
-- no puede existir mas de un voto para `(votacion_id, usuario_id)`;
-- `usuario_id`, `votacion_id` y `opcion_id` son obligatorios y positivos.
+- un candidato debe pertenecer a la eleccion indicada;
+- solo se vota en una eleccion activa;
+- solo se vota por un candidato activo;
+- no puede existir mas de un voto para `(eleccion_id, id_usuario)`;
+- `id_usuario`, `eleccion_id` y `candidato_id` son obligatorios y positivos.
 
 ## 4. API REST
+
+### Consultar elecciones activas
+
+`GET /api/elecciones`
+
+Devuelve las elecciones activas con su titulo, fecha, horario y candidatos
+activos. Los identificadores incluidos en la respuesta son datos internos para
+enviar el voto; la interfaz presenta los nombres y no los IDs.
+
+Respuesta:
+
+```json
+[
+  {
+    "id": 1,
+    "titulo": "Eleccion Presidencial 2026",
+    "fecha": "2026-11-10",
+    "horaInicio": "08:00:00",
+    "horaFin": "17:00:00",
+    "candidatos": [
+      {
+        "id": 1,
+        "nombre": "Ana",
+        "apellido": "Torres",
+        "partidoPolitico": "Partido Unido"
+      }
+    ]
+  }
+]
+```
 
 ### Crear voto
 
@@ -105,9 +138,9 @@ Request:
 
 ```json
 {
-  "votacionId": 1,
-  "opcionId": 2,
-  "usuarioId": 15
+  "eleccionId": 1,
+  "candidatoId": 2,
+  "idUsuario": 15
 }
 ```
 
@@ -116,9 +149,9 @@ Respuesta exitosa: `201 Created`
 ```json
 {
   "id": 100,
-  "votacionId": 1,
-  "opcionId": 2,
-  "usuarioId": 15,
+  "eleccionId": 1,
+  "candidatoId": 2,
+  "idUsuario": 15,
   "emitidoEn": "2026-11-09T20:00:00Z",
   "mensaje": "Voto registrado correctamente"
 }
@@ -127,8 +160,8 @@ Respuesta exitosa: `201 Created`
 Errores esperados:
 
 - `400 Bad Request`: campos ausentes, cero, negativos o formato invalido.
-- `404 Not Found`: votacion u opcion inexistente.
-- `409 Conflict`: votacion cerrada, opcion inactiva, opcion de otra votacion
+- `404 Not Found`: eleccion o candidato inexistente.
+- `409 Conflict`: eleccion inactiva, candidato inactivo, candidato de otra eleccion
   o usuario que ya voto.
 - `503 Service Unavailable`: no se puede completar una dependencia tecnica
   necesaria.
@@ -146,9 +179,9 @@ Nombre: `VotoEmitidoEvent`
 {
   "eventoId": "uuid",
   "votoId": 100,
-  "votacionId": 1,
-  "opcionId": 2,
-  "usuarioId": 15,
+  "eleccionId": 1,
+  "candidatoId": 2,
+  "idUsuario": 15,
   "emitidoEn": "2026-11-09T20:00:00Z"
 }
 ```
@@ -187,10 +220,10 @@ debe apuntar a los nombres de servicio de Compose.
 ## 8. Criterios de aceptacion
 
 - Un voto valido se persiste una sola vez y devuelve `201`.
-- Un segundo voto del mismo usuario en la misma votacion devuelve `409`.
+- Un segundo voto del mismo usuario en la misma eleccion devuelve `409`.
 - Dos solicitudes concurrentes para el mismo usuario producen como maximo un
   registro.
-- No se aceptan opciones que pertenezcan a otra votacion.
+- No se aceptan candidatos que pertenezcan a otra eleccion.
 - Un voto exitoso produce un `VotoEmitidoEvent` con los datos correctos.
 - No se publica evento cuando la transaccion de persistencia falla.
 - El servicio arranca con PostgreSQL y RabbitMQ configurados por Compose.

@@ -15,7 +15,7 @@ mismo dominio, pero mantienen responsabilidades separadas.
 
 ### 1. Responsabilidad unica del dominio
 
-`votacion-service` es propietario de los votos, las votaciones y las opciones
+`votacion-service` es propietario de los votos, las elecciones y los candidatos
 de votacion que defina su modelo. Ningun otro microservicio puede leer o
 modificar directamente `votaciondb`.
 
@@ -63,7 +63,7 @@ en varias clases.
 ### 5. Un votante solo puede votar una vez
 
 La regla de voto unico debe estar protegida por la base de datos, no solamente
-por una consulta previa en Java. La combinacion `(votacion_id, usuario_id)`
+por una consulta previa en Java. La combinacion `(eleccion_id, id_usuario)`
 debe tener una restriccion unica.
 
 La logica de aplicacion debe traducir un intento duplicado a una respuesta

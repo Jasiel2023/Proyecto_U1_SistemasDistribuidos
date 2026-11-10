@@ -1,18 +1,20 @@
 package ec.unl.votacion.votacion_service.service;
 
 import ec.unl.votacion.votacion_service.dto.CrearVotoRequest;
+import ec.unl.votacion.votacion_service.dto.CandidatoResponse;
+import ec.unl.votacion.votacion_service.dto.EleccionResponse;
 import ec.unl.votacion.votacion_service.dto.VotoResponse;
-import ec.unl.votacion.votacion_service.entity.Opcion;
-import ec.unl.votacion.votacion_service.entity.Votacion;
+import ec.unl.votacion.votacion_service.entity.Candidato;
+import ec.unl.votacion.votacion_service.entity.Eleccion;
 import ec.unl.votacion.votacion_service.entity.Voto;
-import ec.unl.votacion.votacion_service.exception.OpcionInactivaException;
-import ec.unl.votacion.votacion_service.exception.OpcionNoEncontradaException;
-import ec.unl.votacion.votacion_service.exception.VotacionCerradaException;
-import ec.unl.votacion.votacion_service.exception.VotacionNoEncontradaException;
+import ec.unl.votacion.votacion_service.exception.CandidatoInactivoException;
+import ec.unl.votacion.votacion_service.exception.CandidatoNoEncontradoException;
+import ec.unl.votacion.votacion_service.exception.EleccionCerradaException;
+import ec.unl.votacion.votacion_service.exception.EleccionNoEncontradaException;
 import ec.unl.votacion.votacion_service.exception.VotoDuplicadoException;
 import ec.unl.votacion.votacion_service.messaging.VotoEmitidoEvent;
-import ec.unl.votacion.votacion_service.repository.OpcionRepository;
-import ec.unl.votacion.votacion_service.repository.VotacionRepository;
+import ec.unl.votacion.votacion_service.repository.CandidatoRepository;
+import ec.unl.votacion.votacion_service.repository.EleccionRepository;
 import ec.unl.votacion.votacion_service.repository.VotoRepository;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -20,73 +22,95 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
+import java.util.List;
 
 @Service
 public class VotoService {
 
-    private final VotacionRepository votacionRepository;
-    private final OpcionRepository opcionRepository;
+    private final EleccionRepository eleccionRepository;
+    private final CandidatoRepository candidatoRepository;
     private final VotoRepository votoRepository;
     private final ApplicationEventPublisher eventPublisher;
 
     public VotoService(
-            VotacionRepository votacionRepository,
-            OpcionRepository opcionRepository,
+            EleccionRepository eleccionRepository,
+            CandidatoRepository candidatoRepository,
             VotoRepository votoRepository,
             ApplicationEventPublisher eventPublisher
     ) {
-        this.votacionRepository = votacionRepository;
-        this.opcionRepository = opcionRepository;
+        this.eleccionRepository = eleccionRepository;
+        this.candidatoRepository = candidatoRepository;
         this.votoRepository = votoRepository;
         this.eventPublisher = eventPublisher;
     }
 
     @Transactional
     public VotoResponse registrarVoto(CrearVotoRequest request) {
-        Votacion votacion = votacionRepository.findById(request.votacionId())
-                .orElseThrow(() -> new VotacionNoEncontradaException(request.votacionId()));
+        Eleccion eleccion = eleccionRepository.findById(request.eleccionId())
+                .orElseThrow(() -> new EleccionNoEncontradaException(request.eleccionId()));
 
-        if (!votacion.estaAbierta()) {
-            throw new VotacionCerradaException(votacion.getId());
+        if (!eleccion.estaActiva()) {
+            throw new EleccionCerradaException(eleccion.getId());
         }
 
-        Opcion opcion = opcionRepository.findByIdAndVotacionId(
-                        request.opcionId(), request.votacionId())
-                .orElseThrow(() -> new OpcionNoEncontradaException(
-                        request.opcionId(), request.votacionId()));
+        Candidato candidato = candidatoRepository.findByIdAndEleccionId(
+                        request.candidatoId(), request.eleccionId())
+                .orElseThrow(() -> new CandidatoNoEncontradoException(
+                        request.candidatoId(), request.eleccionId()));
 
-        if (!opcion.estaActiva()) {
-            throw new OpcionInactivaException(opcion.getId());
+        if (!candidato.estaActivo()) {
+            throw new CandidatoInactivoException(candidato.getId());
         }
 
-        if (votoRepository.existsByVotacionIdAndUsuarioId(
-                request.votacionId(), request.usuarioId())) {
-            throw new VotoDuplicadoException(request.usuarioId(), request.votacionId());
+        if (votoRepository.existsByEleccionIdAndIdUsuario(
+                request.eleccionId(), request.idUsuario())) {
+            throw new VotoDuplicadoException(request.idUsuario(), request.eleccionId());
         }
 
         try {
             Voto voto = votoRepository.save(
-                    new Voto(votacion, opcion, request.usuarioId()));
+                    new Voto(eleccion, candidato, request.idUsuario()));
             eventPublisher.publishEvent(new VotoEmitidoEvent(
                     UUID.randomUUID(),
                     voto.getId(),
-                    votacion.getId(),
-                    opcion.getId(),
-                    voto.getUsuarioId(),
+                    eleccion.getId(),
+                    candidato.getId(),
+                    voto.getIdUsuario(),
                     voto.getEmitidoEn()
             ));
             return toResponse(voto);
         } catch (DataIntegrityViolationException exception) {
-            throw new VotoDuplicadoException(request.usuarioId(), request.votacionId());
+            throw new VotoDuplicadoException(request.idUsuario(), request.eleccionId());
         }
+    }
+
+    @Transactional(readOnly = true)
+    public List<EleccionResponse> listarEleccionesActivas() {
+        return eleccionRepository.findByEstaActivaTrueOrderByFechaAscHoraInicioAsc().stream()
+                .map(eleccion -> new EleccionResponse(
+                        eleccion.getId(),
+                        eleccion.getTitulo(),
+                        eleccion.getFecha(),
+                        eleccion.getHoraInicio(),
+                        eleccion.getHoraFin(),
+                        candidatoRepository.findByEleccionIdAndActivoTrueOrderByNombreAscApellidoAsc(
+                                        eleccion.getId())
+                                .stream()
+                                .map(candidato -> new CandidatoResponse(
+                                        candidato.getId(),
+                                        candidato.getNombre(),
+                                        candidato.getApellido(),
+                                        candidato.getPartidoPolitico()))
+                                .toList()))
+                .toList();
     }
 
     private VotoResponse toResponse(Voto voto) {
         return new VotoResponse(
                 voto.getId(),
-                voto.getVotacion().getId(),
-                voto.getOpcion().getId(),
-                voto.getUsuarioId(),
+                voto.getEleccion().getId(),
+                voto.getCandidato().getId(),
+                voto.getIdUsuario(),
                 voto.getEmitidoEn(),
                 "Voto registrado correctamente"
         );

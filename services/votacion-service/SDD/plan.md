@@ -10,7 +10,7 @@ Salida: especificaciones aprobadas y configuracion de ambientes definida.
 
 ## Fase 1: Persistencia
 
-Disenar el modelo `votaciones`, `opciones` y `votos`. Crear la migracion Flyway
+Disenar el modelo `elecciones`, `candidatos` y `votos`. Crear la migracion Flyway
 con claves foraneas, indices y la restriccion unica para impedir el doble voto.
 Agregar datos de prueba solo si son necesarios para desarrollo.
 
@@ -23,8 +23,8 @@ aplicacion, DTOs, excepciones y mapeadores necesarios. El servicio de
 aplicacion sera el unico componente que coordine reglas de negocio,
 persistencia y publicacion del evento. Implementar el caso de uso transaccional
 de registro.
-Validar estado de la votacion, existencia y pertenencia de la opcion, estado de
-la opcion y duplicidad del votante.
+Validar estado de la eleccion, existencia y pertenencia del candidato, estado del
+candidato y duplicidad del votante.
 
 Salida: caso de uso de registro funcionando sin dependencia HTTP externa.
 

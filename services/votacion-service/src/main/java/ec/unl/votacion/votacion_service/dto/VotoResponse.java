@@ -4,9 +4,9 @@ import java.time.Instant;
 
 public record VotoResponse(
         Long id,
-        Long votacionId,
-        Long opcionId,
-        Long usuarioId,
+        Long eleccionId,
+        Long candidatoId,
+        Long idUsuario,
         Instant emitidoEn,
         String mensaje
 ) {

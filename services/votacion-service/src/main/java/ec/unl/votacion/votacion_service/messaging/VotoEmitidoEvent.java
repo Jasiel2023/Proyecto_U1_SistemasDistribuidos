@@ -6,9 +6,9 @@ import java.util.UUID;
 public record VotoEmitidoEvent(
         UUID eventoId,
         Long votoId,
-        Long votacionId,
-        Long opcionId,
-        Long usuarioId,
+        Long eleccionId,
+        Long candidatoId,
+        Long idUsuario,
         Instant emitidoEn
 ) {
 }

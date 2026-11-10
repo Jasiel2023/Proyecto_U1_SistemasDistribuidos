@@ -2,16 +2,16 @@ package ec.unl.votacion.votacion_service.service;
 
 import ec.unl.votacion.votacion_service.dto.CrearVotoRequest;
 import ec.unl.votacion.votacion_service.dto.VotoResponse;
-import ec.unl.votacion.votacion_service.entity.Opcion;
-import ec.unl.votacion.votacion_service.entity.Votacion;
+import ec.unl.votacion.votacion_service.entity.Candidato;
+import ec.unl.votacion.votacion_service.entity.Eleccion;
 import ec.unl.votacion.votacion_service.entity.Voto;
-import ec.unl.votacion.votacion_service.exception.OpcionNoEncontradaException;
-import ec.unl.votacion.votacion_service.exception.OpcionInactivaException;
-import ec.unl.votacion.votacion_service.exception.VotacionCerradaException;
+import ec.unl.votacion.votacion_service.exception.CandidatoNoEncontradoException;
+import ec.unl.votacion.votacion_service.exception.CandidatoInactivoException;
+import ec.unl.votacion.votacion_service.exception.EleccionCerradaException;
 import ec.unl.votacion.votacion_service.exception.VotoDuplicadoException;
 import ec.unl.votacion.votacion_service.messaging.VotoEmitidoEvent;
-import ec.unl.votacion.votacion_service.repository.OpcionRepository;
-import ec.unl.votacion.votacion_service.repository.VotacionRepository;
+import ec.unl.votacion.votacion_service.repository.CandidatoRepository;
+import ec.unl.votacion.votacion_service.repository.EleccionRepository;
 import ec.unl.votacion.votacion_service.repository.VotoRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -35,10 +35,10 @@ import static org.mockito.Mockito.when;
 class VotoServiceTest {
 
     @Mock
-    private VotacionRepository votacionRepository;
+    private EleccionRepository eleccionRepository;
 
     @Mock
-    private OpcionRepository opcionRepository;
+    private CandidatoRepository candidatoRepository;
 
     @Mock
     private VotoRepository votoRepository;
@@ -47,10 +47,10 @@ class VotoServiceTest {
     private ApplicationEventPublisher eventPublisher;
 
     @Mock
-    private Votacion votacion;
+    private Eleccion eleccion;
 
     @Mock
-    private Opcion opcion;
+    private Candidato candidato;
 
     @InjectMocks
     private VotoService votoService;
@@ -58,55 +58,55 @@ class VotoServiceTest {
     @Test
     void registraUnVotoValido() {
         CrearVotoRequest request = new CrearVotoRequest(1L, 2L, 15L);
-        when(votacionRepository.findById(1L)).thenReturn(Optional.of(votacion));
-        when(votacion.estaAbierta()).thenReturn(true);
-        when(votacion.getId()).thenReturn(1L);
-        when(opcionRepository.findByIdAndVotacionId(2L, 1L))
-                .thenReturn(Optional.of(opcion));
-        when(opcion.estaActiva()).thenReturn(true);
-        when(opcion.getId()).thenReturn(2L);
-        when(votoRepository.existsByVotacionIdAndUsuarioId(1L, 15L))
+        when(eleccionRepository.findById(1L)).thenReturn(Optional.of(eleccion));
+        when(eleccion.estaActiva()).thenReturn(true);
+        when(eleccion.getId()).thenReturn(1L);
+        when(candidatoRepository.findByIdAndEleccionId(2L, 1L))
+                .thenReturn(Optional.of(candidato));
+        when(candidato.estaActivo()).thenReturn(true);
+        when(candidato.getId()).thenReturn(2L);
+        when(votoRepository.existsByEleccionIdAndIdUsuario(1L, 15L))
                 .thenReturn(false);
         when(votoRepository.save(any(Voto.class)))
                 .thenAnswer(invocation -> invocation.getArgument(0));
 
         VotoResponse response = votoService.registrarVoto(request);
 
-        assertThat(response.votacionId()).isEqualTo(1L);
-        assertThat(response.opcionId()).isEqualTo(2L);
-        assertThat(response.usuarioId()).isEqualTo(15L);
+        assertThat(response.eleccionId()).isEqualTo(1L);
+        assertThat(response.candidatoId()).isEqualTo(2L);
+        assertThat(response.idUsuario()).isEqualTo(15L);
 
         ArgumentCaptor<Voto> votoCaptor = ArgumentCaptor.forClass(Voto.class);
         verify(votoRepository).save(votoCaptor.capture());
-        assertThat(votoCaptor.getValue().getUsuarioId()).isEqualTo(15L);
+        assertThat(votoCaptor.getValue().getIdUsuario()).isEqualTo(15L);
         verify(eventPublisher).publishEvent(any(VotoEmitidoEvent.class));
     }
 
     @Test
-    void rechazaVotoCuandoLaVotacionEstaCerrada() {
+    void rechazaVotoCuandoLaEleccionEstaInactiva() {
         CrearVotoRequest request = new CrearVotoRequest(1L, 2L, 15L);
-        when(votacionRepository.findById(1L)).thenReturn(Optional.of(votacion));
-        when(votacion.estaAbierta()).thenReturn(false);
-        when(votacion.getId()).thenReturn(1L);
+        when(eleccionRepository.findById(1L)).thenReturn(Optional.of(eleccion));
+        when(eleccion.estaActiva()).thenReturn(false);
+        when(eleccion.getId()).thenReturn(1L);
 
         assertThatThrownBy(() -> votoService.registrarVoto(request))
-                .isInstanceOf(VotacionCerradaException.class);
+                .isInstanceOf(EleccionCerradaException.class);
 
-        verify(opcionRepository, never()).findByIdAndVotacionId(any(), any());
+        verify(candidatoRepository, never()).findByIdAndEleccionId(any(), any());
         verify(votoRepository, never()).save(any());
         verify(eventPublisher, never()).publishEvent(any());
     }
 
     @Test
-    void rechazaOpcionQueNoPerteneceALaVotacion() {
+    void rechazaCandidatoQueNoPerteneceALaEleccion() {
         CrearVotoRequest request = new CrearVotoRequest(1L, 2L, 15L);
-        when(votacionRepository.findById(1L)).thenReturn(Optional.of(votacion));
-        when(votacion.estaAbierta()).thenReturn(true);
-        when(opcionRepository.findByIdAndVotacionId(2L, 1L))
+        when(eleccionRepository.findById(1L)).thenReturn(Optional.of(eleccion));
+        when(eleccion.estaActiva()).thenReturn(true);
+        when(candidatoRepository.findByIdAndEleccionId(2L, 1L))
                 .thenReturn(Optional.empty());
 
         assertThatThrownBy(() -> votoService.registrarVoto(request))
-                .isInstanceOf(OpcionNoEncontradaException.class);
+                .isInstanceOf(CandidatoNoEncontradoException.class);
 
         verify(votoRepository, never()).save(any());
         verify(eventPublisher, never()).publishEvent(any());
@@ -115,12 +115,12 @@ class VotoServiceTest {
     @Test
     void rechazaVotoDuplicadoAntesDePersistir() {
         CrearVotoRequest request = new CrearVotoRequest(1L, 2L, 15L);
-        when(votacionRepository.findById(1L)).thenReturn(Optional.of(votacion));
-        when(votacion.estaAbierta()).thenReturn(true);
-        when(opcionRepository.findByIdAndVotacionId(2L, 1L))
-                .thenReturn(Optional.of(opcion));
-        when(opcion.estaActiva()).thenReturn(true);
-        when(votoRepository.existsByVotacionIdAndUsuarioId(1L, 15L))
+        when(eleccionRepository.findById(1L)).thenReturn(Optional.of(eleccion));
+        when(eleccion.estaActiva()).thenReturn(true);
+        when(candidatoRepository.findByIdAndEleccionId(2L, 1L))
+                .thenReturn(Optional.of(candidato));
+        when(candidato.estaActivo()).thenReturn(true);
+        when(votoRepository.existsByEleccionIdAndIdUsuario(1L, 15L))
                 .thenReturn(true);
 
         assertThatThrownBy(() -> votoService.registrarVoto(request))
@@ -131,17 +131,17 @@ class VotoServiceTest {
     }
 
     @Test
-    void rechazaOpcionInactiva() {
+    void rechazaCandidatoInactivo() {
         CrearVotoRequest request = new CrearVotoRequest(1L, 2L, 15L);
-        when(votacionRepository.findById(1L)).thenReturn(Optional.of(votacion));
-        when(votacion.estaAbierta()).thenReturn(true);
-        when(opcionRepository.findByIdAndVotacionId(2L, 1L))
-                .thenReturn(Optional.of(opcion));
-        when(opcion.estaActiva()).thenReturn(false);
-        when(opcion.getId()).thenReturn(2L);
+        when(eleccionRepository.findById(1L)).thenReturn(Optional.of(eleccion));
+        when(eleccion.estaActiva()).thenReturn(true);
+        when(candidatoRepository.findByIdAndEleccionId(2L, 1L))
+                .thenReturn(Optional.of(candidato));
+        when(candidato.estaActivo()).thenReturn(false);
+        when(candidato.getId()).thenReturn(2L);
 
         assertThatThrownBy(() -> votoService.registrarVoto(request))
-                .isInstanceOf(OpcionInactivaException.class);
+                .isInstanceOf(CandidatoInactivoException.class);
 
         verify(votoRepository, never()).save(any());
         verify(eventPublisher, never()).publishEvent(any());
@@ -150,12 +150,12 @@ class VotoServiceTest {
     @Test
     void noPublicaEventoCuandoFallaLaPersistencia() {
         CrearVotoRequest request = new CrearVotoRequest(1L, 2L, 15L);
-        when(votacionRepository.findById(1L)).thenReturn(Optional.of(votacion));
-        when(votacion.estaAbierta()).thenReturn(true);
-        when(opcionRepository.findByIdAndVotacionId(2L, 1L))
-                .thenReturn(Optional.of(opcion));
-        when(opcion.estaActiva()).thenReturn(true);
-        when(votoRepository.existsByVotacionIdAndUsuarioId(1L, 15L))
+        when(eleccionRepository.findById(1L)).thenReturn(Optional.of(eleccion));
+        when(eleccion.estaActiva()).thenReturn(true);
+        when(candidatoRepository.findByIdAndEleccionId(2L, 1L))
+                .thenReturn(Optional.of(candidato));
+        when(candidato.estaActivo()).thenReturn(true);
+        when(votoRepository.existsByEleccionIdAndIdUsuario(1L, 15L))
                 .thenReturn(false);
         when(votoRepository.save(any(Voto.class)))
                 .thenThrow(new DataIntegrityViolationException("fallo de persistencia"));

@@ -42,12 +42,12 @@ Crear un esquema reproducible que proteja el voto unico desde PostgreSQL.
 ### Tareas
 
 - [x] Crear `src/main/resources/db/migration/V1__create_votacion_tables.sql`.
-- [x] Crear tabla `votaciones` con estado y periodo de validez.
-- [x] Crear tabla `opciones` relacionada con `votaciones`.
-- [x] Crear tabla `votos` relacionada con `votaciones` y `opciones`.
+- [x] Crear tabla `elecciones` con titulo, fecha, horario y activacion.
+- [x] Crear tabla `candidatos` relacionada con `elecciones`.
+- [x] Crear tabla `votos` relacionada con `elecciones` y `candidatos`.
 - [x] Definir tipos, longitudes, valores no nulos y claves primarias.
 - [x] Agregar claves foraneas entre las tablas.
-- [x] Agregar restriccion unica `(votacion_id, usuario_id)`.
+- [x] Agregar restriccion unica `(eleccion_id, id_usuario)`.
 - [x] Agregar indices para consultas por votacion, opcion y usuario.
 - [x] Definir fechas almacenadas en UTC.
 - [x] Verificar que no se requieren datos iniciales para desarrollo.
@@ -72,7 +72,7 @@ infraestructura.
 
 - [x] Crear paquetes `controller`, `service`, `repository`, `entity`, `dto`,
   `messaging`, `exception` y `config`.
-- [x] Crear entidades JPA para `Votacion`, `Opcion` y `Voto`.
+- [x] Crear entidades JPA para `Eleccion`, `Candidato` y `Voto`.
 - [x] Mapear correctamente tablas, relaciones, indices y restricciones.
 - [x] Crear repositorios para votaciones, opciones y votos.
 - [x] Crear `CrearVotoRequest`.
@@ -135,7 +135,7 @@ implementacion interna del microservicio.
 
 - [x] Trabajar dentro de `frontend/src/features/votacion/`.
 - [x] Consumir el cliente compartido `frontend/src/api/client.js`.
-- [x] Implementar la captura de `votacionId`, `opcionId` y `usuarioId`.
+- [x] Implementar la captura de `eleccionId`, `candidatoId` e `idUsuario`.
 - [x] Enviar `POST /api/votos` mediante el API Gateway.
 - [x] Mostrar estado de envio y evitar doble envio accidental en la interfaz.
 - [x] Mostrar confirmacion para respuesta `201`.
@@ -166,7 +166,7 @@ Publicar un evento confiable despues de registrar un voto valido.
 - [x] Configurar mensajes persistentes cuando corresponda.
 - [x] Crear `VotoEmitidoEvent`.
 - [x] Incluir `eventoId` unico en cada evento.
-- [x] Incluir `votoId`, `votacionId`, `opcionId`, `usuarioId` y `emitidoEn`.
+- [x] Incluir `votoId`, `eleccionId`, `candidatoId`, `idUsuario` y `emitidoEn`.
 - [x] Crear el productor RabbitMQ dentro de `messaging`.
 - [x] Publicar el evento solo despues de confirmar el registro del voto.
 - [x] Evitar que el productor dependa de `resultados-service`.

@@ -47,9 +47,9 @@ class VotoControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
-                                  "votacionId": 1,
-                                  "opcionId": 2,
-                                  "usuarioId": 15
+                                  "eleccionId": 1,
+                                  "candidatoId": 2,
+                                  "idUsuario": 15
                                 }
                                 """))
                 .andExpect(status().isCreated())
@@ -63,9 +63,9 @@ class VotoControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
-                                  "votacionId": 0,
-                                  "opcionId": 2,
-                                  "usuarioId": 15
+                                  "eleccionId": 0,
+                                  "candidatoId": 2,
+                                  "idUsuario": 15
                                 }
                                 """))
                 .andExpect(status().isBadRequest())
@@ -82,9 +82,9 @@ class VotoControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
-                                  "votacionId": 1,
-                                  "opcionId": 2,
-                                  "usuarioId": 15
+                                  "eleccionId": 1,
+                                  "candidatoId": 2,
+                                  "idUsuario": 15
                                 }
                                 """))
                 .andExpect(status().isConflict())

@@ -26,16 +26,17 @@ public class GlobalExceptionHandler {
         return error(HttpStatus.BAD_REQUEST, "VALIDATION_ERROR", message);
     }
 
-    @ExceptionHandler(VotacionDomainException.class)
+    @ExceptionHandler(EleccionDomainException.class)
     public ResponseEntity<ErrorResponse> manejarDominio(
-            VotacionDomainException exception
+            EleccionDomainException exception
     ) {
         HttpStatus status = switch (exception) {
-            case VotacionNoEncontradaException ignored -> HttpStatus.NOT_FOUND;
-            case OpcionNoEncontradaException ignored -> HttpStatus.NOT_FOUND;
-            case VotacionCerradaException ignored -> HttpStatus.CONFLICT;
-            case OpcionInactivaException ignored -> HttpStatus.CONFLICT;
+            case EleccionNoEncontradaException ignored -> HttpStatus.NOT_FOUND;
+            case CandidatoNoEncontradoException ignored -> HttpStatus.NOT_FOUND;
+            case EleccionCerradaException ignored -> HttpStatus.CONFLICT;
+            case CandidatoInactivoException ignored -> HttpStatus.CONFLICT;
             case VotoDuplicadoException ignored -> HttpStatus.CONFLICT;
+            case HorarioEleccionInvalidoException ignored -> HttpStatus.BAD_REQUEST;
             default -> HttpStatus.CONFLICT;
         };
 

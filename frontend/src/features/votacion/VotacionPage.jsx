@@ -1,25 +1,47 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { api } from '../../api/client'
 import './VotacionPage.css'
 
-const initialForm = {
-  votacionId: '1',
-  opcionId: '',
-  usuarioId: '',
-}
-
 function VotacionPage() {
-  const [form, setForm] = useState(initialForm)
-  const [requestState, setRequestState] = useState({
-    status: 'idle',
-    message: '',
-  })
+  const [elecciones, setElecciones] = useState([])
+  const [eleccionId, setEleccionId] = useState('')
+  const [candidatoId, setCandidatoId] = useState('')
+  const [idUsuario, setIdUsuario] = useState('')
+  const [loadState, setLoadState] = useState('loading')
+  const [requestState, setRequestState] = useState({ status: 'idle', message: '' })
 
-  const isSubmitting = requestState.status === 'submitting'
+  useEffect(() => {
+    let mounted = true
 
-  function handleChange(event) {
-    const { name, value } = event.target
-    setForm((currentForm) => ({ ...currentForm, [name]: value }))
+    api.get('/elecciones')
+      .then((response) => {
+        if (!mounted) return
+        const available = response.data
+        setElecciones(available)
+        setEleccionId(available[0] ? String(available[0].id) : '')
+        setLoadState('ready')
+      })
+      .catch(() => {
+        if (mounted) setLoadState('error')
+      })
+
+    return () => {
+      mounted = false
+    }
+  }, [])
+
+  const eleccionSeleccionada = elecciones.find(
+    (eleccion) => String(eleccion.id) === eleccionId,
+  )
+
+  function seleccionarEleccion(event) {
+    setEleccionId(event.target.value)
+    setCandidatoId('')
+    setRequestState({ status: 'idle', message: '' })
+  }
+
+  function seleccionarCandidato(event) {
+    setCandidatoId(event.target.value)
     if (requestState.status !== 'idle') {
       setRequestState({ status: 'idle', message: '' })
     }
@@ -27,15 +49,15 @@ function VotacionPage() {
 
   async function handleSubmit(event) {
     event.preventDefault()
-    if (isSubmitting) return
+    if (requestState.status === 'submitting' || !eleccionSeleccionada) return
 
     setRequestState({ status: 'submitting', message: '' })
 
     try {
       const response = await api.post('/votos', {
-        votacionId: Number(form.votacionId),
-        opcionId: Number(form.opcionId),
-        usuarioId: Number(form.usuarioId),
+        eleccionId: Number(eleccionId),
+        candidatoId: Number(candidatoId),
+        idUsuario: Number(idUsuario),
       })
 
       setRequestState({
@@ -44,22 +66,25 @@ function VotacionPage() {
       })
     } catch (error) {
       const responseData = error.response?.data
-      const status = error.response?.status
-      const message = getErrorMessage(status, responseData)
-
-      setRequestState({ status: 'error', message })
+      setRequestState({
+        status: 'error',
+        message: getErrorMessage(error.response?.status, responseData),
+      })
     }
   }
+
+  const isSubmitting = requestState.status === 'submitting'
+  const isReady = loadState === 'ready' && elecciones.length > 0
 
   return (
     <main className="votacion-page">
       <section className="votacion-shell" aria-labelledby="votacion-title">
         <div className="votacion-intro">
-          <p className="eyebrow">Votaciones en tiempo real</p>
+          <p className="eyebrow">Elecciones en tiempo real</p>
           <h1 id="votacion-title">Emite tu voto</h1>
           <p className="intro-copy">
-            Selecciona la votación y registra tu opción de forma segura. El
-            sistema valida el voto único en el backend.
+            Consulta la elección activa, conoce a sus candidatos y registra tu
+            decisión de forma segura.
           </p>
           <div className="architecture-note">
             <span className="status-dot" aria-hidden="true" />
@@ -71,83 +96,120 @@ function VotacionPage() {
           <div className="form-heading">
             <span className="step-number">01</span>
             <div>
-              <p className="form-kicker">Datos del sufragio</p>
-              <h2>Completa los identificadores</h2>
+              <p className="form-kicker">Boleta electoral</p>
+              <h2>Selecciona tu elección</h2>
             </div>
           </div>
 
-          <div className="field-grid">
-            <label className="field">
-              <span>Votación</span>
-              <small>ID de la votación abierta</small>
-              <input
-                min="1"
-                name="votacionId"
-                onChange={handleChange}
-                required
-                type="number"
-                value={form.votacionId}
-              />
-            </label>
+          {loadState === 'loading' && <p className="empty-state">Cargando elecciones...</p>}
+          {loadState === 'error' && (
+            <p className="empty-state error-text">No fue posible cargar las elecciones.</p>
+          )}
+          {loadState === 'ready' && elecciones.length === 0 && (
+            <p className="empty-state">No hay elecciones activas disponibles.</p>
+          )}
 
-            <label className="field">
-              <span>Opción</span>
-              <small>ID de tu opción o candidato</small>
-              <input
-                min="1"
-                name="opcionId"
-                onChange={handleChange}
-                required
-                type="number"
-                value={form.opcionId}
-              />
-            </label>
+          {isReady && (
+            <>
+              <label className="field">
+                <span>Elección</span>
+                <select value={eleccionId} onChange={seleccionarEleccion}>
+                  {elecciones.map((eleccion) => (
+                    <option key={eleccion.id} value={eleccion.id}>
+                      {eleccion.titulo}
+                    </option>
+                  ))}
+                </select>
+              </label>
 
-            <label className="field field-wide">
-              <span>Usuario</span>
-              <small>Identificador del votante autenticado</small>
-              <input
-                min="1"
-                name="usuarioId"
-                onChange={handleChange}
-                required
-                type="number"
-                value={form.usuarioId}
-              />
-            </label>
-          </div>
+              {eleccionSeleccionada && (
+                <div className="election-details">
+                  <div>
+                    <span>Fecha</span>
+                    <strong>{formatDate(eleccionSeleccionada.fecha)}</strong>
+                  </div>
+                  <div>
+                    <span>Horario para votar</span>
+                    <strong>
+                      {formatTime(eleccionSeleccionada.horaInicio)} - {formatTime(eleccionSeleccionada.horaFin)}
+                    </strong>
+                  </div>
+                </div>
+              )}
 
-          <button className="submit-button" disabled={isSubmitting} type="submit">
-            {isSubmitting ? 'Registrando voto...' : 'Confirmar voto'}
-            <span aria-hidden="true">-&gt;</span>
-          </button>
+              <fieldset className="candidate-list">
+                <legend>Candidatos</legend>
+                {eleccionSeleccionada?.candidatos.map((candidato) => (
+                  <label
+                    className={`candidate-card ${String(candidato.id) === candidatoId ? 'selected' : ''}`}
+                    key={candidato.id}
+                  >
+                    <input
+                      checked={String(candidato.id) === candidatoId}
+                      name="candidatoId"
+                      onChange={seleccionarCandidato}
+                      type="radio"
+                      value={candidato.id}
+                    />
+                    <span className="candidate-mark" aria-hidden="true" />
+                    <span className="candidate-info">
+                      <strong>{candidato.nombre} {candidato.apellido}</strong>
+                      <small>{candidato.partidoPolitico}</small>
+                    </span>
+                  </label>
+                ))}
+              </fieldset>
 
-          <div
-            aria-live="polite"
-            className={`form-feedback ${requestState.status}`}
-            role={requestState.status === 'error' ? 'alert' : 'status'}
-          >
-            {requestState.message}
-          </div>
+              <label className="field">
+                <span>Votante</span>
+                <small>Identificador del usuario autenticado</small>
+                <input
+                  min="1"
+                  onChange={(event) => setIdUsuario(event.target.value)}
+                  required
+                  type="number"
+                  value={idUsuario}
+                />
+              </label>
+
+              <button
+                className="submit-button"
+                disabled={isSubmitting || !candidatoId}
+                type="submit"
+              >
+                {isSubmitting ? 'Registrando voto...' : 'Confirmar voto'}
+                <span aria-hidden="true">-&gt;</span>
+              </button>
+
+              <div
+                aria-live="polite"
+                className={`form-feedback ${requestState.status}`}
+                role={requestState.status === 'error' ? 'alert' : 'status'}
+              >
+                {requestState.message}
+              </div>
+            </>
+          )}
         </form>
       </section>
     </main>
   )
 }
 
+function formatDate(value) {
+  if (!value) return 'Sin fecha'
+  const [year, month, day] = value.split('-')
+  return `${day}/${month}/${year}`
+}
+
+function formatTime(value) {
+  return value ? value.slice(0, 5) : '--:--'
+}
+
 function getErrorMessage(status, responseData) {
-  if (status === 400) {
-    return responseData?.message || 'Revisa los datos ingresados.'
-  }
-
-  if (status === 404) {
-    return responseData?.message || 'La votación o la opción no existe.'
-  }
-
-  if (status === 409) {
-    return responseData?.message || 'No puedes emitir este voto.'
-  }
-
+  if (status === 400) return responseData?.message || 'Revisa los datos ingresados.'
+  if (status === 404) return responseData?.message || 'La elección o el candidato no existe.'
+  if (status === 409) return responseData?.message || 'No puedes emitir este voto.'
   return responseData?.message || 'No fue posible registrar el voto. Intenta nuevamente.'
 }
 
