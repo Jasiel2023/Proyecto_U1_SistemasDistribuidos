@@ -16,5 +16,27 @@ services:
     volumes:
       - postgres_votacion_data:/var/lib/postgresql/data
 
+  votacion-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8082"
+    environment:
+      POSTGRES_HOST: postgres-votacion
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: votaciondb
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: 5672
+      RABBITMQ_USER: ${RABBITMQ_USER}
+      RABBITMQ_PASS: ${RABBITMQ_PASS}
+    depends_on:
+      postgres-votacion:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+
 volumes:
   postgres_votacion_data:
