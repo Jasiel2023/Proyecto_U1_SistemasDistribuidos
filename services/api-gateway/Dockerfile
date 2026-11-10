@@ -11,7 +11,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 RUN useradd --system --uid 10001 appuser
 WORKDIR /app
-COPY --from=build /app/target/api-gateway-0.1.0.jar app.jar
+COPY --from=build /app/target/api-gateway-0.0.1-SNAPSHOT.jar app.jar
 USER appuser
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]

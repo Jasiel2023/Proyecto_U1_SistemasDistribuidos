@@ -2,13 +2,46 @@ import { useState } from 'react'
 import heroImg from './assets/hero.png'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
+import ResultadosPage from './features/resultados/ResultadosPage.jsx'
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [vista, setVista] = useState('inicio')
+
+  const navegacion = (
+    <nav className="app-nav" aria-label="Secciones del sistema">
+      <button
+        type="button"
+        className={vista === 'inicio' ? 'activo' : ''}
+        aria-pressed={vista === 'inicio'}
+        onClick={() => setVista('inicio')}
+      >
+        Inicio
+      </button>
+      <button
+        type="button"
+        className={vista === 'resultados' ? 'activo' : ''}
+        aria-pressed={vista === 'resultados'}
+        onClick={() => setVista('resultados')}
+      >
+        Resultados
+      </button>
+    </nav>
+  )
+
+  if (vista === 'resultados') {
+    return (
+      <>
+        {navegacion}
+        <ResultadosPage />
+      </>
+    )
+  }
 
   return (
     <>
+      {navegacion}
       <section id="center">
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />
@@ -120,17 +153,3 @@ function App() {
 }
 
 export default App
-
-import ResultadosPage from './features/resultados/ResultadosPage.jsx';
-
-export default function App() {
-  return (
-    <main className="contenedor">
-      <header className="encabezado">
-        <h1>Resultados electorales</h1>
-        <p>Consulta persistente y actualizaciones en tiempo real. Los nombres de elecciones y candidatos no forman parte de este módulo.</p>
-      </header>
-      <ResultadosPage />
-    </main>
-  );
-}

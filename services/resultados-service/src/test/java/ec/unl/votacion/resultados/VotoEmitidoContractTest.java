@@ -6,16 +6,14 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import ec.unl.votacion.resultados.messaging.VotoEmitidoEvent;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.Test;
 import tools.jackson.databind.DeserializationFeature;
 import tools.jackson.databind.json.JsonMapper;
 
 class VotoEmitidoContractTest {
-
-    private static final Path EJEMPLOS = Path.of("..", "..", "specs", "001-resultados",
-            "contracts", "examples");
 
     private final JsonMapper mapper = JsonMapper.builder()
             .enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
@@ -25,7 +23,7 @@ class VotoEmitidoContractTest {
 
     @Test
     void aceptaEjemploValidoDelContrato() throws Exception {
-        String json = Files.readString(EJEMPLOS.resolve("voto-emitido-valid.json"));
+        String json = leer("voto-emitido-valid.json");
         VotoEmitidoEvent evento = mapper.readValue(json, VotoEmitidoEvent.class);
 
         assertThat(evento.schemaVersion()).isEqualTo(1);
@@ -36,7 +34,7 @@ class VotoEmitidoContractTest {
 
     @Test
     void rechazaEventoSinCandidato() throws Exception {
-        String json = Files.readString(EJEMPLOS.resolve("voto-emitido-invalid-missing-candidate.json"));
+        String json = leer("voto-emitido-invalid-missing-candidate.json");
         VotoEmitidoEvent evento = mapper.readValue(json, VotoEmitidoEvent.class);
 
         assertThat(validator.validate(evento)).isNotEmpty();
@@ -44,7 +42,7 @@ class VotoEmitidoContractTest {
 
     @Test
     void rechazaVersionNoSoportada() throws Exception {
-        String json = Files.readString(EJEMPLOS.resolve("voto-emitido-invalid-version.json"));
+        String json = leer("voto-emitido-invalid-version.json");
         VotoEmitidoEvent evento = mapper.readValue(json, VotoEmitidoEvent.class);
 
         assertThat(validator.validate(evento)).isNotEmpty();
@@ -52,9 +50,19 @@ class VotoEmitidoContractTest {
 
     @Test
     void rechazaCampoAdicionalNoPermitido() throws Exception {
-        String json = Files.readString(EJEMPLOS.resolve("voto-emitido-invalid-extra-field.json"));
+        String json = leer("voto-emitido-invalid-extra-field.json");
 
         assertThatThrownBy(() -> mapper.readValue(json, VotoEmitidoEvent.class))
                 .isInstanceOf(tools.jackson.core.JacksonException.class);
+    }
+
+    private static String leer(String nombre) throws IOException {
+        try (InputStream entrada = VotoEmitidoContractTest.class.getResourceAsStream(
+                "/contracts/examples/" + nombre)) {
+            if (entrada == null) {
+                throw new IllegalStateException("No se encontró el recurso " + nombre);
+            }
+            return new String(entrada.readAllBytes(), StandardCharsets.UTF_8);
+        }
     }
 }

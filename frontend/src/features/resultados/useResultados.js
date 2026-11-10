@@ -27,21 +27,22 @@ const ESTADO_INICIAL = {
 export function useResultados(eleccionId, dependencias = {}) {
   const crearClienteRef = useRef(dependencias.crearCliente ?? crearClienteStomp);
   const consultarRef = useRef(dependencias.consultar ?? obtenerSnapshot);
-  crearClienteRef.current = dependencias.crearCliente ?? crearClienteStomp;
-  consultarRef.current = dependencias.consultar ?? obtenerSnapshot;
   const [estado, setEstado] = useState(ESTADO_INICIAL);
 
   useEffect(() => {
-    if (!eleccionId) {
-      setEstado(ESTADO_INICIAL);
-      return undefined;
-    }
+    crearClienteRef.current = dependencias.crearCliente ?? crearClienteStomp;
+    consultarRef.current = dependencias.consultar ?? obtenerSnapshot;
+  });
+
+  useEffect(() => {
+    if (!eleccionId) return undefined;
 
     let cancelado = false;
     let suscripcion;
     const controlador = new AbortController();
     const cliente = crearClienteRef.current();
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- el cambio de elección inicia una carga nueva
     setEstado({ snapshot: null, cargando: true, error: null, conexion: 'conectando' });
 
     const sincronizar = () => {

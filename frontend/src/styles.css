@@ -1,36 +1,33 @@
-:root {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  color: #17202a;
+.resultados-app {
+  min-height: 100vh;
+  padding: 2.5rem 1rem 4rem;
   background: #f4f6f8;
+  color: #17202a;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   line-height: 1.5;
 }
 
-* {
+.resultados-app * {
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  min-height: 100vh;
+.resultados-app .encabezado,
+.resultados-app .panel {
+  width: min(880px, 100%);
+  margin-inline: auto;
 }
 
-.contenedor {
-  width: min(880px, 100% - 2rem);
-  margin: 0 auto;
-  padding: 2.5rem 0 4rem;
-}
-
-.encabezado h1 {
+.resultados-app .encabezado h1 {
   margin: 0 0 0.4rem;
   font-size: clamp(1.6rem, 4vw, 2.4rem);
 }
 
-.encabezado p {
+.resultados-app .encabezado p {
   margin: 0 0 1.5rem;
   color: #55606b;
 }
 
-.panel {
+.resultados-app .panel {
   background: #fff;
   border: 1px solid #dbe1e6;
   border-radius: 12px;
@@ -38,19 +35,19 @@ body {
   box-shadow: 0 8px 24px rgba(23, 32, 42, 0.06);
 }
 
-.consulta label {
+.resultados-app .consulta label {
   display: block;
   font-weight: 600;
   margin-bottom: 0.4rem;
 }
 
-.fila {
+.resultados-app .fila {
   display: flex;
   gap: 0.6rem;
   flex-wrap: wrap;
 }
 
-.fila input {
+.resultados-app .fila input {
   flex: 1 1 320px;
   padding: 0.65rem 0.75rem;
   border: 1px solid #b9c3cc;
@@ -58,7 +55,7 @@ body {
   font: inherit;
 }
 
-.fila button {
+.resultados-app .fila button {
   padding: 0.65rem 1.2rem;
   border: 0;
   border-radius: 8px;
@@ -69,40 +66,40 @@ body {
   cursor: pointer;
 }
 
-.fila button:hover {
+.resultados-app .fila button:hover {
   background: #0957a6;
 }
 
-.ayuda,
-.actualizado {
+.resultados-app .ayuda,
+.resultados-app .actualizado {
   color: #63707c;
   font-size: 0.9rem;
 }
 
-.error {
+.resultados-app .error {
   color: #a1231b;
   font-weight: 600;
 }
 
-.vacio {
+.resultados-app .vacio {
   margin-top: 1.25rem;
   color: #55606b;
 }
 
-.resultado {
+.resultados-app .resultado {
   margin-top: 1.5rem;
   border-top: 1px solid #e4e9ed;
   padding-top: 1.25rem;
 }
 
-.barra {
+.resultados-app .barra {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 0.75rem;
 }
 
-.conexion {
+.resultados-app .conexion {
   border-radius: 999px;
   padding: 0.2rem 0.7rem;
   font-size: 0.82rem;
@@ -110,28 +107,28 @@ body {
   background: #e8edf1;
 }
 
-.conexion-conectado {
+.resultados-app .conexion-conectado {
   background: #dcf5e5;
   color: #12653a;
 }
 
-.conexion-reconectando,
-.conexion-conectando {
+.resultados-app .conexion-reconectando,
+.resultados-app .conexion-conectando {
   background: #fff1cc;
   color: #7a5800;
 }
 
-.conexion-error {
+.resultados-app .conexion-error {
   background: #fbe0dd;
   color: #8e1f18;
 }
 
-.revision {
+.resultados-app .revision {
   color: #55606b;
   font-size: 0.9rem;
 }
 
-.total {
+.resultados-app .total {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -141,34 +138,34 @@ body {
   background: #eef5fd;
 }
 
-.total span {
+.resultados-app .total span {
   font-weight: 600;
 }
 
-.total strong {
+.resultados-app .total strong {
   font-size: 2rem;
 }
 
-table {
+.resultados-app table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 1rem;
 }
 
-th,
-td {
+.resultados-app th,
+.resultados-app td {
   text-align: left;
   padding: 0.65rem 0.5rem;
   border-bottom: 1px solid #e4e9ed;
 }
 
-th:last-child,
-td:last-child {
+.resultados-app th:last-child,
+.resultados-app td:last-child {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-.mono {
+.resultados-app .mono {
   font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
   font-size: 0.85rem;
   overflow-wrap: anywhere;

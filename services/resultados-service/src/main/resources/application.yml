@@ -17,7 +17,7 @@ spring:
     host: ${RABBITMQ_HOST:localhost}
     port: ${RABBITMQ_PORT:5672}
     username: ${RABBITMQ_USER:guest}
-    password: ${RABBITMQ_PASSWORD:guest}
+    password: ${RABBITMQ_PASS:${RABBITMQ_PASSWORD:guest}}
     listener:
       simple:
         default-requeue-rejected: false
@@ -45,11 +45,11 @@ management:
 resultados:
   messaging:
     exchange: ${RESULTADOS_EXCHANGE:votacion.exchange}
-    routing-key: ${RESULTADOS_ROUTING_KEY:voto.emitido.v1}
-    queue: ${RESULTADOS_QUEUE:resultados.voto-emitido.v1}
+    routing-key: ${RESULTADOS_ROUTING_KEY:voto.emitido}
+    queue: ${RESULTADOS_QUEUE:votos.procesados}
     dlx: ${RESULTADOS_DLX:votacion.dlx}
-    dlq: ${RESULTADOS_DLQ:resultados.voto-emitido.v1.dlq}
-    dl-routing-key: ${RESULTADOS_DL_ROUTING_KEY:voto.emitido.v1.dlq}
+    dlq: ${RESULTADOS_DLQ:votos.procesados.dlq}
+    dl-routing-key: ${RESULTADOS_DL_ROUTING_KEY:voto.emitido.dlq}
   websocket:
     endpoint: /ws
     topic-prefix: /topic/resultados/elecciones

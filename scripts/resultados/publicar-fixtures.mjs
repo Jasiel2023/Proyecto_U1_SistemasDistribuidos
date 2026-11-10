@@ -24,7 +24,7 @@ export function generarEventos({ eleccion, candidatos = 3, votos = 10, duplicado
 export async function publicarEventos(eventos, {
   url = 'http://localhost:15672',
   exchange = 'votacion.exchange',
-  routingKey = 'voto.emitido.v1',
+  routingKey = 'voto.emitido',
   user = 'guest',
   password = 'guest',
   allowRemote = false
@@ -83,7 +83,7 @@ Opciones:
   --votos <n>                     Votos a publicar (por defecto 10).
   --url <url>                     API de gestión RabbitMQ (http://localhost:15672).
   --exchange <nombre>             Exchange (votacion.exchange).
-  --routing-key <clave>           Routing key (voto.emitido.v1).
+  --routing-key <clave>           Routing key (voto.emitido).
   --user <usuario>                Usuario RabbitMQ de desarrollo (guest).
   --password <clave>              Clave RabbitMQ de desarrollo (guest).
   --seed <texto>                  Semilla para IDs reproducibles (demo).
@@ -113,7 +113,7 @@ Publica VotoEmitidoEvent v1 por RabbitMQ. No usa endpoints REST de escritura.`);
     password: args.password,
     allowRemote: Boolean(args['allow-remote'])
   }).then(({ eventos, candidatos: ids }) => {
-    console.log(`Publicados ${eventos.length} eventos (${duplicados} duplicados) en ${args.exchange ?? 'votacion.exchange'}/${args['routing-key'] ?? 'voto.emitido.v1'}.`);
+    console.log(`Publicados ${eventos.length} eventos (${duplicados} duplicados) en ${args.exchange ?? 'votacion.exchange'}/${args['routing-key'] ?? 'voto.emitido'}.`);
     console.log(`Elección: ${args.eleccion}`);
     console.log(`Candidatos: ${ids.join(', ')}`);
     console.log(`Evento base: ${eventos[0].eventId}; voto base: ${eventos[0].votoId}`);
