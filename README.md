@@ -126,6 +126,8 @@ Cada quien trabaja con **su** fragmento, sin tocar el de los demás. Primero cre
 ```bash
 docker network create votacion-network
 ```
+> El microservicio de autenticacion crea la cuenta inicial `admin` / `admin123`
+> (configurable con `APP_ADMIN_USERNAME` y `APP_ADMIN_PASSWORD`).
 
 Luego levanta RabbitMQ (infraestructura compartida) más tu servicio:
 ```bash
