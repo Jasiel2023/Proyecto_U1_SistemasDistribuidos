@@ -5,8 +5,8 @@ services:
     ports:
       - "5435:5432"
     environment:
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
       POSTGRES_DB: votaciondb
     healthcheck:
       test: ["CMD-SHELL", 'pg_isready -U "$$POSTGRES_USER" -d votaciondb']
@@ -15,6 +15,28 @@ services:
       retries: 5
     volumes:
       - postgres_votacion_data:/var/lib/postgresql/data
+    networks:
+      - votacion-network
+
+  votacion-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: votacion/votacion-service:0.0.1-SNAPSHOT
+    container_name: votacion-votacion-service
+    ports:
+      - "8082:8082"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-votacion:5432/votaciondb
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: 5672
+      RABBITMQ_USER: guest
+      RABBITMQ_PASS: guest
+    depends_on:
+      postgres-votacion:
+        condition: service_healthy
     networks:
       - votacion-network
 

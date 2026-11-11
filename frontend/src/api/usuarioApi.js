@@ -15,3 +15,17 @@ export async function listUsuarios(params = {}) {
   const { data } = await api.get(`/v1/usuarios?${searchParams}`)
   return data
 }
+
+export async function createUsuario(data) {
+  const { data: response } = await api.post('/v1/usuarios', data)
+  return response
+}
+
+export async function updateUsuario(id, data) {
+  const { data: response } = await api.put(`/v1/usuarios/${id}`, data)
+  return response
+}
+
+export async function deleteUsuario(id) {
+  await api.delete(`/v1/usuarios/${id}`)
+}

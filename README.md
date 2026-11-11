@@ -22,8 +22,8 @@ doble voto** ante una ingesta concurrente.
 | `autenticacion-service` | 8081 | `autenticaciondb` | `postgres-autenticacion` (5433) |
 | `votacion-service` | 8082 | `votaciondb` | `postgres-votacion` (5435) |
 | `resultados-service` | 8083 | `resultadosdb` | `postgres-resultados` (5436) |
-| `usuarios-service` | 8084 | `usuariosdb` | `postgres-usuarios` (5434) |
-| `frontend` (React) | 5173 / 3000 | — | — |
+| `usuario-service` | 8084 | `db_usuarios` | `postgres-usuario` (5434) |
+| `frontend` (React) | 5173 / 80 | — | — |
 | `rabbitmq` | 5672 / 15672 | — | `votacion-rabbitmq` |
 
 ### Tipos de comunicación
@@ -68,14 +68,18 @@ Proyecto_U1_SistemasDistribuidos/
 │   ├── api-gateway/            # punto de entrada (Spring Cloud Gateway)
 │   │   ├── application.yml
 │   │   └── ...
+│   ├── autenticacion-service/
+│   │   ├── docker-compose.yml  # BD + contenedor del servicio
+│   │   ├── Dockerfile
+│   │   └── src/
+│   ├── usuario-service/
+│   │   ├── docker-compose.yml  # BD + contenedor del servicio
+│   │   ├── Dockerfile
+│   │   └── src/
 │   ├── votacion-service/
 │   │   ├── docker-compose.yml  # SOLO su BD + su contenedor
 │   │   ├── Dockerfile
 │   │   └── src/
-│   └── autenticacion-service/
-│       ├── docker-compose.yml  # BD + contenedor del servicio
-│       ├── Dockerfile
-│       └── src/
 └── frontend/                   # React + Vite (una sola app)
     └── src/features/
         ├── autenticacion/
@@ -90,6 +94,7 @@ Proyecto_U1_SistemasDistribuidos/
 - **Node.js 20+** para el frontend
 - **Maven Wrapper** incluido en los servicios; no hace falta Maven global
 
+
 ## Cómo levantar el proyecto
 
 ### 1. Configurar variables
@@ -97,32 +102,56 @@ Proyecto_U1_SistemasDistribuidos/
 cp .env.example .env
 ```
 
-### 2. Levantar el sistema integrado
-```bash
-docker compose -f compose.full.yml up
-```
-Servicios incluidos: RabbitMQ, PostgreSQL de Votación, PostgreSQL y Resultados,
-gateway y frontend. La aplicación de Votación aún no tiene Dockerfile ni productor
-implementado.
+### 2. Levantar TODO el sistema (entrega)
 
-### 3. Levantar solo la infraestructura
+Primero, crea la red compartida (solo la primera vez):
 ```bash
-docker compose -f docker-compose.yml -f services/votacion-service/docker-compose.yml up -d
-docker compose -f docker-compose.yml -f services/autenticacion-service/docker-compose.yml up -d
+docker network create votacion-network
+```
+
+Luego levanta todo:
+```bash
+docker compose -f compose.full.yml up -d --build
+```
+> Usa `--build` la primera vez para compilar las imágenes de los microservicios.
+
+### 3. Levantar SOLO tu microservicio (desarrollo diario)
+
+Cada quien trabaja con **su** fragmento, sin tocar el de los demás. Primero crea la red compartida (solo la primera vez):
+```bash
+docker network create votacion-network
 ```
 > El microservicio de autenticacion crea la cuenta inicial `admin` / `admin123`
 > (configurable con `APP_ADMIN_USERNAME` y `APP_ADMIN_PASSWORD`).
 
-### 4. Ejecutar microservicios desde el IDE
+Luego levanta RabbitMQ (infraestructura compartida) más tu servicio:
 ```bash
-cd services/resultados-service
-./mvnw spring-boot:run
+# RabbitMQ (infraestructura compartida)
+docker compose -f docker-compose.yml up -d
 
-cd services/api-gateway
-./mvnw spring-boot:run
+# usuario-service (puerto 8084)
+docker compose -f docker-compose.yml -f services/usuario-service/docker-compose.yml up -d
 
-cd services/votacion-service
-./mvnw spring-boot:run
+# autenticacion-service (puerto 8081)
+docker compose -f docker-compose.yml -f services/autenticacion-service/docker-compose.yml up -d
+
+# votacion-service (puerto 8082)
+docker compose -f docker-compose.yml -f services/votacion-service/docker-compose.yml up -d
+
+# api-gateway (puerto 8080)
+docker compose -f docker-compose.yml -f services/api-gateway/docker-compose.yml up -d
+```
+> El microservicio de autenticacion crea la cuenta inicial `admin` / `admin123`
+> (configurable con `APP_ADMIN_USERNAME` y `APP_ADMIN_PASSWORD`).
+
+### 4. Ejecutar un microservicio desde el IDE
+
+Los servicios se levantan con Docker, no es necesario ejecutar `mvnw` desde el IDE.
+Usa `docker compose` desde la carpeta de cada servicio:
+
+```bash
+cd services/usuario-service
+docker compose -f docker-compose.yml up -d
 ```
 
 ## Resultados
@@ -177,7 +206,7 @@ docker compose -f compose.full.yml config --quiet
 - [ ] Flujo REST del voto + productor RabbitMQ (`votacion-service`)
 - [ ] `resultados-service` (consumidor + WebSocket)
 - [ ] `usuarios-service`
-- [ ] Dockerfiles + `compose.full.yml` completo (`docker compose -f compose.full.yml up`)
+- [x] Dockerfiles + `compose.full.yml` completo (`docker compose -f compose.full.yml up`)
 
 ## Flujo de trabajo con Git
 - Cada integrante trabaja en **su propia rama**.
