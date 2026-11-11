@@ -1,0 +1,48 @@
+name: votacion-usuarios
+
+services:
+  postgres-usuario:
+    image: postgres:16
+    container_name: votacion-postgres-usuario
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-admin}
+      POSTGRES_DB: db_usuarios
+    volumes:
+      - postgres-usuario-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-admin} -d db_usuarios"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks:
+      - usuarios-network
+
+  usuario-service:
+    build:
+      context: ./services/usuario-service
+    image: votacion/usuario-service:distributed
+    container_name: votacion-usuario-service
+    ports:
+      - "8084:8084"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-usuario:5432/db_usuarios
+      POSTGRES_USER: ${POSTGRES_USER:-admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-admin}
+
+      RABBITMQ_HOST: ${RABBITMQ_HOST}
+      RABBITMQ_PORT: ${RABBITMQ_PORT:-5672}
+      RABBITMQ_USER: ${RABBITMQ_USER}
+      RABBITMQ_PASS: ${RABBITMQ_PASS}
+    depends_on:
+      postgres-usuario:
+        condition: service_healthy
+    networks:
+      - usuarios-network
+
+volumes:
+  postgres-usuario-data:
+
+networks:
+  usuarios-network:
+    driver: bridge

@@ -1,0 +1,58 @@
+name: votacion-votos
+
+services:
+  postgres-votacion:
+    image: postgres:16
+    container_name: votacion-postgres-votacion
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-admin}
+      POSTGRES_DB: votaciondb
+    volumes:
+      - postgres-votacion-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-admin} -d votaciondb"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks:
+      - votacion-network
+
+  votacion-service:
+    build:
+      context: ./services/votacion-service
+    image: votacion/votacion-service:distributed
+    container_name: votacion-votacion-service
+    ports:
+      - "8082:8082"
+    environment:
+      POSTGRES_HOST: postgres-votacion
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: votaciondb
+      POSTGRES_USER: ${POSTGRES_USER:-admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-admin}
+
+      RABBITMQ_HOST: ${RABBITMQ_HOST}
+      RABBITMQ_PORT: ${RABBITMQ_PORT:-5672}
+      RABBITMQ_USER: ${RABBITMQ_USER}
+      RABBITMQ_PASS: ${RABBITMQ_PASS}
+
+      JWT_SECRET: ${JWT_SECRET}
+    depends_on:
+      postgres-votacion:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8082/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 30s
+    networks:
+      - votacion-network
+
+volumes:
+  postgres-votacion-data:
+
+networks:
+  votacion-network:
+    driver: bridge

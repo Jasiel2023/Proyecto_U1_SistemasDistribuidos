@@ -1,0 +1,55 @@
+name: votacion-auth
+
+services:
+  postgres-autenticacion:
+    image: postgres:16
+    container_name: votacion-postgres-autenticacion
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-admin}
+      POSTGRES_DB: autenticaciondb
+    volumes:
+      - postgres-autenticacion-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-admin} -d autenticaciondb"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks:
+      - auth-network
+
+  autenticacion-service:
+    build:
+      context: ./services/autenticacion-service
+    image: votacion/autenticacion-service:distributed
+    container_name: votacion-autenticacion-service
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-autenticacion:5432/autenticaciondb
+      POSTGRES_USER: ${POSTGRES_USER:-admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-admin}
+
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_EXPIRATION_MS: ${JWT_EXPIRATION_MS:-3600000}
+
+      APP_ADMIN_ENABLED: ${APP_ADMIN_ENABLED:-true}
+      APP_ADMIN_USERNAME: ${APP_ADMIN_USERNAME:-admin}
+      APP_ADMIN_PASSWORD: ${APP_ADMIN_PASSWORD:-admin123}
+
+      RABBITMQ_HOST: ${RABBITMQ_HOST}
+      RABBITMQ_PORT: ${RABBITMQ_PORT:-5672}
+      RABBITMQ_USER: ${RABBITMQ_USER}
+      RABBITMQ_PASS: ${RABBITMQ_PASS}
+    depends_on:
+      postgres-autenticacion:
+        condition: service_healthy
+    networks:
+      - auth-network
+
+volumes:
+  postgres-autenticacion-data:
+
+networks:
+  auth-network:
+    driver: bridge
