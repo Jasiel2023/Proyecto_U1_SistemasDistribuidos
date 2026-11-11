@@ -5,9 +5,9 @@ services:
     image: postgres:17-alpine
     container_name: resultados-db
     environment:
-      POSTGRES_DB: ${RESULTADOS_DB_NAME:-resultadosdb}
-      POSTGRES_USER: ${RESULTADOS_DB_USER:-resultados}
-      POSTGRES_PASSWORD: ${RESULTADOS_DB_PASSWORD:-resultados}
+      POSTGRES_DB: resultadosdb
+      POSTGRES_USER: resultados
+      POSTGRES_PASSWORD: resultados
     ports:
       - "${RESULTADOS_DB_HOST_PORT:-5436}:5432"
     volumes:
@@ -18,6 +18,40 @@ services:
       timeout: 5s
       retries: 20
     restart: unless-stopped
+
+  resultados-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: votacion/resultados-service:0.1.0
+    container_name: votacion-resultados-service
+    ports:
+      - "8083:8083"
+    environment:
+      SPRING_PROFILES_ACTIVE: container
+      RESULTADOS_DB_URL: jdbc:postgresql://resultados-db:5432/resultadosdb
+      RESULTADOS_DB_USER: resultados
+      RESULTADOS_DB_PASSWORD: resultados
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: 5672
+      RABBITMQ_USER: guest
+      RABBITMQ_PASS: guest
+      RESULTADOS_EXCHANGE: votacion.exchange
+      RESULTADOS_ROUTING_KEY: voto.emitido
+      RESULTADOS_QUEUE: votos.procesados
+      RESULTADOS_DLQ: votos.procesados.dlq
+      RESULTADOS_CORS_ALLOWED_ORIGINS: http://localhost:5173,http://localhost:3000,http://localhost:8080
+      RESULTADOS_WS_ALLOWED_ORIGINS: http://localhost:5173,http://localhost:3000,http://localhost:8080
+    depends_on:
+      resultados-db:
+        condition: service_healthy
+    networks:
+      - votacion-network
+
+networks:
+  votacion-network:
+    external: true
+    name: votacion-network
 
 volumes:
   resultados-db-data:
