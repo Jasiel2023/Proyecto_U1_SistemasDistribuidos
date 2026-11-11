@@ -15,6 +15,8 @@ services:
       retries: 5
     volumes:
       - postgres_autenticacion_data:/var/lib/postgresql/data
+    networks:
+      - votacion-network
 
   autenticacion-service:
     build:
@@ -36,6 +38,13 @@ services:
     depends_on:
       postgres-autenticacion:
         condition: service_healthy
+    networks:
+      - votacion-network
+
+networks:
+  votacion-network:
+    external: true
+    name: votacion-network
 
 volumes:
   postgres_autenticacion_data:
