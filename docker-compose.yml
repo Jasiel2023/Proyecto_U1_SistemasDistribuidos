@@ -22,8 +22,8 @@ services:
 
 networks:
   votacion-network:
+    external: true
     name: votacion-network
-    driver: bridge
 
 volumes:
   rabbitmq_data:

@@ -9,7 +9,7 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: votaciondb
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d votaciondb"]
+      test: ["CMD-SHELL", 'pg_isready -U "$$POSTGRES_USER" -d votaciondb']
       interval: 10s
       timeout: 5s
       retries: 5
