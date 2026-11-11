@@ -65,9 +65,17 @@ Proyecto_U1_SistemasDistribuidos/
 ├── compose.full.yml            # sistema integrado (infra + Resultados + gateway + frontend)
 ├── .env.example                # plantilla de variables
 ├── services/
-│   ├── api-gateway/            # punto de entrada (Spring Cloud Gateway MVC)
-│   ├── resultados-service/     # consumidor RabbitMQ + REST + STOMP
-│   └── votacion-service/       # esqueleto de Votación
+│   ├── api-gateway/            # punto de entrada (Spring Cloud Gateway)
+│   │   ├── application.yml
+│   │   └── ...
+│   ├── votacion-service/
+│   │   ├── docker-compose.yml  # SOLO su BD + su contenedor
+│   │   ├── Dockerfile
+│   │   └── src/
+│   └── autenticacion-service/
+│       ├── docker-compose.yml  # BD + contenedor del servicio
+│       ├── Dockerfile
+│       └── src/
 └── frontend/                   # React + Vite (una sola app)
     └── src/features/
         ├── autenticacion/
@@ -91,7 +99,7 @@ cp .env.example .env
 
 ### 2. Levantar el sistema integrado
 ```bash
-docker compose -f compose.full.yml up -d --build
+docker compose -f compose.full.yml up
 ```
 Servicios incluidos: RabbitMQ, PostgreSQL de Votación, PostgreSQL y Resultados,
 gateway y frontend. La aplicación de Votación aún no tiene Dockerfile ni productor
@@ -100,7 +108,10 @@ implementado.
 ### 3. Levantar solo la infraestructura
 ```bash
 docker compose -f docker-compose.yml -f services/votacion-service/docker-compose.yml up -d
+docker compose -f docker-compose.yml -f services/autenticacion-service/docker-compose.yml up -d
 ```
+> El microservicio de autenticacion crea la cuenta inicial `admin` / `admin123`
+> (configurable con `APP_ADMIN_USERNAME` y `APP_ADMIN_PASSWORD`).
 
 ### 4. Ejecutar microservicios desde el IDE
 ```bash
@@ -160,13 +171,13 @@ docker compose -f compose.full.yml config --quiet
 ## Estado actual
 - [x] Infraestructura (RabbitMQ) y estructura por fragmentos
 - [x] Esqueleto de `votacion-service` (conectado a `votaciondb`)
-- [x] `api-gateway` enrutando `/api/votos` y `/api/resultados`, con puente WebSocket
-- [x] Frontend React base integrado con la vista de Resultados
-- [x] `resultados-service`: consumidor, idempotencia, REST, STOMP y migraciones Flyway
-- [x] Dockerfiles y `compose.full.yml` para Resultados, gateway y frontend
-- [ ] Productor REST/RabbitMQ de `votacion-service` (flujo real de voto)
-- [ ] `autenticacion-service`
+- [x] `api-gateway` (Spring Cloud Gateway, enrutando `/api/votos` y `/api/v1/auth`)
+- [x] Frontend React base (Vite + estructura por features)
+- [x] `autenticacion-service` (JWT, sesiones, Flyway y Docker)
+- [ ] Flujo REST del voto + productor RabbitMQ (`votacion-service`)
+- [ ] `resultados-service` (consumidor + WebSocket)
 - [ ] `usuarios-service`
+- [ ] Dockerfiles + `compose.full.yml` completo (`docker compose -f compose.full.yml up`)
 
 ## Flujo de trabajo con Git
 - Cada integrante trabaja en **su propia rama**.
