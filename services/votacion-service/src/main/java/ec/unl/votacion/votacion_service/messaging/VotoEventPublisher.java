@@ -33,14 +33,14 @@ public class VotoEventPublisher {
                     mensajePersistente(event)
             );
         } catch (AmqpException exception) {
-            log.error("No fue posible publicar VotoEmitidoEvent {}", event.eventoId(), exception);
+            log.error("No fue posible publicar VotoEmitidoEvent {}", event.eventId(), exception);
         }
     }
 
     private MessagePostProcessor mensajePersistente(VotoEmitidoEvent event) {
         return message -> {
             message.getMessageProperties().setDeliveryMode(MessageDeliveryMode.PERSISTENT);
-            message.getMessageProperties().setHeader("eventId", event.eventoId().toString());
+            message.getMessageProperties().setHeader("eventId", event.eventId().toString());
             return message;
         };
     }

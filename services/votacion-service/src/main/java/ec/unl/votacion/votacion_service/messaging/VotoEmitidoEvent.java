@@ -1,14 +1,15 @@
 package ec.unl.votacion.votacion_service.messaging;
 
-import java.time.Instant;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 public record VotoEmitidoEvent(
-        UUID eventoId,
+        UUID eventId,
+        Integer schemaVersion,
         Long votoId,
         Long eleccionId,
         Long candidatoId,
         Long idUsuario,
-        Instant emitidoEn
+        OffsetDateTime occurredAt
 ) {
 }

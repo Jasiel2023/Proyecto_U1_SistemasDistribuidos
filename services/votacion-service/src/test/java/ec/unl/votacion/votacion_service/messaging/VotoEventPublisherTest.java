@@ -10,7 +10,7 @@ import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessagePostProcessor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 
-import java.time.Instant;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -29,7 +29,8 @@ class VotoEventPublisherTest {
         VotoEventPublisher publisher = new VotoEventPublisher(rabbitTemplate);
         UUID eventId = UUID.randomUUID();
         VotoEmitidoEvent event = new VotoEmitidoEvent(
-                eventId, 100L, 1L, 2L, 15L, Instant.parse("2026-11-09T20:00:00Z"));
+                eventId, 1, 100L, 1L, 2L, 15L,
+                OffsetDateTime.parse("2026-11-09T20:00:00Z"));
 
         publisher.publicar(event);
 

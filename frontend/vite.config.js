@@ -1,6 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
+const gateway = globalThis.process?.env?.VITE_GATEWAY_URL ?? 'http://localhost:8080'
+
 export default defineConfig({
   plugins: [react()],
   server: {
@@ -11,10 +13,15 @@ export default defineConfig({
         changeOrigin: true,
       },
       '/ws': {
-        target: 'http://localhost:8083', // resultados-service (WebSocket)
+        target: gateway,
         ws: true,
         changeOrigin: true,
       },
     },
+  },
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: './src/test/setup.js',
   },
 })

@@ -23,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 import java.util.List;
+import java.time.ZoneOffset;
 
 @Service
 public class VotoService {
@@ -72,11 +73,12 @@ public class VotoService {
                     new Voto(eleccion, candidato, request.idUsuario()));
             eventPublisher.publishEvent(new VotoEmitidoEvent(
                     UUID.randomUUID(),
+                    1,
                     voto.getId(),
                     eleccion.getId(),
                     candidato.getId(),
                     voto.getIdUsuario(),
-                    voto.getEmitidoEn()
+                    voto.getEmitidoEn().atOffset(ZoneOffset.UTC)
             ));
             return toResponse(voto);
         } catch (DataIntegrityViolationException exception) {
