@@ -18,8 +18,12 @@ api.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       localStorage.removeItem('votacion.auth.token')
-      window.location.href = '/login'
+
+      if (window.location.pathname !== '/login') {
+        window.location.assign('/login')
+      }
     }
+
     return Promise.reject(error)
-  }
+  },
 )
