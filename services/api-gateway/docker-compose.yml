@@ -1,0 +1,21 @@
+services:
+  api-gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: votacion/api-gateway:0.0.1-SNAPSHOT
+    container_name: votacion-api-gateway
+    ports:
+      - "8080:8080"
+    environment:
+      AUTH_SERVICE_URI: http://votacion-autenticacion-service:8081
+      USUARIO_SERVICE_URI: http://votacion-usuario-service:8083
+      VOTACION_SERVICE_URI: http://votacion-votacion-service:8082
+      CORS_ALLOWED_ORIGINS: http://localhost:5173
+    networks:
+      - votacion-network
+
+networks:
+  votacion-network:
+    external: true
+    name: votacion-network
