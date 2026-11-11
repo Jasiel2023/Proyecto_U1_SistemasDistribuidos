@@ -22,7 +22,7 @@ doble voto** ante una ingesta concurrente.
 | `autenticacion-service` | 8081 | `autenticaciondb` | `postgres-autenticacion` (5433) |
 | `votacion-service` | 8082 | `votaciondb` | `postgres-votacion` (5435) |
 | `resultados-service` | 8083 | `resultadosdb` | `postgres-resultados` (5436) |
-| `usuarios-service` | 8084 | `usuariosdb` | `postgres-usuarios` (5434) |
+| `usuario-service` | 8084 | `db_usuarios` | `postgres-usuario` (5434) |
 | `frontend` (React) | 5173 / 80 | — | — |
 | `rabbitmq` | 5672 / 15672 | — | `votacion-rabbitmq` |
 
@@ -68,10 +68,18 @@ Proyecto_U1_SistemasDistribuidos/
 │   ├── api-gateway/            # punto de entrada (Spring Cloud Gateway)
 │   │   ├── application.yml
 │   │   └── ...
-│   └── votacion-service/
-│       ├── docker-compose.yml  # SOLO su BD + su contenedor
-│       ├── Dockerfile
-│       └── src/
+│   ├── autenticacion-service/
+│   │   ├── docker-compose.yml  # BD + contenedor del servicio
+│   │   ├── Dockerfile
+│   │   └── src/
+│   ├── usuario-service/
+│   │   ├── docker-compose.yml  # BD + contenedor del servicio
+│   │   ├── Dockerfile
+│   │   └── src/
+│   ├── votacion-service/
+│   │   ├── docker-compose.yml  # SOLO su BD + su contenedor
+│   │   ├── Dockerfile
+│   │   └── src/
 └── frontend/                   # React + Vite (una sola app)
     ├── package.json
     ├── vite.config.js
@@ -90,7 +98,6 @@ Proyecto_U1_SistemasDistribuidos/
 - **Java 21** (solo si desarrollas un microservicio desde el IDE)
 - **Node.js 20+** (solo si desarrollas el frontend)
 
-> Los proyectos Spring Boot traen el wrapper `mvnw`, así que **no necesitas instalar Maven**.
 
 ## Cómo levantar el proyecto
 
@@ -101,27 +108,53 @@ cp .env.example .env
 ```
 
 ### 2. Levantar TODO el sistema (entrega)
+
+Primero, crea la red compartida (solo la primera vez):
 ```bash
-docker compose up
+docker network create votacion-network
 ```
-> Mientras el proyecto esté en construcción, algunos servicios/frontend aún no existen.
-> Usa la opción 3 para trabajar solo en tu parte.
+
+Luego levanta todo:
+```bash
+docker compose -f compose.full.yml up -d --build
+```
+> Usa `--build` la primera vez para compilar las imágenes de los microservicios.
 
 ### 3. Levantar SOLO tu microservicio (desarrollo diario)
-Cada quien trabaja con **su** fragmento, sin tocar el de los demás:
+
+Cada quien trabaja con **su** fragmento, sin tocar el de los demás. Primero crea la red compartida (solo la primera vez):
 ```bash
-docker compose -f docker-compose.yml -f services/votacion-service/docker-compose.yml up -d
+docker network create votacion-network
 ```
 
-### 4. Ejecutar un microservicio desde el IDE (sin Docker para el servicio)
+Luego levanta RabbitMQ (infraestructura compartida) más tu servicio:
 ```bash
-cd services/votacion-service
-./mvnw spring-boot:run
+# RabbitMQ (infraestructura compartida)
+docker compose -f docker-compose.yml up -d
+
+# usuario-service (puerto 8084)
+docker compose -f docker-compose.yml -f services/usuario-service/docker-compose.yml up -d
+
+# autenticacion-service (puerto 8081)
+docker compose -f docker-compose.yml -f services/autenticacion-service/docker-compose.yml up -d
+
+# votacion-service (puerto 8082)
+docker compose -f docker-compose.yml -f services/votacion-service/docker-compose.yml up -d
+
+# api-gateway (puerto 8080)
+docker compose -f docker-compose.yml -f services/api-gateway/docker-compose.yml up -d
 ```
-Igual para cualquier otro servicio, p. ej. el gateway:
+> El microservicio de autenticacion crea la cuenta inicial `admin` / `admin123`
+> (configurable con `APP_ADMIN_USERNAME` y `APP_ADMIN_PASSWORD`).
+
+### 4. Ejecutar un microservicio desde el IDE
+
+Los servicios se levantan con Docker, no es necesario ejecutar `mvnw` desde el IDE.
+Usa `docker compose` desde la carpeta de cada servicio:
+
 ```bash
-cd services/api-gateway
-./mvnw spring-boot:run
+cd services/usuario-service
+docker compose -f docker-compose.yml up -d
 ```
 
 ## Frontend (React + Vite)
@@ -192,12 +225,13 @@ dockerización.
 ## Estado actual
 - [x] Infraestructura (RabbitMQ) y estructura por fragmentos
 - [x] Esqueleto de `votacion-service` (conectado a `votaciondb`)
-- [x] `api-gateway` (Spring Cloud Gateway, enrutando `/api/votos` → `votacion-service`)
+- [x] `api-gateway` (Spring Cloud Gateway, enrutando `/api/votos` y `/api/v1/auth`)
 - [x] Frontend React base (Vite + estructura por features)
+- [x] `autenticacion-service` (JWT, sesiones, Flyway y Docker)
 - [ ] Flujo REST del voto + productor RabbitMQ (`votacion-service`)
 - [ ] `resultados-service` (consumidor + WebSocket)
-- [ ] `autenticacion-service` y `usuarios-service`
-- [ ] Dockerfiles + `compose.full.yml` completo (`docker compose up`)
+- [ ] `usuarios-service`
+- [x] Dockerfiles + `compose.full.yml` completo (`docker compose -f compose.full.yml up`)
 
 ## Flujo de trabajo con Git
 - Cada integrante trabaja en **su propia rama** (ej. `jasiel-dev`).
