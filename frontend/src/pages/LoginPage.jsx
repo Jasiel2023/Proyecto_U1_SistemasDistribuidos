@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 
 export function LoginPage() {
-  const { isAuthenticated, login, loading: authLoading } = useAuth()
+  const { isAuthenticated, isAdmin, isVotante, login, loading: authLoading } = useAuth()
   const navigate = useNavigate()
 
   const [nickname, setNickname] = useState('')
@@ -13,7 +13,7 @@ export function LoginPage() {
   const [formErrors, setFormErrors] = useState({ nickname: '', clave: '' })
 
   if (isAuthenticated) {
-    navigate('/dashboard', { replace: true })
+    navigate(isAdmin ? '/admin/dashboard' : '/dashboard', { replace: true })
     return null
   }
 

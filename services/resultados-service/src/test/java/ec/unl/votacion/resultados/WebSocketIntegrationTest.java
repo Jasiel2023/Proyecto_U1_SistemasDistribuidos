@@ -69,10 +69,10 @@ class WebSocketIntegrationTest extends AbstractIntegrationTest {
 
     @Test
     void notificaSnapshotDespuesDelCommit() throws Exception {
-        Long eleccion = 1L;
+        UUID eleccion = UUID.randomUUID();
         BlockingQueue<ResultadoSnapshot> recibidos = suscribir(eleccion);
 
-        commandService.procesar(TestEventos.voto(eleccion, 2L));
+        commandService.procesar(TestEventos.voto(eleccion, UUID.randomUUID()));
 
         ResultadoSnapshot snapshot = recibidos.poll(10, TimeUnit.SECONDS);
         assertThat(snapshot).isNotNull();
@@ -84,8 +84,8 @@ class WebSocketIntegrationTest extends AbstractIntegrationTest {
 
     @Test
     void noNotificaSiLaTransaccionSeRevierte() throws Exception {
-        Long eleccion = 1L;
-        Long candidato = 2L;
+        UUID eleccion = UUID.randomUUID();
+        UUID candidato = UUID.randomUUID();
         BlockingQueue<ResultadoSnapshot> recibidos = suscribir(eleccion);
         crearTriggerDeFallo(candidato);
 
@@ -97,12 +97,12 @@ class WebSocketIntegrationTest extends AbstractIntegrationTest {
 
     @Test
     void aislaDestinosPorEleccion() throws Exception {
-        Long eleccionA = 1L;
-        Long eleccionB = 2L;
+        UUID eleccionA = UUID.randomUUID();
+        UUID eleccionB = UUID.randomUUID();
         BlockingQueue<ResultadoSnapshot> recibidosA = suscribir(eleccionA);
         BlockingQueue<ResultadoSnapshot> recibidosB = suscribirEnOtraSesion(eleccionB);
 
-        commandService.procesar(TestEventos.voto(eleccionA, 3L));
+        commandService.procesar(TestEventos.voto(eleccionA, UUID.randomUUID()));
 
         ResultadoSnapshot snapshotA = recibidosA.poll(10, TimeUnit.SECONDS);
         assertThat(snapshotA).isNotNull();
@@ -112,10 +112,10 @@ class WebSocketIntegrationTest extends AbstractIntegrationTest {
 
     @Test
     void restRecuperaLaRevisionNotificada() throws Exception {
-        Long eleccion = 1L;
+        UUID eleccion = UUID.randomUUID();
         BlockingQueue<ResultadoSnapshot> recibidos = suscribir(eleccion);
 
-        commandService.procesar(TestEventos.voto(eleccion, 2L));
+        commandService.procesar(TestEventos.voto(eleccion, UUID.randomUUID()));
 
         ResultadoSnapshot notificado = recibidos.poll(10, TimeUnit.SECONDS);
         assertThat(notificado).isNotNull();
@@ -131,12 +131,12 @@ class WebSocketIntegrationTest extends AbstractIntegrationTest {
         assertThat(consultado.totalVotos()).isEqualTo(notificado.totalVotos());
     }
 
-    private BlockingQueue<ResultadoSnapshot> suscribir(Long eleccion) throws Exception {
+    private BlockingQueue<ResultadoSnapshot> suscribir(UUID eleccion) throws Exception {
         sesion = conectar();
         return suscribir(sesion, eleccion);
     }
 
-    private BlockingQueue<ResultadoSnapshot> suscribirEnOtraSesion(Long eleccion) throws Exception {
+    private BlockingQueue<ResultadoSnapshot> suscribirEnOtraSesion(UUID eleccion) throws Exception {
         StompSession otra = conectar();
         return suscribir(otra, eleccion);
     }
@@ -149,7 +149,7 @@ class WebSocketIntegrationTest extends AbstractIntegrationTest {
         return nueva;
     }
 
-    private BlockingQueue<ResultadoSnapshot> suscribir(StompSession session, Long eleccion) throws Exception {
+    private BlockingQueue<ResultadoSnapshot> suscribir(StompSession session, UUID eleccion) throws Exception {
         BlockingQueue<ResultadoSnapshot> recibidos = new LinkedBlockingQueue<>();
         session.subscribe("/topic/resultados/elecciones/" + eleccion, new StompFrameHandler() {
             @Override
@@ -166,11 +166,11 @@ class WebSocketIntegrationTest extends AbstractIntegrationTest {
         return recibidos;
     }
 
-    private void crearTriggerDeFallo(Long candidato) {
+    private void crearTriggerDeFallo(UUID candidato) {
         jdbcTemplate.execute("""
                 CREATE OR REPLACE FUNCTION fallo_conteo() RETURNS trigger AS $$
                 BEGIN
-                    IF NEW.candidato_id = %d THEN
+                    IF NEW.candidato_id = '%s'::uuid THEN
                         RAISE EXCEPTION 'fallo simulado de conteo';
                     END IF;
                     RETURN NEW;
@@ -182,3 +182,4 @@ class WebSocketIntegrationTest extends AbstractIntegrationTest {
                 + "FOR EACH ROW EXECUTE FUNCTION fallo_conteo()");
     }
 }
+

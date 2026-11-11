@@ -2,6 +2,8 @@ package ec.unl.votacion.usuarios.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -56,18 +58,24 @@ public class Usuario {
     @Column(name = "apellido", nullable = false, length = 100)
     private String apellido;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "rol", nullable = false, length = 20)
-    private String rol = "VOTANTE";
+    private Rol rol = Rol.VOTANTE;
 
     public Usuario() {}
 
     public Usuario(Integer idCuenta, String cedula, String correo, String nickname, String nombre, String apellido) {
+        this(idCuenta, cedula, correo, nickname, nombre, apellido, Rol.VOTANTE);
+    }
+
+    public Usuario(Integer idCuenta, String cedula, String correo, String nickname, String nombre, String apellido, Rol rol) {
         this.idCuenta = idCuenta;
         this.cedula = cedula;
         this.correo = correo;
         this.nickname = nickname;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.rol = rol;
     }
 
     public Integer getId() {
@@ -126,11 +134,11 @@ public class Usuario {
         this.apellido = apellido;
     }
 
-    public String getRol() {
+    public Rol getRol() {
         return rol;
     }
 
-    public void setRol(String rol) {
+    public void setRol(Rol rol) {
         this.rol = rol;
     }
 }

@@ -62,8 +62,8 @@ class RabbitMessagingIntegrationTest extends AbstractIntegrationTest {
 
     @Test
     void eventoValidoSePersisteAntesDeConfirmar() {
-        Long eleccion = 1L;
-        Long candidato = 2L;
+        UUID eleccion = UUID.randomUUID();
+        UUID candidato = UUID.randomUUID();
 
         publicar(TestEventos.voto(eleccion, candidato));
 
@@ -75,8 +75,8 @@ class RabbitMessagingIntegrationTest extends AbstractIntegrationTest {
 
     @Test
     void reentregaDelMismoMensajeNoIncrementa() {
-        Long eleccion = 1L;
-        VotoEmitidoEvent evento = TestEventos.voto(eleccion, 2L);
+        UUID eleccion = UUID.randomUUID();
+        VotoEmitidoEvent evento = TestEventos.voto(eleccion, UUID.randomUUID());
 
         publicar(evento);
         publicar(evento);
@@ -99,8 +99,8 @@ class RabbitMessagingIntegrationTest extends AbstractIntegrationTest {
 
     @Test
     void rollbackPorFalloDeBaseVaADlqSinEstadoParcial() {
-        Long eleccion = 1L;
-        Long candidato = 2L;
+        UUID eleccion = UUID.randomUUID();
+        UUID candidato = UUID.randomUUID();
         crearTriggerDeFallo(candidato);
 
         publicar(TestEventos.voto(eleccion, candidato));
@@ -114,8 +114,8 @@ class RabbitMessagingIntegrationTest extends AbstractIntegrationTest {
 
     @Test
     void consumidoresConcurrentesMantienenConteosExactos() throws Exception {
-        Long eleccion = 1L;
-        Long candidato = 2L;
+        UUID eleccion = UUID.randomUUID();
+        UUID candidato = UUID.randomUUID();
         int unicos = 30;
         List<VotoEmitidoEvent> eventos = new ArrayList<>();
         for (int i = 0; i < unicos; i++) {
@@ -150,9 +150,9 @@ class RabbitMessagingIntegrationTest extends AbstractIntegrationTest {
 
     @Test
     void aislaEleccionesEnConsumo() {
-        Long eleccionA = 1L;
-        Long eleccionB = 2L;
-        Long candidato = 3L;
+        UUID eleccionA = UUID.randomUUID();
+        UUID eleccionB = UUID.randomUUID();
+        UUID candidato = UUID.randomUUID();
 
         publicar(TestEventos.voto(eleccionA, candidato));
         publicar(TestEventos.voto(eleccionB, candidato));
@@ -185,11 +185,11 @@ class RabbitMessagingIntegrationTest extends AbstractIntegrationTest {
         return rabbitTemplate.receive(properties.messaging().dlq(), 1000);
     }
 
-    private void crearTriggerDeFallo(Long candidato) {
+    private void crearTriggerDeFallo(UUID candidato) {
         jdbcTemplate.execute("""
                 CREATE OR REPLACE FUNCTION fallo_conteo() RETURNS trigger AS $$
                 BEGIN
-                    IF NEW.candidato_id = %d THEN
+                    IF NEW.candidato_id = '%s'::uuid THEN
                         RAISE EXCEPTION 'fallo simulado de conteo';
                     END IF;
                     RETURN NEW;

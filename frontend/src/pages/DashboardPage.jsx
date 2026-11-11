@@ -1,11 +1,7 @@
 import { useAuth } from '../hooks/useAuth'
 
 export function DashboardPage() {
-  const { usuario, user, logout } = useAuth()
-
-  const handleLogout = () => {
-    logout()
-  }
+  const { usuario, user } = useAuth()
 
   const formatDate = (dateString) => {
     if (!dateString) return 'N/A'
@@ -29,14 +25,6 @@ export function DashboardPage() {
           <h1 className="dashboard-title">Panel de Votante</h1>
           <p className="dashboard-subtitle">Bienvenido, {usuario ? `${usuario.nombre} ${usuario.apellido}` : user?.nickname || 'Usuario'}</p>
         </div>
-        <button className="btn btn-logout" onClick={handleLogout} type="button">
-          <svg className="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-            <polyline points="16 17 21 12 16 7" />
-            <line x1="21" y1="12" x2="9" y2="12" />
-          </svg>
-          <span>Cerrar sesión</span>
-        </button>
       </div>
 
       <div className="dashboard-grid">

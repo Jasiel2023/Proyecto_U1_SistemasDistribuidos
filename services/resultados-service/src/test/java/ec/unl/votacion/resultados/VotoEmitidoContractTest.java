@@ -27,7 +27,8 @@ class VotoEmitidoContractTest {
         VotoEmitidoEvent evento = mapper.readValue(json, VotoEmitidoEvent.class);
 
         assertThat(evento.schemaVersion()).isEqualTo(1);
-        assertThat(evento.eleccionId()).isEqualTo(1L);
+        assertThat(evento.eleccionId().toString())
+                .isEqualTo("4f1c1a1e-6f31-4f7e-9f0a-2f4d0f6a1b12");
         assertThat(validator.validate(evento)).isEmpty();
     }
 

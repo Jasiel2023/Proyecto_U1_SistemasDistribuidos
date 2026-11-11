@@ -47,8 +47,8 @@ class EventoAggregationIntegrationTest extends AbstractIntegrationTest {
 
     @Test
     void eventoNuevoIncrementaResumenYConteo() {
-        Long eleccion = 1L;
-        Long candidato = 2L;
+        UUID eleccion = UUID.randomUUID();
+        UUID candidato = UUID.randomUUID();
 
         commandService.procesar(TestEventos.voto(eleccion, candidato));
 
@@ -63,8 +63,8 @@ class EventoAggregationIntegrationTest extends AbstractIntegrationTest {
 
     @Test
     void mismoEventIdNoIncrementa() {
-        Long eleccion = 1L;
-        Long candidato = 2L;
+        UUID eleccion = UUID.randomUUID();
+        UUID candidato = UUID.randomUUID();
         VotoEmitidoEvent evento = TestEventos.voto(eleccion, candidato);
 
         commandService.procesar(evento);
@@ -77,9 +77,9 @@ class EventoAggregationIntegrationTest extends AbstractIntegrationTest {
 
     @Test
     void mismoVotoLogicoConOtroEventIdNoIncrementa() {
-        Long eleccion = 1L;
-        Long candidato = 2L;
-        Long votoId = 3L;
+        UUID eleccion = UUID.randomUUID();
+        UUID candidato = UUID.randomUUID();
+        UUID votoId = UUID.randomUUID();
         commandService.procesar(TestEventos.voto(UUID.randomUUID(), votoId, eleccion, candidato));
 
         commandService.procesar(TestEventos.voto(UUID.randomUUID(), votoId, eleccion, candidato));
@@ -91,11 +91,11 @@ class EventoAggregationIntegrationTest extends AbstractIntegrationTest {
 
     @Test
     void mismoEventIdConPayloadIncompatibleRegistraConflictoSinSumar() {
-        Long eleccion = 1L;
-        Long candidatoA = 2L;
-        Long candidatoB = 3L;
+        UUID eleccion = UUID.randomUUID();
+        UUID candidatoA = UUID.randomUUID();
+        UUID candidatoB = UUID.randomUUID();
         UUID eventId = UUID.randomUUID();
-        Long votoId = 4L;
+        UUID votoId = UUID.randomUUID();
 
         commandService.procesar(TestEventos.voto(eventId, votoId, eleccion, candidatoA));
         commandService.procesar(TestEventos.voto(eventId, votoId, eleccion, candidatoB));
@@ -112,10 +112,10 @@ class EventoAggregationIntegrationTest extends AbstractIntegrationTest {
 
     @Test
     void mismoVotoLogicoConCandidatoDistintoRegistraConflicto() {
-        Long eleccion = 1L;
-        Long votoId = 4L;
-        Long candidatoA = 2L;
-        Long candidatoB = 3L;
+        UUID eleccion = UUID.randomUUID();
+        UUID votoId = UUID.randomUUID();
+        UUID candidatoA = UUID.randomUUID();
+        UUID candidatoB = UUID.randomUUID();
 
         commandService.procesar(TestEventos.voto(UUID.randomUUID(), votoId, eleccion, candidatoA));
         commandService.procesar(TestEventos.voto(UUID.randomUUID(), votoId, eleccion, candidatoB));
@@ -132,9 +132,9 @@ class EventoAggregationIntegrationTest extends AbstractIntegrationTest {
 
     @Test
     void aislaDosElecciones() {
-        Long eleccionA = 1L;
-        Long eleccionB = 2L;
-        Long candidato = 3L;
+        UUID eleccionA = UUID.randomUUID();
+        UUID eleccionB = UUID.randomUUID();
+        UUID candidato = UUID.randomUUID();
 
         commandService.procesar(TestEventos.voto(eleccionA, candidato));
         commandService.procesar(TestEventos.voto(eleccionA, candidato));
@@ -146,9 +146,9 @@ class EventoAggregationIntegrationTest extends AbstractIntegrationTest {
 
     @Test
     void mantieneTotalIgualASumaDeConteos() {
-        Long eleccion = 1L;
-        Long candidatoA = 2L;
-        Long candidatoB = 3L;
+        UUID eleccion = UUID.randomUUID();
+        UUID candidatoA = UUID.randomUUID();
+        UUID candidatoB = UUID.randomUUID();
 
         for (int i = 0; i < 5; i++) {
             commandService.procesar(TestEventos.voto(eleccion, candidatoA));
@@ -167,8 +167,8 @@ class EventoAggregationIntegrationTest extends AbstractIntegrationTest {
 
     @Test
     void concurrenciaYDuplicadosMantienenConteosExactos() throws Exception {
-        Long eleccion = 1L;
-        Long candidato = 2L;
+        UUID eleccion = UUID.randomUUID();
+        UUID candidato = UUID.randomUUID();
         int unicos = 40;
         List<VotoEmitidoEvent> eventos = new ArrayList<>();
         for (int i = 0; i < unicos; i++) {
@@ -205,8 +205,8 @@ class EventoAggregationIntegrationTest extends AbstractIntegrationTest {
 
     @Test
     void rollbackNoDejaEstadoParcial() {
-        Long eleccion = 1L;
-        Long candidato = 2L;
+        UUID eleccion = UUID.randomUUID();
+        UUID candidato = UUID.randomUUID();
         crearTriggerDeFallo(candidato);
 
         assertThatThrownBy(() -> commandService.procesar(TestEventos.voto(eleccion, candidato)))
@@ -217,11 +217,11 @@ class EventoAggregationIntegrationTest extends AbstractIntegrationTest {
         assertThat(contar("resultado_conteo")).isZero();
     }
 
-    private void crearTriggerDeFallo(Long candidato) {
+    private void crearTriggerDeFallo(UUID candidato) {
         jdbcTemplate.execute("""
                 CREATE OR REPLACE FUNCTION fallo_conteo() RETURNS trigger AS $$
                 BEGIN
-                    IF NEW.candidato_id = %d THEN
+                    IF NEW.candidato_id = '%s'::uuid THEN
                         RAISE EXCEPTION 'fallo simulado de conteo';
                     END IF;
                     RETURN NEW;

@@ -5,8 +5,9 @@ import { LoginPage } from '../pages/LoginPage'
 import { DashboardPage } from '../pages/DashboardPage'
 import { NotFoundPage } from '../pages/NotFoundPage'
 import VotacionPage from '../features/votacion/VotacionPage'
-import AdminPage from '../features/admin/AdminPage'
-
+import { AdminDashboardPage } from '../pages/AdminDashboardPage'
+import { AdminUsuariosPage } from '../pages/AdminUsuariosPage'
+import ResultadosPage from '../features/resultados/ResultadosPage.jsx'
 export function AppRoutes() {
   return (
     <Routes>
@@ -14,10 +15,16 @@ export function AppRoutes() {
 
       <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>
         <Route path="/dashboard" element={<DashboardPage />} />
-        <Route path="/votacion" element={<VotacionPage />} />
-        <Route path="/admin" element={<AdminPage />} />
       </Route>
 
+      <Route element={<AdminRoute><Layout /></AdminRoute>}>
+        <Route path="/admin" element={<Navigate to="/admin/dashboard" replace />} />
+        <Route path="/admin/dashboard" element={<AdminDashboardPage />} />
+        <Route path="/admin/usuarios" element={<AdminUsuariosPage />} />
+      </Route>
+
+        <Route path="/votacion" element={<VotacionPage />} />
+      <Route path="/resultados" element={<ResultadosPage />} />
       <Route path="/" element={<Navigate to="/dashboard" replace />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>

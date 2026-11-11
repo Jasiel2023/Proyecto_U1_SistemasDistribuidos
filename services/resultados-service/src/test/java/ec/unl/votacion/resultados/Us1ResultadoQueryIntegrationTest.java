@@ -41,7 +41,7 @@ class Us1ResultadoQueryIntegrationTest extends AbstractIntegrationTest {
 
     @Test
     void devuelveSnapshotVacioSinProyeccion() throws Exception {
-        Long eleccion = 1L;
+        UUID eleccion = UUID.randomUUID();
 
         HttpResponse<String> respuesta = obtener(eleccion);
 
@@ -57,9 +57,9 @@ class Us1ResultadoQueryIntegrationTest extends AbstractIntegrationTest {
 
     @Test
     void devuelveConteosYRevisionCoherentes() throws Exception {
-        Long eleccion = 1L;
-        Long candidatoA = 2L;
-        Long candidatoB = 3L;
+        UUID eleccion = UUID.randomUUID();
+        UUID candidatoA = UUID.randomUUID();
+        UUID candidatoB = UUID.randomUUID();
         OffsetDateTime instante = OffsetDateTime.of(2026, 11, 8, 15, 4, 6, 123_000_000, ZoneOffset.UTC);
         sembrar(eleccion, 3, 4, instante, candidatoA, 2, candidatoB, 1);
 
@@ -78,11 +78,11 @@ class Us1ResultadoQueryIntegrationTest extends AbstractIntegrationTest {
 
     @Test
     void aislaElecciones() throws Exception {
-        Long eleccionA = 1L;
-        Long eleccionB = 2L;
+        UUID eleccionA = UUID.randomUUID();
+        UUID eleccionB = UUID.randomUUID();
         OffsetDateTime ahora = OffsetDateTime.now(ZoneOffset.UTC);
-        sembrar(eleccionA, 2, 2, ahora, 3L, 2);
-        sembrar(eleccionB, 5, 5, ahora, 4L, 5);
+        sembrar(eleccionA, 2, 2, ahora, UUID.randomUUID(), 2);
+        sembrar(eleccionB, 5, 5, ahora, UUID.randomUUID(), 5);
 
         ResultadoSnapshot snapshotA = mapper.readValue(obtener(eleccionA).body(), ResultadoSnapshot.class);
 
@@ -92,8 +92,8 @@ class Us1ResultadoQueryIntegrationTest extends AbstractIntegrationTest {
     }
 
     @Test
-    void rechazaIdInvalidoConProblemDetails() throws Exception {
-        HttpResponse<String> respuesta = get("/api/resultados/elecciones/no-es-numero");
+    void rechazaUuidInvalidoConProblemDetails() throws Exception {
+        HttpResponse<String> respuesta = get("/api/resultados/elecciones/no-es-uuid");
 
         assertThat(respuesta.statusCode()).isEqualTo(400);
         assertThat(respuesta.headers().firstValue("Content-Type").orElse(""))
@@ -103,8 +103,8 @@ class Us1ResultadoQueryIntegrationTest extends AbstractIntegrationTest {
 
     @Test
     void noExponeIdentidadDeVotantesNiEntidades() throws Exception {
-        Long eleccion = 1L;
-        sembrar(eleccion, 1, 1, OffsetDateTime.now(ZoneOffset.UTC), 2L, 1);
+        UUID eleccion = UUID.randomUUID();
+        sembrar(eleccion, 1, 1, OffsetDateTime.now(ZoneOffset.UTC), UUID.randomUUID(), 1);
 
         HttpResponse<String> respuesta = obtener(eleccion);
 
@@ -115,7 +115,7 @@ class Us1ResultadoQueryIntegrationTest extends AbstractIntegrationTest {
                 "ultimaActualizacion", "disponible");
     }
 
-    private HttpResponse<String> obtener(Long eleccion) throws Exception {
+    private HttpResponse<String> obtener(UUID eleccion) throws Exception {
         return get("/api/resultados/elecciones/" + eleccion);
     }
 
@@ -128,13 +128,13 @@ class Us1ResultadoQueryIntegrationTest extends AbstractIntegrationTest {
         return http.send(request, HttpResponse.BodyHandlers.ofString());
     }
 
-    private void sembrar(Long eleccion, long total, long revision, OffsetDateTime instante,
-                         Long candidato, long votos) {
+    private void sembrar(UUID eleccion, long total, long revision, OffsetDateTime instante,
+                         UUID candidato, long votos) {
         sembrar(eleccion, total, revision, instante, candidato, votos, null, 0);
     }
 
-    private void sembrar(Long eleccion, long total, long revision, OffsetDateTime instante,
-                         Long candidatoA, long votosA, Long candidatoB, long votosB) {
+    private void sembrar(UUID eleccion, long total, long revision, OffsetDateTime instante,
+                         UUID candidatoA, long votosA, UUID candidatoB, long votosB) {
         jdbcTemplate.update("INSERT INTO resultado_resumen "
                         + "(eleccion_id, total_votos, revision, ultima_actualizacion) VALUES (?, ?, ?, ?)",
                 eleccion, total, revision, instante);
