@@ -4,6 +4,7 @@ import { Layout } from '../components/Layout'
 import { LoginPage } from '../pages/LoginPage'
 import { DashboardPage } from '../pages/DashboardPage'
 import { NotFoundPage } from '../pages/NotFoundPage'
+import ResultadosPage from '../features/resultados/ResultadosPage.jsx'
 
 export function AppRoutes() {
   return (
@@ -13,7 +14,7 @@ export function AppRoutes() {
       <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>
         <Route path="/dashboard" element={<DashboardPage />} />
       </Route>
-
+      <Route path="/resultados" element={<ResultadosPage />} />
       <Route path="/" element={<Navigate to="/dashboard" replace />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
