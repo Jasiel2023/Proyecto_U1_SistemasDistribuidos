@@ -1,4 +1,6 @@
 package ec.unl.votacion.resultados.application;
 
-public record ResultadoActualizadoEvent(Long eleccionId) {
+import java.util.UUID;
+
+public record ResultadoActualizadoEvent(UUID eleccionId) {
 }

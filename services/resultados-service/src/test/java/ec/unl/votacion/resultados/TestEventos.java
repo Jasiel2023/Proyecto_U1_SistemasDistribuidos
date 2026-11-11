@@ -12,11 +12,11 @@ public final class TestEventos {
 
     public static VotoEmitidoEvent voto(UUID eleccionId, UUID candidatoId) {
         return new VotoEmitidoEvent(UUID.randomUUID(), 1, UUID.randomUUID(), eleccionId,
-                candidatoId, OffsetDateTime.now(ZoneOffset.UTC));
+                candidatoId, null, OffsetDateTime.now(ZoneOffset.UTC));
     }
 
     public static VotoEmitidoEvent voto(UUID eventId, UUID votoId, UUID eleccionId, UUID candidatoId) {
         return new VotoEmitidoEvent(eventId, 1, votoId, eleccionId, candidatoId,
-                OffsetDateTime.now(ZoneOffset.UTC));
+                null, OffsetDateTime.now(ZoneOffset.UTC));
     }
 }

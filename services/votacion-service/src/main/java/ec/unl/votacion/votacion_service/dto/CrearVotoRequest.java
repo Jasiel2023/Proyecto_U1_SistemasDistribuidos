@@ -1,11 +1,10 @@
 package ec.unl.votacion.votacion_service.dto;
 
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
+import java.util.UUID;
 
 public record CrearVotoRequest(
-        @NotNull @Positive Long eleccionId,
-        @NotNull @Positive Long candidatoId,
-        @NotNull @Positive Long idUsuario
+        @NotNull UUID eleccionId,
+        @NotNull UUID candidatoId
 ) {
 }

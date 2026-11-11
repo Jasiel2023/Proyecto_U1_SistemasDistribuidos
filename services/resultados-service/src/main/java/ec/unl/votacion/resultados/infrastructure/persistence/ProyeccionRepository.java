@@ -8,6 +8,7 @@ import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
+import java.util.UUID;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -56,7 +57,7 @@ public class ProyeccionRepository {
         return filas == 1;
     }
 
-    public RevisionActualizada incrementarResumen(Long eleccionId, OffsetDateTime instante) {
+    public RevisionActualizada incrementarResumen(UUID eleccionId, OffsetDateTime instante) {
         Object[] fila = (Object[]) entityManager.createNativeQuery(INCREMENTAR_RESUMEN)
                 .setParameter(1, eleccionId)
                 .setParameter(2, instante)
@@ -67,7 +68,7 @@ public class ProyeccionRepository {
                 aOffsetDateTime(fila[2]));
     }
 
-    public long incrementarConteo(Long eleccionId, Long candidatoId, OffsetDateTime instante) {
+    public long incrementarConteo(UUID eleccionId, UUID candidatoId, OffsetDateTime instante) {
         Object fila = entityManager.createNativeQuery(INCREMENTAR_CONTEO)
                 .setParameter(1, eleccionId)
                 .setParameter(2, candidatoId)

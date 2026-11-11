@@ -4,6 +4,7 @@ import ec.unl.votacion.votacion_service.dto.ErrorResponse;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -24,6 +25,13 @@ public class GlobalExceptionHandler {
                 .collect(Collectors.joining("; "));
 
         return error(HttpStatus.BAD_REQUEST, "VALIDATION_ERROR", message);
+    }
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<ErrorResponse> manejarBodyIlegible(
+            HttpMessageNotReadableException exception
+    ) {
+        return error(HttpStatus.BAD_REQUEST, "MALFORMED_JSON", "El cuerpo de la peticion es invalido");
     }
 
     @ExceptionHandler(EleccionDomainException.class)

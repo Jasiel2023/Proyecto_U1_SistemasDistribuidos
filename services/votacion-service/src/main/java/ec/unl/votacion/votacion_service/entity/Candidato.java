@@ -9,14 +9,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import java.util.UUID;
 
 @Entity
 @Table(name = "candidatos")
 public class Candidato {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "eleccion_id", nullable = false)
@@ -46,7 +47,7 @@ public class Candidato {
         this.activo = true;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 

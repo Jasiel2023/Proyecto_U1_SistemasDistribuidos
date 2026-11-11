@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class EleccionAdminService {
@@ -42,7 +43,7 @@ public class EleccionAdminService {
     }
 
     @Transactional
-    public EleccionAdminResponse actualizar(Long id, EleccionAdminRequest request) {
+    public EleccionAdminResponse actualizar(UUID id, EleccionAdminRequest request) {
         validarHorario(request);
         Eleccion eleccion = buscarEleccion(id);
         eleccion.actualizar(request.titulo().trim(), request.fecha(), request.horaInicio(),
@@ -51,7 +52,7 @@ public class EleccionAdminService {
     }
 
     @Transactional
-    public CandidatoAdminResponse agregarCandidato(Long eleccionId, CandidatoAdminRequest request) {
+    public CandidatoAdminResponse agregarCandidato(UUID eleccionId, CandidatoAdminRequest request) {
         Eleccion eleccion = buscarEleccion(eleccionId);
         Candidato candidato = candidatoRepository.save(new Candidato(
                 eleccion, request.nombre().trim(), request.apellido().trim(),
@@ -60,18 +61,18 @@ public class EleccionAdminService {
     }
 
     @Transactional
-    public void eliminarCandidato(Long eleccionId, Long candidatoId) {
+    public void eliminarCandidato(UUID eleccionId, UUID candidatoId) {
         Candidato candidato = candidatoRepository.findByIdAndEleccionId(candidatoId, eleccionId)
                 .orElseThrow(() -> new CandidatoNoEncontradoException(candidatoId, eleccionId));
         candidatoRepository.delete(candidato);
     }
 
     @Transactional
-    public void eliminar(Long id) {
+    public void eliminar(UUID id) {
         eleccionRepository.delete(buscarEleccion(id));
     }
 
-    private Eleccion buscarEleccion(Long id) {
+    private Eleccion buscarEleccion(UUID id) {
         return eleccionRepository.findById(id)
                 .orElseThrow(() -> new EleccionNoEncontradaException(id));
     }

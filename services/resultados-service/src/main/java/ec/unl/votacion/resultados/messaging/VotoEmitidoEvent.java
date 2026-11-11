@@ -10,10 +10,10 @@ import java.util.UUID;
 public record VotoEmitidoEvent(
         @NotNull UUID eventId,
         @NotNull @Min(1) @Max(1) Integer schemaVersion,
-        @NotNull Long votoId,
-        @NotNull Long eleccionId,
-        @NotNull Long candidatoId,
-        Long idUsuario,
+        @NotNull UUID votoId,
+        @NotNull UUID eleccionId,
+        @NotNull UUID candidatoId,
+        UUID idUsuario,
         @NotNull OffsetDateTime occurredAt
 ) {
 }

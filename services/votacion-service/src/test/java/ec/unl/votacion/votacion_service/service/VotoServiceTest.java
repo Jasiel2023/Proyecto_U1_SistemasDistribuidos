@@ -23,6 +23,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.dao.DataIntegrityViolationException;
 
 import java.util.Optional;
+import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -33,6 +34,10 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class VotoServiceTest {
+
+    private static final UUID ELECCION_ID = UUID.fromString("00000000-0000-4000-8000-000000000001");
+    private static final UUID CANDIDATO_ID = UUID.fromString("00000000-0000-4000-8000-000000000002");
+    private static final UUID USUARIO_ID = UUID.fromString("00000000-0000-4000-8000-000000000015");
 
     @Mock
     private EleccionRepository eleccionRepository;
@@ -57,39 +62,39 @@ class VotoServiceTest {
 
     @Test
     void registraUnVotoValido() {
-        CrearVotoRequest request = new CrearVotoRequest(1L, 2L, 15L);
-        when(eleccionRepository.findById(1L)).thenReturn(Optional.of(eleccion));
+        CrearVotoRequest request = new CrearVotoRequest(ELECCION_ID, CANDIDATO_ID);
+        when(eleccionRepository.findById(ELECCION_ID)).thenReturn(Optional.of(eleccion));
         when(eleccion.estaActiva()).thenReturn(true);
-        when(eleccion.getId()).thenReturn(1L);
-        when(candidatoRepository.findByIdAndEleccionId(2L, 1L))
+        when(eleccion.getId()).thenReturn(ELECCION_ID);
+        when(candidatoRepository.findByIdAndEleccionId(CANDIDATO_ID, ELECCION_ID))
                 .thenReturn(Optional.of(candidato));
         when(candidato.estaActivo()).thenReturn(true);
-        when(candidato.getId()).thenReturn(2L);
-        when(votoRepository.existsByEleccionIdAndIdUsuario(1L, 15L))
+        when(candidato.getId()).thenReturn(CANDIDATO_ID);
+        when(votoRepository.existsByEleccionIdAndIdUsuario(ELECCION_ID, USUARIO_ID))
                 .thenReturn(false);
         when(votoRepository.save(any(Voto.class)))
                 .thenAnswer(invocation -> invocation.getArgument(0));
 
-        VotoResponse response = votoService.registrarVoto(request);
+        VotoResponse response = votoService.registrarVoto(request, USUARIO_ID);
 
-        assertThat(response.eleccionId()).isEqualTo(1L);
-        assertThat(response.candidatoId()).isEqualTo(2L);
-        assertThat(response.idUsuario()).isEqualTo(15L);
+        assertThat(response.eleccionId()).isEqualTo(ELECCION_ID);
+        assertThat(response.candidatoId()).isEqualTo(CANDIDATO_ID);
+        assertThat(response.idUsuario()).isEqualTo(USUARIO_ID);
 
         ArgumentCaptor<Voto> votoCaptor = ArgumentCaptor.forClass(Voto.class);
         verify(votoRepository).save(votoCaptor.capture());
-        assertThat(votoCaptor.getValue().getIdUsuario()).isEqualTo(15L);
+        assertThat(votoCaptor.getValue().getIdUsuario()).isEqualTo(USUARIO_ID);
         verify(eventPublisher).publishEvent(any(VotoEmitidoEvent.class));
     }
 
     @Test
     void rechazaVotoCuandoLaEleccionEstaInactiva() {
-        CrearVotoRequest request = new CrearVotoRequest(1L, 2L, 15L);
-        when(eleccionRepository.findById(1L)).thenReturn(Optional.of(eleccion));
+        CrearVotoRequest request = new CrearVotoRequest(ELECCION_ID, CANDIDATO_ID);
+        when(eleccionRepository.findById(ELECCION_ID)).thenReturn(Optional.of(eleccion));
         when(eleccion.estaActiva()).thenReturn(false);
-        when(eleccion.getId()).thenReturn(1L);
+        when(eleccion.getId()).thenReturn(ELECCION_ID);
 
-        assertThatThrownBy(() -> votoService.registrarVoto(request))
+        assertThatThrownBy(() -> votoService.registrarVoto(request, USUARIO_ID))
                 .isInstanceOf(EleccionCerradaException.class);
 
         verify(candidatoRepository, never()).findByIdAndEleccionId(any(), any());
@@ -99,13 +104,13 @@ class VotoServiceTest {
 
     @Test
     void rechazaCandidatoQueNoPerteneceALaEleccion() {
-        CrearVotoRequest request = new CrearVotoRequest(1L, 2L, 15L);
-        when(eleccionRepository.findById(1L)).thenReturn(Optional.of(eleccion));
+        CrearVotoRequest request = new CrearVotoRequest(ELECCION_ID, CANDIDATO_ID);
+        when(eleccionRepository.findById(ELECCION_ID)).thenReturn(Optional.of(eleccion));
         when(eleccion.estaActiva()).thenReturn(true);
-        when(candidatoRepository.findByIdAndEleccionId(2L, 1L))
+        when(candidatoRepository.findByIdAndEleccionId(CANDIDATO_ID, ELECCION_ID))
                 .thenReturn(Optional.empty());
 
-        assertThatThrownBy(() -> votoService.registrarVoto(request))
+        assertThatThrownBy(() -> votoService.registrarVoto(request, USUARIO_ID))
                 .isInstanceOf(CandidatoNoEncontradoException.class);
 
         verify(votoRepository, never()).save(any());
@@ -114,16 +119,16 @@ class VotoServiceTest {
 
     @Test
     void rechazaVotoDuplicadoAntesDePersistir() {
-        CrearVotoRequest request = new CrearVotoRequest(1L, 2L, 15L);
-        when(eleccionRepository.findById(1L)).thenReturn(Optional.of(eleccion));
+        CrearVotoRequest request = new CrearVotoRequest(ELECCION_ID, CANDIDATO_ID);
+        when(eleccionRepository.findById(ELECCION_ID)).thenReturn(Optional.of(eleccion));
         when(eleccion.estaActiva()).thenReturn(true);
-        when(candidatoRepository.findByIdAndEleccionId(2L, 1L))
+        when(candidatoRepository.findByIdAndEleccionId(CANDIDATO_ID, ELECCION_ID))
                 .thenReturn(Optional.of(candidato));
         when(candidato.estaActivo()).thenReturn(true);
-        when(votoRepository.existsByEleccionIdAndIdUsuario(1L, 15L))
+        when(votoRepository.existsByEleccionIdAndIdUsuario(ELECCION_ID, USUARIO_ID))
                 .thenReturn(true);
 
-        assertThatThrownBy(() -> votoService.registrarVoto(request))
+        assertThatThrownBy(() -> votoService.registrarVoto(request, USUARIO_ID))
                 .isInstanceOf(VotoDuplicadoException.class);
 
         verify(votoRepository, never()).save(any());
@@ -132,15 +137,15 @@ class VotoServiceTest {
 
     @Test
     void rechazaCandidatoInactivo() {
-        CrearVotoRequest request = new CrearVotoRequest(1L, 2L, 15L);
-        when(eleccionRepository.findById(1L)).thenReturn(Optional.of(eleccion));
+        CrearVotoRequest request = new CrearVotoRequest(ELECCION_ID, CANDIDATO_ID);
+        when(eleccionRepository.findById(ELECCION_ID)).thenReturn(Optional.of(eleccion));
         when(eleccion.estaActiva()).thenReturn(true);
-        when(candidatoRepository.findByIdAndEleccionId(2L, 1L))
+        when(candidatoRepository.findByIdAndEleccionId(CANDIDATO_ID, ELECCION_ID))
                 .thenReturn(Optional.of(candidato));
         when(candidato.estaActivo()).thenReturn(false);
-        when(candidato.getId()).thenReturn(2L);
+        when(candidato.getId()).thenReturn(CANDIDATO_ID);
 
-        assertThatThrownBy(() -> votoService.registrarVoto(request))
+        assertThatThrownBy(() -> votoService.registrarVoto(request, USUARIO_ID))
                 .isInstanceOf(CandidatoInactivoException.class);
 
         verify(votoRepository, never()).save(any());
@@ -149,18 +154,18 @@ class VotoServiceTest {
 
     @Test
     void noPublicaEventoCuandoFallaLaPersistencia() {
-        CrearVotoRequest request = new CrearVotoRequest(1L, 2L, 15L);
-        when(eleccionRepository.findById(1L)).thenReturn(Optional.of(eleccion));
+        CrearVotoRequest request = new CrearVotoRequest(ELECCION_ID, CANDIDATO_ID);
+        when(eleccionRepository.findById(ELECCION_ID)).thenReturn(Optional.of(eleccion));
         when(eleccion.estaActiva()).thenReturn(true);
-        when(candidatoRepository.findByIdAndEleccionId(2L, 1L))
+        when(candidatoRepository.findByIdAndEleccionId(CANDIDATO_ID, ELECCION_ID))
                 .thenReturn(Optional.of(candidato));
         when(candidato.estaActivo()).thenReturn(true);
-        when(votoRepository.existsByEleccionIdAndIdUsuario(1L, 15L))
+        when(votoRepository.existsByEleccionIdAndIdUsuario(ELECCION_ID, USUARIO_ID))
                 .thenReturn(false);
         when(votoRepository.save(any(Voto.class)))
                 .thenThrow(new DataIntegrityViolationException("fallo de persistencia"));
 
-        assertThatThrownBy(() -> votoService.registrarVoto(request))
+        assertThatThrownBy(() -> votoService.registrarVoto(request, USUARIO_ID))
                 .isInstanceOf(VotoDuplicadoException.class);
 
         verify(eventPublisher, never()).publishEvent(any());

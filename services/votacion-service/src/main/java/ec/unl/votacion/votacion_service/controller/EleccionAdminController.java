@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/admin/elecciones")
@@ -41,20 +42,20 @@ public class EleccionAdminController {
     }
 
     @PutMapping("/{id}")
-    public EleccionAdminResponse actualizar(@PathVariable Long id,
+    public EleccionAdminResponse actualizar(@PathVariable UUID id,
                                             @Valid @RequestBody EleccionAdminRequest request) {
         return adminService.actualizar(id, request);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void eliminar(@PathVariable Long id) {
+    public void eliminar(@PathVariable UUID id) {
         adminService.eliminar(id);
     }
 
     @PostMapping("/{eleccionId}/candidatos")
     public ResponseEntity<CandidatoAdminResponse> agregarCandidato(
-            @PathVariable Long eleccionId,
+            @PathVariable UUID eleccionId,
             @Valid @RequestBody CandidatoAdminRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(adminService.agregarCandidato(eleccionId, request));
@@ -62,7 +63,7 @@ public class EleccionAdminController {
 
     @DeleteMapping("/{eleccionId}/candidatos/{candidatoId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void eliminarCandidato(@PathVariable Long eleccionId, @PathVariable Long candidatoId) {
+    public void eliminarCandidato(@PathVariable UUID eleccionId, @PathVariable UUID candidatoId) {
         adminService.eliminarCandidato(eleccionId, candidatoId);
     }
 }

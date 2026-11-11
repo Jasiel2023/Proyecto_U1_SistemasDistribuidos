@@ -1,7 +1,9 @@
 package ec.unl.votacion.votacion_service.dto;
 
+import java.util.UUID;
+
 public record CandidatoResponse(
-        Long id,
+        UUID id,
         String nombre,
         String apellido,
         String partidoPolitico

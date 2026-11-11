@@ -6,6 +6,7 @@ import ec.unl.votacion.resultados.infrastructure.persistence.ResumenRepository;
 import java.time.ZoneOffset;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
@@ -25,7 +26,7 @@ public class ResultadoQueryService {
 
     @Transactional(readOnly = true, isolation = Isolation.REPEATABLE_READ,
             propagation = Propagation.REQUIRES_NEW)
-    public ResultadoSnapshot obtener(Long eleccionId) {
+    public ResultadoSnapshot obtener(UUID eleccionId) {
         Optional<Resumen> resumen = resumenRepository.findById(eleccionId);
         if (resumen.isEmpty()) {
             return ResultadoSnapshot.vacio(eleccionId);

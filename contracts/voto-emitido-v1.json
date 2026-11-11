@@ -15,10 +15,10 @@
   "properties": {
     "eventId": { "type": "string", "format": "uuid" },
     "schemaVersion": { "const": 1 },
-    "votoId": { "type": "integer", "format": "int64" },
-    "eleccionId": { "type": "integer", "format": "int64" },
-    "candidatoId": { "type": "integer", "format": "int64" },
-    "idUsuario": { "type": ["integer", "null"], "format": "int64" },
+    "votoId": { "type": "string", "format": "uuid" },
+    "eleccionId": { "type": "string", "format": "uuid" },
+    "candidatoId": { "type": "string", "format": "uuid" },
+    "idUsuario": { "type": ["string", "null"], "format": "uuid" },
     "occurredAt": { "type": "string", "format": "date-time" }
   }
 }

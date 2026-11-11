@@ -5,12 +5,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 import java.util.List;
+import java.util.UUID;
 
-public interface CandidatoRepository extends JpaRepository<Candidato, Long> {
+public interface CandidatoRepository extends JpaRepository<Candidato, UUID> {
 
-    Optional<Candidato> findByIdAndEleccionId(Long id, Long eleccionId);
+    Optional<Candidato> findByIdAndEleccionId(UUID id, UUID eleccionId);
 
-    List<Candidato> findByEleccionIdAndActivoTrueOrderByNombreAscApellidoAsc(Long eleccionId);
+    List<Candidato> findByEleccionIdAndActivoTrueOrderByNombreAscApellidoAsc(UUID eleccionId);
 
-    List<Candidato> findByEleccionIdOrderByNombreAscApellidoAsc(Long eleccionId);
+    List<Candidato> findByEleccionIdOrderByNombreAscApellidoAsc(UUID eleccionId);
 }

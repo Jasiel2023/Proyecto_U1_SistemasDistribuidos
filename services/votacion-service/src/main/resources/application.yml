@@ -21,3 +21,6 @@ spring:
     port: ${RABBITMQ_PORT:5672}
     username: ${RABBITMQ_USER:guest}
     password: ${RABBITMQ_PASS:guest}
+
+jwt:
+  secret: ${JWT_SECRET:mySecretKeyForJwtSigning12345678901234567890}

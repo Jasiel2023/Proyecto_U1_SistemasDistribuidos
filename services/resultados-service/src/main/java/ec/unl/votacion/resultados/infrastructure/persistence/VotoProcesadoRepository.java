@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface VotoProcesadoRepository extends JpaRepository<VotoProcesado, UUID> {
 
-    Optional<VotoProcesado> findByEleccionIdAndVotoId(Long eleccionId, Long votoId);
+    Optional<VotoProcesado> findByEleccionIdAndVotoId(UUID eleccionId, UUID votoId);
 }

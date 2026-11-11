@@ -1,8 +1,10 @@
 package ec.unl.votacion.votacion_service.exception;
 
+import java.util.UUID;
+
 public class CandidatoInactivoException extends EleccionDomainException {
 
-    public CandidatoInactivoException(Long id) {
+    public CandidatoInactivoException(UUID id) {
         super("El candidato " + id + " no esta activo");
     }
 }

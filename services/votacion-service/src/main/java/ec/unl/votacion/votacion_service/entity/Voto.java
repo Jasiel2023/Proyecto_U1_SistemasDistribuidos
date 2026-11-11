@@ -13,14 +13,15 @@ import jakarta.persistence.Table;
 
 import java.time.Instant;
 import java.time.LocalTime;
+import java.util.UUID;
 
 @Entity
 @Table(name = "votos")
 public class Voto {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "eleccion_id", nullable = false)
@@ -31,7 +32,7 @@ public class Voto {
     private Candidato candidato;
 
     @Column(name = "id_usuario", nullable = false)
-    private Long idUsuario;
+    private UUID idUsuario;
 
     @Column(nullable = false)
     private LocalTime hora;
@@ -42,7 +43,7 @@ public class Voto {
     protected Voto() {
     }
 
-    public Voto(Eleccion eleccion, Candidato candidato, Long idUsuario) {
+    public Voto(Eleccion eleccion, Candidato candidato, UUID idUsuario) {
         this.eleccion = eleccion;
         this.candidato = candidato;
         this.idUsuario = idUsuario;
@@ -57,7 +58,7 @@ public class Voto {
         }
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
@@ -69,7 +70,7 @@ public class Voto {
         return candidato;
     }
 
-    public Long getIdUsuario() {
+    public UUID getIdUsuario() {
         return idUsuario;
     }
 

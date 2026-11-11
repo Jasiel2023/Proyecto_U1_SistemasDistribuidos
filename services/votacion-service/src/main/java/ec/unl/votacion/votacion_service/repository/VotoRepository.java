@@ -2,8 +2,9 @@ package ec.unl.votacion.votacion_service.repository;
 
 import ec.unl.votacion.votacion_service.entity.Voto;
 import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.UUID;
 
-public interface VotoRepository extends JpaRepository<Voto, Long> {
+public interface VotoRepository extends JpaRepository<Voto, UUID> {
 
-    boolean existsByEleccionIdAndIdUsuario(Long eleccionId, Long idUsuario);
+    boolean existsByEleccionIdAndIdUsuario(UUID eleccionId, UUID idUsuario);
 }

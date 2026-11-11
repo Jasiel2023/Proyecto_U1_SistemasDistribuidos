@@ -46,7 +46,7 @@ public class VotoService {
     }
 
     @Transactional
-    public VotoResponse registrarVoto(CrearVotoRequest request) {
+    public VotoResponse registrarVoto(CrearVotoRequest request, UUID idUsuario) {
         Eleccion eleccion = eleccionRepository.findById(request.eleccionId())
                 .orElseThrow(() -> new EleccionNoEncontradaException(request.eleccionId()));
 
@@ -64,13 +64,13 @@ public class VotoService {
         }
 
         if (votoRepository.existsByEleccionIdAndIdUsuario(
-                request.eleccionId(), request.idUsuario())) {
-            throw new VotoDuplicadoException(request.idUsuario(), request.eleccionId());
+                request.eleccionId(), idUsuario)) {
+            throw new VotoDuplicadoException(idUsuario, request.eleccionId());
         }
 
         try {
             Voto voto = votoRepository.save(
-                    new Voto(eleccion, candidato, request.idUsuario()));
+                    new Voto(eleccion, candidato, idUsuario));
             eventPublisher.publishEvent(new VotoEmitidoEvent(
                     UUID.randomUUID(),
                     1,
@@ -82,7 +82,7 @@ public class VotoService {
             ));
             return toResponse(voto);
         } catch (DataIntegrityViolationException exception) {
-            throw new VotoDuplicadoException(request.idUsuario(), request.eleccionId());
+            throw new VotoDuplicadoException(idUsuario, request.eleccionId());
         }
     }
 

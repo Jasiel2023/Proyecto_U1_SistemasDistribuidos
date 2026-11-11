@@ -29,7 +29,11 @@ class VotoEventPublisherTest {
         VotoEventPublisher publisher = new VotoEventPublisher(rabbitTemplate);
         UUID eventId = UUID.randomUUID();
         VotoEmitidoEvent event = new VotoEmitidoEvent(
-                eventId, 1, 100L, 1L, 2L, 15L,
+                eventId, 1,
+                UUID.fromString("00000000-0000-4000-8000-000000000100"),
+                UUID.fromString("00000000-0000-4000-8000-000000000001"),
+                UUID.fromString("00000000-0000-4000-8000-000000000002"),
+                UUID.fromString("00000000-0000-4000-8000-000000000015"),
                 OffsetDateTime.parse("2026-11-09T20:00:00Z"));
 
         publisher.publicar(event);

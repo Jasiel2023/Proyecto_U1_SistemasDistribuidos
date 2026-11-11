@@ -9,14 +9,15 @@ import jakarta.persistence.Table;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.UUID;
 
 @Entity
 @Table(name = "elecciones")
 public class Eleccion {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     @Column(nullable = false, length = 150)
     private String titulo;
@@ -54,7 +55,7 @@ public class Eleccion {
         this.estaActiva = estaActiva;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 

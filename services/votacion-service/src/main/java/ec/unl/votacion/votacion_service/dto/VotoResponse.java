@@ -1,12 +1,14 @@
 package ec.unl.votacion.votacion_service.dto;
 
+import java.util.UUID;
+
 import java.time.Instant;
 
 public record VotoResponse(
-        Long id,
-        Long eleccionId,
-        Long candidatoId,
-        Long idUsuario,
+        UUID id,
+        UUID eleccionId,
+        UUID candidatoId,
+        UUID idUsuario,
         Instant emitidoEn,
         String mensaje
 ) {
