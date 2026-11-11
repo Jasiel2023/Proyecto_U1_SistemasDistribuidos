@@ -1,0 +1,23 @@
+name: resultados-servicio
+
+services:
+  resultados-db:
+    image: postgres:17-alpine
+    container_name: resultados-db
+    environment:
+      POSTGRES_DB: ${RESULTADOS_DB_NAME:-resultadosdb}
+      POSTGRES_USER: ${RESULTADOS_DB_USER:-resultados}
+      POSTGRES_PASSWORD: ${RESULTADOS_DB_PASSWORD:-resultados}
+    ports:
+      - "${RESULTADOS_DB_HOST_PORT:-5436}:5432"
+    volumes:
+      - resultados-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${RESULTADOS_DB_USER:-resultados} -d ${RESULTADOS_DB_NAME:-resultadosdb}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+
+volumes:
+  resultados-db-data:

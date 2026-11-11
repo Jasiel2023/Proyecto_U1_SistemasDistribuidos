@@ -7,6 +7,7 @@ import { DashboardPage } from '../pages/DashboardPage'
 import { AdminDashboardPage } from '../pages/AdminDashboardPage'
 import { AdminUsuariosPage } from '../pages/AdminUsuariosPage'
 import { NotFoundPage } from '../pages/NotFoundPage'
+import ResultadosPage from '../features/resultados/ResultadosPage.jsx'
 
 export function AppRoutes() {
   return (
@@ -23,6 +24,7 @@ export function AppRoutes() {
         <Route path="/admin/usuarios" element={<AdminUsuariosPage />} />
       </Route>
 
+      <Route path="/resultados" element={<ResultadosPage />} />
       <Route path="/" element={<Navigate to="/dashboard" replace />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
