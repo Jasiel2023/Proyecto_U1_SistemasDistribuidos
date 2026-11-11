@@ -61,8 +61,8 @@ Frontend ──REST──► api-gateway ──► votacion-service ──► vo
 ## Estructura del repositorio
 ```
 Proyecto_U1_SistemasDistribuidos/
-├── docker-compose.yml          # infraestructura compartida (RabbitMQ)
-├── compose.full.yml            # sistema integrado (infra + Resultados + gateway + frontend)
+├── docker-compose.yml          # entrada unica para levantar todo el sistema
+├── compose.full.yml            # definicion integrada incluida por docker-compose.yml
 ├── .env.example                # plantilla de variables
 ├── services/
 │   ├── api-gateway/            # punto de entrada (Spring Cloud Gateway)
@@ -101,19 +101,14 @@ Proyecto_U1_SistemasDistribuidos/
 ```bash
 cp .env.example .env
 ```
+Verifica que `.env` contenga un `JWT_SECRET` de al menos 32 caracteres.
 
 ### 2. Levantar TODO el sistema (entrega)
-
-Primero, crea la red compartida (solo la primera vez):
 ```bash
-docker network create votacion-network
+docker compose up -d --build
 ```
-
-Luego levanta todo:
-```bash
-docker compose -f compose.full.yml up -d --build
-```
-> Usa `--build` la primera vez para compilar las imágenes de los microservicios.
+El `docker-compose.yml` raíz incluye toda la definición del sistema: microservicios,
+RabbitMQ, bases de datos, gateway y frontend. No es necesario crear manualmente la red.
 
 ### 3. Levantar SOLO tu microservicio (desarrollo diario)
 

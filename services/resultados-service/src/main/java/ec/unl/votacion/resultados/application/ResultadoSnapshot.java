@@ -16,6 +16,6 @@ public record ResultadoSnapshot(
         return new ResultadoSnapshot(eleccionId, 0L, List.of(), 0L, null, false);
     }
 
-    public record ConteoSnapshot(UUID candidatoId, long votos) {
+        public record ConteoSnapshot(UUID candidatoId, long votos) {
     }
 }

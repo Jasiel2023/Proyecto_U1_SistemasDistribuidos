@@ -3,6 +3,7 @@ package ec.unl.votacion.resultados.messaging;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
+
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
@@ -12,5 +13,7 @@ public record VotoEmitidoEvent(
         @NotNull UUID votoId,
         @NotNull UUID eleccionId,
         @NotNull UUID candidatoId,
-        @NotNull OffsetDateTime occurredAt) {
+        UUID idUsuario,
+        @NotNull OffsetDateTime occurredAt
+) {
 }

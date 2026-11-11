@@ -2,11 +2,11 @@ package ec.unl.votacion.resultados.api;
 
 import ec.unl.votacion.resultados.application.ResultadoQueryService;
 import ec.unl.votacion.resultados.application.ResultadoSnapshot;
-import java.util.UUID;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/resultados")
