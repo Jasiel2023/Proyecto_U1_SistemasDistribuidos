@@ -41,6 +41,7 @@ export function useResultados(eleccionId, dependencias = {}) {
     let suscripcion;
     const controlador = new AbortController();
     const cliente = crearClienteRef.current();
+    let intervaloSincronizacion;
 
     // eslint-disable-next-line react-hooks/set-state-in-effect -- el cambio de elección inicia una carga nueva
     setEstado({ snapshot: null, cargando: true, error: null, conexion: 'conectando' });
@@ -63,6 +64,11 @@ export function useResultados(eleccionId, dependencias = {}) {
           setEstado((anterior) => ({ ...anterior, cargando: false, error: error.message }));
         });
     };
+
+    // La consulta inicial no debe depender de que el canal WebSocket conecte.
+    // WebSocket queda reservado para recibir actualizaciones posteriores.
+    sincronizar();
+    intervaloSincronizacion = window.setInterval(sincronizar, 3000);
 
     cliente.onConnect = () => {
       if (cancelado) return;
@@ -108,6 +114,7 @@ export function useResultados(eleccionId, dependencias = {}) {
     return () => {
       cancelado = true;
       controlador.abort();
+      window.clearInterval(intervaloSincronizacion);
       suscripcion?.unsubscribe();
       cliente.deactivate();
     };

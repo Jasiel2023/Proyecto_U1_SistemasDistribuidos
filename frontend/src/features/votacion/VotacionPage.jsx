@@ -1,14 +1,19 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { api } from '../../api/client'
+import { useAuth } from '../../hooks/useAuth'
+import { registrarVotoLocal } from './votoStorage'
 import './VotacionPage.css'
 
 function VotacionPage() {
+  const { user } = useAuth()
   const [elecciones, setElecciones] = useState([])
   const [eleccionId, setEleccionId] = useState('')
+  const [eleccionBloqueada, setEleccionBloqueada] = useState(false)
   const [candidatoId, setCandidatoId] = useState('')
-  const [idUsuario, setIdUsuario] = useState('')
   const [loadState, setLoadState] = useState('loading')
   const [requestState, setRequestState] = useState({ status: 'idle', message: '' })
+  const [votoRegistrado, setVotoRegistrado] = useState(false)
 
   useEffect(() => {
     let mounted = true
@@ -17,8 +22,11 @@ function VotacionPage() {
       .then((response) => {
         if (!mounted) return
         const available = response.data
+        const requestedId = new URLSearchParams(window.location.search).get('eleccionId')
+        const requestedElection = available.find((eleccion) => String(eleccion.id) === requestedId)
         setElecciones(available)
-        setEleccionId(available[0] ? String(available[0].id) : '')
+        setEleccionId(requestedElection ? String(requestedElection.id) : available[0] ? String(available[0].id) : '')
+        setEleccionBloqueada(Boolean(requestedElection))
         setLoadState('ready')
       })
       .catch(() => {
@@ -37,6 +45,7 @@ function VotacionPage() {
   function seleccionarEleccion(event) {
     setEleccionId(event.target.value)
     setCandidatoId('')
+    setVotoRegistrado(false)
     setRequestState({ status: 'idle', message: '' })
   }
 
@@ -55,17 +64,22 @@ function VotacionPage() {
 
     try {
       const response = await api.post('/votos', {
-        eleccionId: Number(eleccionId),
-        candidatoId: Number(candidatoId),
-        idUsuario: Number(idUsuario),
+        eleccionId,
+        candidatoId,
       })
 
       setRequestState({
         status: 'success',
         message: response.data.mensaje || 'Voto registrado correctamente.',
       })
+      registrarVotoLocal(user?.userId, eleccionId)
+      setVotoRegistrado(true)
     } catch (error) {
       const responseData = error.response?.data
+      if (error.response?.status === 409) {
+        registrarVotoLocal(user?.userId, eleccionId)
+        setVotoRegistrado(true)
+      }
       setRequestState({
         status: 'error',
         message: getErrorMessage(error.response?.status, responseData),
@@ -79,7 +93,8 @@ function VotacionPage() {
   return (
     <main className="votacion-page">
       <section className="votacion-shell" aria-labelledby="votacion-title">
-        <div className="votacion-intro">
+           <div className="votacion-intro">
+          <Link className="back-dashboard" to="/dashboard">Volver al dashboard</Link>
           <p className="eyebrow">Elecciones en tiempo real</p>
           <h1 id="votacion-title">Emite tu voto</h1>
           <p className="intro-copy">
@@ -113,7 +128,7 @@ function VotacionPage() {
             <>
               <label className="field">
                 <span>Elección</span>
-                <select value={eleccionId} onChange={seleccionarEleccion}>
+                 <select disabled={eleccionBloqueada} value={eleccionId} onChange={seleccionarEleccion}>
                   {elecciones.map((eleccion) => (
                     <option key={eleccion.id} value={eleccion.id}>
                       {eleccion.titulo}
@@ -160,24 +175,12 @@ function VotacionPage() {
                 ))}
               </fieldset>
 
-              <label className="field">
-                <span>Votante</span>
-                <small>Identificador del usuario autenticado</small>
-                <input
-                  min="1"
-                  onChange={(event) => setIdUsuario(event.target.value)}
-                  required
-                  type="number"
-                  value={idUsuario}
-                />
-              </label>
-
               <button
                 className="submit-button"
-                disabled={isSubmitting || !candidatoId}
+                disabled={isSubmitting || votoRegistrado || !candidatoId}
                 type="submit"
               >
-                {isSubmitting ? 'Registrando voto...' : 'Confirmar voto'}
+                {isSubmitting ? 'Registrando voto...' : votoRegistrado ? 'Voto registrado' : 'Confirmar voto'}
                 <span aria-hidden="true">-&gt;</span>
               </button>
 
@@ -209,7 +212,7 @@ function formatTime(value) {
 function getErrorMessage(status, responseData) {
   if (status === 400) return responseData?.message || 'Revisa los datos ingresados.'
   if (status === 404) return responseData?.message || 'La elección o el candidato no existe.'
-  if (status === 409) return responseData?.message || 'No puedes emitir este voto.'
+  if (status === 409) return 'Ya votaste, no es posible volver a votar en esta eleccion.'
   return responseData?.message || 'No fue posible registrar el voto. Intenta nuevamente.'
 }
 

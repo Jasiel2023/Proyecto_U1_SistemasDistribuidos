@@ -1,27 +1,371 @@
-.admin-page { min-height: 100svh; padding: 56px clamp(20px, 5vw, 72px); background: linear-gradient(135deg, var(--bg), var(--social-bg)); color: var(--text); }
-.admin-header, .admin-editor, .election-list { width: min(100%, 1120px); margin: 0 auto; }
-.admin-header { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 32px; }
-.admin-header h1 { margin: 12px 0; font-size: clamp(38px, 5vw, 66px); letter-spacing: -0.07em; }
-.admin-header p:not(.admin-eyebrow) { max-width: 540px; }
-.admin-header a { color: #fff8ed; background: #20251f; padding: 12px 18px; border-radius: 8px; font: 700 13px var(--mono); text-decoration: none; }
-.admin-eyebrow { margin: 0; color: #d96f39; font: 700 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; }
-.admin-editor { padding: 28px; border: 1px solid var(--border); border-radius: 18px; background: var(--bg); box-shadow: var(--shadow); }
-.admin-section-title, .list-heading { display: flex; align-items: start; gap: 16px; }
-.admin-section-title > span { color: #d96f39; font: 700 13px var(--mono); }
-.admin-section-title h2, .list-heading h2 { margin: 8px 0 22px; }
-.admin-election-form { display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 16px; align-items: end; }
-.admin-election-form label { display: grid; gap: 7px; color: var(--text-h); font-size: 13px; font-weight: 700; }
-.admin-election-form input, .candidate-form input { box-sizing: border-box; width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px; color: var(--text-h); background: var(--bg); font: 14px var(--mono); }
-.active-toggle { display: flex !important; grid-column: 1 / 2; grid-template-columns: auto 1fr; align-items: center; }
-.active-toggle input { width: 18px; accent-color: #d96f39; }
-.admin-actions { display: flex; gap: 8px; grid-column: 2 / -1; }
-.admin-actions button, .candidate-form button { padding: 12px 16px; border: 0; border-radius: 8px; color: #fff8ed; background: #d96f39; font: 700 12px var(--mono); cursor: pointer; }
-.secondary-button, .card-actions button { color: var(--text-h) !important; background: var(--code-bg) !important; }
-.admin-status { margin: 18px 0 0; font-size: 14px; }.admin-status.success { color: #368043; }.admin-status.error { color: #b34135; }
-.election-list { margin-top: 52px; }.list-heading { justify-content: space-between; align-items: baseline; }.list-heading > span { font: 12px var(--mono); }
-.election-card { margin-top: 16px; padding: 24px; border: 1px solid var(--border); border-radius: 16px; background: var(--bg); }.election-card-head { display: flex; justify-content: space-between; gap: 20px; }.election-card h3 { margin: 9px 0 5px; color: var(--text-h); font-size: 22px; }.election-card p { font-size: 13px; }.state-pill { display: inline-block; padding: 4px 8px; border-radius: 99px; color: var(--text); background: var(--code-bg); font: 11px var(--mono); }.state-pill.open { color: #276b36; background: #e1f2e3; }
-.card-actions { display: flex; gap: 7px; }.card-actions button, .remove-button { height: fit-content; padding: 8px 10px; border: 0; border-radius: 7px; cursor: pointer; font: 11px var(--mono); }.danger-button, .remove-button { color: #a63d32 !important; background: #f9e5e1 !important; }
-.candidate-admin-list { display: grid; gap: 8px; margin: 22px 0 16px; }.candidate-admin-row { display: flex; justify-content: space-between; align-items: center; padding: 12px; border-radius: 9px; background: var(--social-bg); }.candidate-admin-row span { display: grid; gap: 3px; }.candidate-admin-row strong { color: var(--text-h); font-size: 14px; }.candidate-admin-row small { font-size: 12px; }
-.candidate-form { display: grid; grid-template-columns: 1fr 1fr 1.5fr auto; gap: 8px; }.candidate-form button { white-space: nowrap; }
-@media (max-width: 800px) { .admin-header, .election-card-head { align-items: start; flex-direction: column; }.admin-election-form { grid-template-columns: 1fr 1fr; }.admin-actions { grid-column: 1 / -1; }.active-toggle { grid-column: 1 / -1; }.candidate-form { grid-template-columns: 1fr 1fr; }.candidate-form button { grid-column: 1 / -1; } }
-@media (max-width: 480px) { .admin-page { padding: 28px 14px; }.admin-editor, .election-card { padding: 18px; }.admin-election-form, .candidate-form { grid-template-columns: 1fr; }.card-actions { width: 100%; }.card-actions button { flex: 1; } }
+.admin-page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.admin-page .admin-header,
+.admin-page .admin-editor,
+.admin-page .election-list {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.admin-page .admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+.admin-page .admin-header h1 {
+  margin: 0 0 var(--spacing-xs);
+  color: var(--color-text);
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.admin-page .admin-header p:not(.admin-eyebrow) {
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+}
+
+.admin-page .admin-header a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  color: #fff;
+  background-color: var(--color-primary);
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background-color var(--transition-fast);
+}
+
+.admin-page .admin-header a:hover {
+  color: #fff;
+  background-color: var(--color-primary-hover);
+}
+
+.admin-eyebrow {
+  margin: 0 0 var(--spacing-xs);
+  color: var(--color-primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.admin-editor,
+.election-card {
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.admin-editor {
+  padding: var(--spacing-lg);
+}
+
+.admin-section-title,
+.list-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+}
+
+.admin-section-title > span {
+  color: var(--color-primary);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.admin-section-title h2,
+.list-heading h2 {
+  margin: 0 0 var(--spacing-lg);
+  color: var(--color-text);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.admin-election-form {
+  display: grid;
+  grid-template-columns: 2fr repeat(3, 1fr);
+  gap: var(--spacing-md);
+  align-items: end;
+}
+
+.admin-election-form label {
+  display: grid;
+  gap: var(--spacing-xs);
+  color: var(--color-text);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.admin-election-form input,
+.candidate-form input {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  color: var(--color-text);
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.admin-election-form input:focus,
+.candidate-form input:focus {
+  border-color: var(--color-border-focus);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+  outline: none;
+}
+
+.active-toggle {
+  display: flex !important;
+  grid-column: 1 / 2;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: var(--spacing-sm) !important;
+}
+
+.active-toggle input {
+  width: 18px;
+  accent-color: var(--color-primary);
+}
+
+.admin-page .admin-actions {
+  display: flex;
+  grid-column: 2 / -1;
+  gap: var(--spacing-sm);
+  margin: 0;
+}
+
+.admin-page .admin-actions button,
+.candidate-form button {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  color: #fff;
+  background-color: var(--color-primary);
+  border: 0;
+  border-radius: var(--radius-md);
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.admin-page .admin-actions button:hover,
+.candidate-form button:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.admin-page .admin-actions .secondary-button {
+  color: var(--color-text);
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+}
+
+.admin-page .admin-actions .secondary-button:hover {
+  background-color: var(--color-bg);
+}
+
+.admin-status {
+  margin: var(--spacing-md) 0 0;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+}
+
+.admin-status.success {
+  color: var(--color-success);
+  background-color: var(--color-success-light);
+}
+
+.admin-status.error {
+  color: var(--color-danger);
+  background-color: var(--color-danger-light);
+}
+
+.election-list {
+  margin-top: var(--spacing-xl);
+}
+
+.list-heading {
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.list-heading > span {
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+}
+
+.election-card {
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-lg);
+}
+
+.election-card-head {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+}
+
+.election-card h3 {
+  margin: var(--spacing-sm) 0 var(--spacing-xs);
+  color: var(--color-text);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.election-card p {
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+}
+
+.state-pill {
+  display: inline-block;
+  padding: 2px var(--spacing-sm);
+  color: var(--color-text-secondary);
+  background-color: var(--color-bg);
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.state-pill.open {
+  color: var(--color-success);
+  background-color: var(--color-success-light);
+}
+
+.card-actions {
+  display: flex;
+  flex-shrink: 0;
+  gap: var(--spacing-sm);
+}
+
+.card-actions button,
+.remove-button {
+  height: fit-content;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  color: var(--color-text-secondary);
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  font-size: 0.8125rem;
+  cursor: pointer;
+}
+
+.card-actions button:hover {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.card-actions .danger-button,
+.remove-button {
+  color: var(--color-danger);
+  border-color: var(--color-danger-light);
+}
+
+.card-actions .danger-button:hover,
+.remove-button:hover {
+  background-color: var(--color-danger-light);
+}
+
+.candidate-admin-list {
+  display: grid;
+  gap: var(--spacing-sm);
+  margin: var(--spacing-lg) 0 var(--spacing-md);
+}
+
+.candidate-admin-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.candidate-admin-row span {
+  display: grid;
+  gap: 2px;
+}
+
+.candidate-admin-row strong {
+  color: var(--color-text);
+  font-size: 0.875rem;
+}
+
+.candidate-admin-row small {
+  color: var(--color-text-secondary);
+  font-size: 0.8125rem;
+}
+
+.candidate-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.5fr auto;
+  gap: var(--spacing-sm);
+}
+
+.candidate-form button {
+  white-space: nowrap;
+}
+
+@media (max-width: 800px) {
+  .admin-page .admin-header,
+  .election-card-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .admin-election-form {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .admin-page .admin-actions,
+  .active-toggle {
+    grid-column: 1 / -1;
+  }
+
+  .candidate-form {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .candidate-form button {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-page {
+    padding: 0 var(--spacing-md);
+  }
+
+  .admin-editor,
+  .election-card {
+    padding: var(--spacing-md);
+  }
+
+  .admin-election-form,
+  .candidate-form {
+    grid-template-columns: 1fr;
+  }
+
+  .card-actions {
+    width: 100%;
+  }
+
+  .card-actions button {
+    flex: 1;
+  }
+}

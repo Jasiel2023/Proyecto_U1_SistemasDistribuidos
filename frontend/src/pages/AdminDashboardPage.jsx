@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { listUsuarios } from '../api/usuarioApi'
 
 export function AdminDashboardPage() {
@@ -66,11 +67,17 @@ export function AdminDashboardPage() {
 
       <div className="admin-actions">
         <h2>Operaciones disponibles</h2>
-        <p>Desde aquí puedes crear, editar y gestionar los usuarios del sistema de votación.</p>
+        <p>Desde aquí puedes crear elecciones, administrar candidatos y gestionar los usuarios del sistema.</p>
         <div className="action-grid">
+          <a href="/admin/elecciones" className="btn btn-primary">
+            Gestionar elecciones
+          </a>
           <a href="/admin/usuarios" className="btn btn-primary">
             Gestionar Usuarios
           </a>
+          <Link to="/resultados" className="btn btn-outline">
+            Ver resultados
+          </Link>
         </div>
       </div>
     </div>
