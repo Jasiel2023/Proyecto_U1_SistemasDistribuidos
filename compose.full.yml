@@ -23,8 +23,6 @@ services:
       interval: 5s
       timeout: 5s
       retries: 20
-    networks:
-      - votacion-network
 
   resultados-service:
     build:
@@ -52,8 +50,6 @@ services:
         condition: service_healthy
       rabbitmq:
         condition: service_healthy
-    networks:
-      - votacion-network
     healthcheck:
       test: ["CMD", "curl", "-fsS", "http://localhost:8083/actuator/health"]
       interval: 10s
@@ -74,8 +70,6 @@ services:
     depends_on:
       resultados-service:
         condition: service_healthy
-    networks:
-      - votacion-network
     healthcheck:
       test: ["CMD", "curl", "-fsS", "http://localhost:8080/actuator/health"]
       interval: 10s
@@ -92,34 +86,11 @@ services:
     depends_on:
       api-gateway:
         condition: service_healthy
-    networks:
-      - votacion-network
     healthcheck:
       test: ["CMD-SHELL", "wget -q -O /dev/null http://localhost/"]
       interval: 10s
       timeout: 5s
       retries: 10
-
-  autenticacion-service:
-    environment:
-      RABBITMQ_HOST: rabbitmq
-    depends_on:
-      rabbitmq:
-        condition: service_healthy
-
-  usuario-service:
-    environment:
-      RABBITMQ_HOST: rabbitmq
-    depends_on:
-      rabbitmq:
-        condition: service_healthy
-
-  votacion-service:
-    environment:
-      RABBITMQ_HOST: rabbitmq
-    depends_on:
-      rabbitmq:
-        condition: service_healthy
 
 volumes:
   resultados-db-data:
