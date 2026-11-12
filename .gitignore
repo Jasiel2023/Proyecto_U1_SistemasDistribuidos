@@ -1,3 +1,5 @@
 .env
+.env.pc*
+!.env.pc*.example
 **/target/
 **/node_modules/

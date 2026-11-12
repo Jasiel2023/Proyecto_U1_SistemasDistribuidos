@@ -1,0 +1,44 @@
+name: votacion-pc1
+
+include:
+  - ../services/api-gateway/docker-compose.yml
+  - ../services/usuario-service/docker-compose.yml
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    container_name: votacion-rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER:-guest}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASS:-guest}
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - votacion-network
+
+  frontend:
+    build: ../frontend
+    container_name: votacion-frontend
+    ports:
+      - "${FRONTEND_PORT:-3000}:80"
+    depends_on:
+      api-gateway:
+        condition: service_started
+    networks:
+      - votacion-network
+
+volumes:
+  rabbitmq_data:
+
+networks:
+  votacion-network:
+    external: true
+    name: votacion-network
