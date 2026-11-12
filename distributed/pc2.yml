@@ -1,0 +1,16 @@
+name: votacion-pc2
+
+include:
+  - ../services/autenticacion-service/docker-compose.yml
+
+services:
+  autenticacion-service:
+    # RabbitMQ vive en PC1, no como servicio de este proyecto.
+    depends_on: !override
+      postgres-autenticacion:
+        condition: service_healthy
+    environment:
+      RABBITMQ_HOST: ${RABBITMQ_HOST:-100.82.125.26}
+      RABBITMQ_PORT: ${RABBITMQ_PORT:-5672}
+      RABBITMQ_USER: ${RABBITMQ_USER:-guest}
+      RABBITMQ_PASS: ${RABBITMQ_PASS:-guest}
