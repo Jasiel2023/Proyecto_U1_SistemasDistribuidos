@@ -5,7 +5,7 @@ spring:
   application:
     name: votacion-service
   datasource:
-    url: jdbc:postgresql://localhost:5435/votaciondb
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5435}/${POSTGRES_DB:votaciondb}
     username: ${POSTGRES_USER:admin}
     password: ${POSTGRES_PASSWORD:admin}
   jpa:
@@ -18,6 +18,9 @@ spring:
     enabled: true
   rabbitmq:
     host: ${RABBITMQ_HOST:localhost}
-    port: 5672
+    port: ${RABBITMQ_PORT:5672}
     username: ${RABBITMQ_USER:guest}
     password: ${RABBITMQ_PASS:guest}
+
+jwt:
+  secret: ${JWT_SECRET:mySecretKeyForJwtSigning12345678901234567890}

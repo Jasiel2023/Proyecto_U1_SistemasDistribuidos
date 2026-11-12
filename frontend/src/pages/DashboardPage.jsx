@@ -1,26 +1,36 @@
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
+import { api } from '../api/client'
+import { getVotosRegistrados } from '../features/votacion/votoStorage'
 
 export function DashboardPage() {
-  const { usuario, user, logout } = useAuth()
+  const { usuario, user } = useAuth()
+  const [elecciones, setElecciones] = useState([])
+  const [eleccionesState, setEleccionesState] = useState('loading')
+  const [votosRegistrados, setVotosRegistrados] = useState([])
 
-  const handleLogout = () => {
-    logout()
-  }
+  useEffect(() => {
+    setVotosRegistrados(getVotosRegistrados(user?.userId))
+  }, [user?.userId])
 
-  const formatDate = (dateString) => {
-    if (!dateString) return 'N/A'
-    try {
-      return new Date(dateString).toLocaleString('es-EC', {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
+  useEffect(() => {
+    let mounted = true
+
+    api.get('/elecciones')
+      .then(({ data }) => {
+        if (!mounted) return
+        setElecciones(data)
+        setEleccionesState('ready')
       })
-    } catch {
-      return dateString
+      .catch(() => {
+        if (mounted) setEleccionesState('error')
+      })
+
+    return () => {
+      mounted = false
     }
-  }
+  }, [])
 
   return (
     <div className="dashboard">
@@ -29,14 +39,7 @@ export function DashboardPage() {
           <h1 className="dashboard-title">Panel de Votante</h1>
           <p className="dashboard-subtitle">Bienvenido, {usuario ? `${usuario.nombre} ${usuario.apellido}` : user?.nickname || 'Usuario'}</p>
         </div>
-        <button className="btn btn-logout" onClick={handleLogout} type="button">
-          <svg className="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-            <polyline points="16 17 21 12 16 7" />
-            <line x1="21" y1="12" x2="9" y2="12" />
-          </svg>
-          <span>Cerrar sesión</span>
-        </button>
+        <Link className="btn btn-outline" to="/resultados">Ver resultados</Link>
       </div>
 
       <div className="dashboard-grid">
@@ -95,18 +98,69 @@ export function DashboardPage() {
           </div>
         </section>
 
-        <section className="card votaciones-card" aria-labelledby="votaciones-title">
+        <section className="card votaciones-card elections-card" aria-labelledby="votaciones-title">
           <h2 id="votaciones-title" className="card-title">Votaciones Disponibles</h2>
-          <div className="votaciones-placeholder">
-            <svg className="placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <h3>Próximamente</h3>
-            <p>Integración con <strong>votacion-service</strong> en desarrollo</p>
-            <p className="placeholder-hint">Aquí aparecerán las votaciones activas cuando estén disponibles</p>
-          </div>
+          {eleccionesState === 'loading' && <p className="empty-state">Cargando elecciones...</p>}
+          {eleccionesState === 'error' && <p className="error-state">No fue posible cargar las elecciones.</p>}
+          {eleccionesState === 'ready' && elecciones.length === 0 && (
+            <div className="empty-state">
+              <h3>No hay votaciones disponibles</h3>
+              <p>Cuando una elección sea habilitada, aparecerá en esta sección.</p>
+            </div>
+          )}
+          {eleccionesState === 'ready' && elecciones.length > 0 && (
+            <div className="available-elections">
+              {elecciones.map((eleccion) => (
+                <ElectionCard
+                  eleccion={eleccion}
+                  key={eleccion.id}
+                  yaVoto={votosRegistrados.includes(String(eleccion.id))}
+                />
+              ))}
+            </div>
+          )}
         </section>
       </div>
     </div>
   )
+}
+
+function ElectionCard({ eleccion, yaVoto }) {
+  return (
+    <article className="available-election">
+      <div>
+        <span className="election-status">Activa</span>
+        <h3>{eleccion.titulo}</h3>
+        <p>{formatDate(eleccion.fecha)} · {eleccion.horaInicio?.slice(0, 5)} - {eleccion.horaFin?.slice(0, 5)}</p>
+        <small>{eleccion.candidatos?.length ?? 0} candidatos disponibles</small>
+      </div>
+      <div className="election-actions">
+        {yaVoto ? (
+          <button className="btn btn-secondary btn-sm" disabled type="button">Ya votaste</button>
+        ) : (
+          <Link className="btn btn-primary btn-sm" to={`/votacion?eleccionId=${encodeURIComponent(eleccion.id)}`}>
+            Emitir voto
+          </Link>
+        )}
+        <Link className="btn btn-outline btn-sm" to={`/resultados?eleccion=${encodeURIComponent(eleccion.id)}`}>
+          Resultados
+        </Link>
+      </div>
+    </article>
+  )
+}
+
+function formatDate(dateString) {
+  if (!dateString) return 'N/A'
+  try {
+    return new Date(dateString).toLocaleString('es-EC', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    })
+  } catch {
+    return dateString
+  }
 }

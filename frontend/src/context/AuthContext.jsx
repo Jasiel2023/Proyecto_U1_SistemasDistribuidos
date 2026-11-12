@@ -70,7 +70,7 @@ export function AuthProvider({ children }) {
       const usuarioData = await getByIdCuenta(userData.userId)
       setUsuario(usuarioData)
 
-      navigate('/dashboard')
+      navigate(usuarioData.rol === 'ADMIN' ? '/admin/dashboard' : '/dashboard', { replace: true })
       return { success: true }
     } catch (err) {
       clearAll()
@@ -93,6 +93,11 @@ export function AuthProvider({ children }) {
     }
   }
 
+  const rol = usuario?.rol ?? user?.rol ?? null
+
+  const isAdmin = rol === 'ADMIN'
+  const isVotante = rol === 'VOTANTE' || !rol
+
   const isAuthenticated = !!token && !!user
 
   return (
@@ -101,6 +106,9 @@ export function AuthProvider({ children }) {
         token,
         user,
         usuario,
+        rol,
+        isAdmin,
+        isVotante,
         loading,
         error,
         isAuthenticated,

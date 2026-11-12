@@ -9,7 +9,7 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-admin}
       POSTGRES_DB: autenticaciondb
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-admin} -d autenticaciondb"]
+      test: ["CMD-SHELL", 'pg_isready -U "$$POSTGRES_USER" -d autenticaciondb']
       interval: 10s
       timeout: 5s
       retries: 5
@@ -30,13 +30,19 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-autenticacion:5432/autenticaciondb
       POSTGRES_USER: ${POSTGRES_USER:-admin}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-admin}
-      JWT_SECRET: ${JWT_SECRET:-mySecretKeyForJwtSigning12345678901234567890}
+      JWT_SECRET: ${JWT_SECRET:?Configura JWT_SECRET en el archivo .env}
       JWT_EXPIRATION_MS: ${JWT_EXPIRATION_MS:-3600000}
       APP_ADMIN_ENABLED: ${APP_ADMIN_ENABLED:-true}
       APP_ADMIN_USERNAME: ${APP_ADMIN_USERNAME:-admin}
       APP_ADMIN_PASSWORD: ${APP_ADMIN_PASSWORD:-admin123}
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: 5672
+      RABBITMQ_USER: guest
+      RABBITMQ_PASS: guest
     depends_on:
       postgres-autenticacion:
+        condition: service_healthy
+      rabbitmq:
         condition: service_healthy
     networks:
       - votacion-network
