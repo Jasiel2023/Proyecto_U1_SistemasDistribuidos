@@ -14,7 +14,7 @@ services:
       timeout: 5s
       retries: 5
     volumes:
-      - postgres_autenticacion_data:/var/lib/postgresql/data
+      - postgres_autenticacion_data_v2:/var/lib/postgresql/data
     networks:
       - votacion-network
 
@@ -53,4 +53,4 @@ networks:
     name: votacion-network
 
 volumes:
-  postgres_autenticacion_data:
+  postgres_autenticacion_data_v2:

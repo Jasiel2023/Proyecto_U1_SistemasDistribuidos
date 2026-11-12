@@ -17,7 +17,7 @@ services:
     ports:
       - "${RESULTADOS_DB_HOST_PORT:-5436}:5432"
     volumes:
-      - resultados-db-data:/var/lib/postgresql/data
+      - resultados-db-data-v2:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${RESULTADOS_DB_USER:-resultados} -d ${RESULTADOS_DB_NAME:-resultadosdb}"]
       interval: 5s
@@ -60,6 +60,8 @@ services:
       timeout: 5s
       retries: 20
       start_period: 20s
+    networks:
+      - votacion-network
 
   api-gateway:
     build:
@@ -95,10 +97,17 @@ services:
     networks:
       - votacion-network
     healthcheck:
-      test: ["CMD-SHELL", "wget -q -O /dev/null http://localhost/"]
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://127.0.0.1/"]
       interval: 10s
       timeout: 5s
       retries: 10
+    networks:
+      - votacion-network
 
 volumes:
-  resultados-db-data:
+  resultados-db-data-v2:
+
+networks:
+  votacion-network:
+    external: true
+    name: votacion-network

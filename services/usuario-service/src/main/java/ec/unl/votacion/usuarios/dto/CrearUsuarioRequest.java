@@ -28,12 +28,6 @@ public record CrearUsuarioRequest(
 
         @NotBlank(message = "El apellido es obligatorio")
         @Size(max = 100, message = "El apellido no puede superar los 100 caracteres")
-        String apellido,
-
-        @NotBlank(message = "La clave es obligatoria")
-        @Size(min = 6, max = 72, message = "La clave debe tener entre 6 y 72 caracteres")
-        String clave,
-
-        Rol rol
+        String apellido
 ) {
 }

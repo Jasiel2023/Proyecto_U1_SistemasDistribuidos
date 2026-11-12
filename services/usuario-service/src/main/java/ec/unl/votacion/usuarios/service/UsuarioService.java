@@ -137,7 +137,7 @@ public class UsuarioService {
                 usuario.getNickname(),
                 usuario.getNombre(),
                 usuario.getApellido(),
-                usuario.getRol() != null ? usuario.getRol().name() : null
+                usuario.getRol()
         );
     }
 }
