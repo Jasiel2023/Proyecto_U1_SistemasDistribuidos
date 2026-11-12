@@ -16,7 +16,7 @@ public class ApiExceptionHandler {
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public ProblemDetail solicitudInvalida(MethodArgumentTypeMismatchException ex) {
         ProblemDetail detail = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST,
-                "El identificador de eleccion no es un UUID valido.");
+                "El identificador de eleccion no es un numero valido.");
         detail.setTitle("Solicitud invalida");
         return detail;
     }

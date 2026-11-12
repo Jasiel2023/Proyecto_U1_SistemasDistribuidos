@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:unl:votacion:voto-emitido:1",
+  "title": "VotoEmitidoEvent",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "eventId",
+    "schemaVersion",
+    "votoId",
+    "eleccionId",
+    "candidatoId",
+    "occurredAt"
+  ],
+  "properties": {
+    "eventId": { "type": "string", "format": "uuid" },
+    "schemaVersion": { "const": 1 },
+    "votoId": { "type": "string", "format": "uuid" },
+    "eleccionId": { "type": "string", "format": "uuid" },
+    "candidatoId": { "type": "string", "format": "uuid" },
+    "idUsuario": { "type": ["string", "null"], "format": "uuid" },
+    "occurredAt": { "type": "string", "format": "date-time" }
+  }
+}

@@ -2,7 +2,7 @@ import { Outlet, Navigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 
 export function Layout() {
-  const { usuario, logout, isAuthenticated, rol } = useAuth()
+  const { usuario, logout, isAuthenticated } = useAuth()
 
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />
@@ -28,7 +28,7 @@ export function Layout() {
 
         <div className="header-user">
           <div className="user-info">
-            <span className={`user-badge ${(rol || 'VOTANTE').toLowerCase()}`}>{rol || 'Votante'}</span>
+            <span className="user-badge">Votante</span>
             <span className="user-name">{userName}</span>
           </div>
           <button className="btn btn-logout" onClick={handleLogout} type="button">

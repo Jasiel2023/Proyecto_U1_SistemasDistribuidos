@@ -1,12 +1,30 @@
 name: votacion
 include:
-  - docker-compose.yml
   - services/votacion-service/docker-compose.yml
   - services/autenticacion-service/docker-compose.yml
   - services/usuario-service/docker-compose.yml
   - services/api-gateway/docker-compose.yml
 
 services:
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    container_name: votacion-rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER:-guest}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASS:-guest}
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - votacion-network
+
   resultados-db:
     image: postgres:17-alpine
     container_name: votacion-resultados-db
@@ -52,14 +70,14 @@ services:
         condition: service_healthy
       rabbitmq:
         condition: service_healthy
-    networks:
-      - votacion-network
     healthcheck:
       test: ["CMD", "curl", "-fsS", "http://localhost:8083/actuator/health"]
       interval: 10s
       timeout: 5s
       retries: 20
       start_period: 20s
+    networks:
+      - votacion-network
 
   api-gateway:
     build:
@@ -74,14 +92,14 @@ services:
     depends_on:
       resultados-service:
         condition: service_healthy
-    networks:
-      - votacion-network
     healthcheck:
       test: ["CMD", "curl", "-fsS", "http://localhost:8080/actuator/health"]
       interval: 10s
       timeout: 5s
       retries: 20
       start_period: 15s
+    networks:
+      - votacion-network
 
   frontend:
     build:
@@ -92,13 +110,19 @@ services:
     depends_on:
       api-gateway:
         condition: service_healthy
-    networks:
-      - votacion-network
     healthcheck:
-      test: ["CMD-SHELL", "wget -q -O /dev/null http://localhost/"]
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://127.0.0.1/"]
       interval: 10s
       timeout: 5s
       retries: 10
+    networks:
+      - votacion-network
 
 volumes:
+  rabbitmq_data:
   resultados-db-data:
+
+networks:
+  votacion-network:
+    name: votacion-network
+    driver: bridge

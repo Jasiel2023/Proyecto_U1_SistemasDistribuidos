@@ -14,8 +14,8 @@ import java.util.UUID;
 public class EventoConflicto {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue
+    private UUID id;
 
     @Column(name = "event_id", nullable = false)
     private UUID eventId;
@@ -39,7 +39,7 @@ public class EventoConflicto {
         this.recibidoEn = recibidoEn;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 

@@ -61,8 +61,8 @@ Frontend ──REST──► api-gateway ──► votacion-service ──► vo
 ## Estructura del repositorio
 ```
 Proyecto_U1_SistemasDistribuidos/
-├── docker-compose.yml          # infraestructura compartida (RabbitMQ)
-├── compose.full.yml            # sistema integrado (infra + Resultados + gateway + frontend)
+├── docker-compose.yml          # entrada unica para levantar todo el sistema
+├── compose.full.yml            # definicion integrada incluida por docker-compose.yml
 ├── .env.example                # plantilla de variables
 ├── services/
 │   ├── api-gateway/            # punto de entrada (Spring Cloud Gateway)
@@ -111,6 +111,7 @@ Hay dos formas:
 ```bash
 cp .env.example .env
 ```
+Verifica que `.env` contenga un `JWT_SECRET` de al menos 32 caracteres.
 
 > `JWT_SECRET` debe tener al menos 32 caracteres. Si usas el valor de ejemplo del
 > archivo, el login funcionará, pero en producción cámbialo.
@@ -118,7 +119,7 @@ cp .env.example .env
 #### A.2 Crear la red compartida (una sola vez)
 
 ```bash
-docker network create votacion-network
+docker compose up -d --build
 ```
 > Si dice "already exists", ignóralo.
 

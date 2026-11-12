@@ -9,7 +9,7 @@ export function generarEventos({ eleccion, candidatos = 3, votos = 10, duplicado
     eventos.push({
       eventId: idReproducible(`${seed}:evento:${i}`),
       schemaVersion: 1,
-      votoId: idReproducible(`${seed}:voto:${i}`),
+      votoId: idNumerico(`${seed}:voto:${i}`),
       eleccionId: eleccion,
       candidatoId: idsCandidatos[i % idsCandidatos.length],
       occurredAt: new Date(Date.UTC(2026, 0, 1, 0, 0, i)).toISOString()
@@ -63,7 +63,7 @@ export async function publicarEventos(eventos, {
 export async function publicarFixtures(opciones) {
   if (!opciones.eleccion) throw new Error('Falta --eleccion.');
   const { eventos, candidatos } = generarEventos({
-    eleccion: opciones.eleccion,
+    eleccion: Number(opciones.eleccion),
     candidatos: opciones.candidatos ?? 3,
     votos: opciones.votos ?? 10,
     duplicados: opciones.duplicados ?? 0,
@@ -144,15 +144,20 @@ function resolverCandidatos(valor, semilla) {
   if (typeof valor === 'number' || /^\d+$/.test(String(valor))) {
     const cantidad = numeroPositivo(String(valor), '--candidatos', 1);
     return Array.from({ length: cantidad },
-      (_, i) => idReproducible(`${semilla}:candidato:${i}`));
+      (_, i) => idNumerico(`${semilla}:candidato:${i}`));
   }
   const lista = Array.isArray(valor)
     ? valor
     : String(valor).split(',').map((item) => item.trim()).filter(Boolean);
-  if (lista.length === 0 || lista.some((item) => !esUuid(item))) {
-    throw new Error('--candidatos debe ser un entero positivo o una lista de UUID separados por coma.');
+  if (lista.length === 0 || lista.some((item) => !/^\d+$/.test(item))) {
+    throw new Error('--candidatos debe ser un entero positivo o una lista de IDs numericos separados por coma.');
   }
-  return lista;
+  return lista.map(Number);
+}
+
+function idNumerico(texto) {
+  const hex = createHash('sha256').update(texto).digest('hex');
+  return Number.parseInt(hex.slice(0, 12), 16);
 }
 
 function idReproducible(texto) {
