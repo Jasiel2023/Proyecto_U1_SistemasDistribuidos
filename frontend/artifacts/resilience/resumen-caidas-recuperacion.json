@@ -1,0 +1,74 @@
+{
+  "verdict": "PASS",
+  "strategy": "docker stop/start individual; bases de datos y RabbitMQ permanecen activos",
+  "electionId": "6bc6980d-56b1-4f73-9f7e-81512fc32785",
+  "services": [
+    {
+      "service": "autenticacion-service",
+      "verdict": "PASS",
+      "outageStatus": "sin respuesta HTTP",
+      "outageError": "fetch failed",
+      "otherServicesStayedUp": true,
+      "recoveryTimeMs": 10879,
+      "recoveryDirectStatus": 200,
+      "recoveryPublicStatus": 200,
+      "evidenceFile": "C:\\Users\\Are\\Desktop\\Proyecto_U1_SistemasDistribuidos\\frontend\\artifacts\\resilience\\caida-recuperacion-autenticacion-service.json"
+    },
+    {
+      "service": "usuario-service",
+      "verdict": "PASS",
+      "outageStatus": "sin respuesta HTTP",
+      "outageError": "fetch failed",
+      "otherServicesStayedUp": true,
+      "recoveryTimeMs": 10542,
+      "recoveryDirectStatus": 200,
+      "recoveryPublicStatus": 200,
+      "evidenceFile": "C:\\Users\\Are\\Desktop\\Proyecto_U1_SistemasDistribuidos\\frontend\\artifacts\\resilience\\caida-recuperacion-usuario-service.json"
+    },
+    {
+      "service": "votacion-service",
+      "verdict": "PASS",
+      "outageStatus": "sin respuesta HTTP",
+      "outageError": "fetch failed",
+      "otherServicesStayedUp": true,
+      "recoveryTimeMs": 8839,
+      "recoveryDirectStatus": 200,
+      "recoveryPublicStatus": 200,
+      "evidenceFile": "C:\\Users\\Are\\Desktop\\Proyecto_U1_SistemasDistribuidos\\frontend\\artifacts\\resilience\\caida-recuperacion-votacion-service.json"
+    },
+    {
+      "service": "resultados-service",
+      "verdict": "PASS",
+      "outageStatus": "sin respuesta HTTP",
+      "outageError": "fetch failed",
+      "otherServicesStayedUp": true,
+      "recoveryTimeMs": 10617,
+      "recoveryDirectStatus": 200,
+      "recoveryPublicStatus": 200,
+      "evidenceFile": "C:\\Users\\Are\\Desktop\\Proyecto_U1_SistemasDistribuidos\\frontend\\artifacts\\resilience\\caida-recuperacion-resultados-service.json"
+    },
+    {
+      "service": "api-gateway",
+      "verdict": "PASS",
+      "outageStatus": "sin respuesta HTTP",
+      "outageError": "fetch failed",
+      "otherServicesStayedUp": true,
+      "recoveryTimeMs": 6736,
+      "recoveryDirectStatus": 200,
+      "recoveryPublicStatus": 200,
+      "evidenceFile": "C:\\Users\\Are\\Desktop\\Proyecto_U1_SistemasDistribuidos\\frontend\\artifacts\\resilience\\caida-recuperacion-api-gateway.json"
+    },
+    {
+      "service": "frontend",
+      "verdict": "PASS",
+      "outageStatus": "sin respuesta HTTP",
+      "outageError": "fetch failed",
+      "otherServicesStayedUp": true,
+      "recoveryTimeMs": 327,
+      "recoveryDirectStatus": 200,
+      "recoveryPublicStatus": 200,
+      "evidenceFile": "C:\\Users\\Are\\Desktop\\Proyecto_U1_SistemasDistribuidos\\frontend\\artifacts\\resilience\\caida-recuperacion-frontend.json"
+    }
+  ],
+  "completedAt": "2026-11-12T05:26:42.662Z"
+}

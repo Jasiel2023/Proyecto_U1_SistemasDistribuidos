@@ -1,0 +1,1099 @@
+{
+  "verdict": "PASS",
+  "commandToRepeat": "cd frontend; node scripts/integration/run-vote-integration.mjs",
+  "websocketEndpoint": "ws://localhost:8083/ws",
+  "restEndpoint": "http://localhost:8080/api/resultados/elecciones/6bc6980d-56b1-4f73-9f7e-81512fc32785",
+  "electionId": "6bc6980d-56b1-4f73-9f7e-81512fc32785",
+  "consistencyElection": {
+    "createStatus": 201,
+    "id": "6bc6980d-56b1-4f73-9f7e-81512fc32785",
+    "titulo": "Prueba consistencia 100 votos 2026-11-12T05:24:18.401Z",
+    "descripcion": "Elección temporal de consistencia 100 votos para pruebas de integración local",
+    "estado": "OPEN",
+    "fechaInicio": "2026-11-12T05:24:18.412931Z",
+    "fechaFin": null,
+    "candidatos": [
+      {
+        "id": "e92afba4-a035-4d8b-9881-2db7c482fd91",
+        "nombre": "Candidata A",
+        "partido": "Partido A"
+      },
+      {
+        "id": "c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+        "nombre": "Candidato B",
+        "partido": "Partido B"
+      }
+    ]
+  },
+  "voterCount": 100,
+  "voteRequests": 100,
+  "acceptedVotes": 100,
+  "voteResponses": [
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "20fa65d3-0852-4be8-815e-e4ade9024d6d"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "54ceb550-f025-44e7-b1c5-fae1b6988716"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "6b6ff08a-a5e6-482c-b2f8-33ff316536c8"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "dd2b392f-60fe-4ac7-b3aa-16066cfcf9f1"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "d30ede86-bce8-4103-afc8-ec90a974a220"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "2348ef54-4914-4a18-a428-a46f09e27bfa"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "3b9a32df-2f50-4689-bea8-e0d59e540d28"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "0a2cc647-4299-4ed6-8c0d-bd731bae94e6"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "59b35008-fae8-4f32-91e9-d0367971cb85"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "a458b5cf-1d7b-4662-840e-e21d073c9438"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "795f3598-3bf0-4917-b375-0b426e65b306"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "92df1cc1-dfc8-4320-987d-99006b470c50"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "f2cf5c37-7328-4c9b-9a79-9203748e2a85"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "a78ca20e-c485-4371-9f32-9ae24dd8ce80"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "eb1958d2-e2fe-40b8-954d-252659653d95"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "fc332180-ba15-4592-beb4-2658bc379886"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "4156dfd6-85ba-4022-bb49-f9a235a95dfc"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "831bd78d-62c7-4634-a610-b30b9ed92b51"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "44279fcb-76d9-4579-a21c-e8a23f4ee6aa"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "61f3c392-002c-4b8a-a879-c6488f4c59e8"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "de544e6b-956a-484a-8e4d-3946e78d1a51"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "362173e2-255c-457f-9e37-10f6f6f8c494"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "1094f0f8-eea9-4b1d-8dae-b9411bdec6a0"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "415374b7-22d6-4253-a42b-e082f97795eb"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "3234cf1f-2323-4f03-8a1c-0d26b4c679c7"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "86f2eeda-8f06-42b4-9aeb-5fa040085aff"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "fe29ffd1-db5a-4db3-a1b8-5acce631c8dc"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "aa549494-dfad-4882-9377-901b20607d29"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "f3b9de01-b4cb-489d-8a75-2ccf9f2c04cb"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "f94dcf0b-dd97-464c-abbe-898f2d9fd949"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "5833d60a-7ce5-4758-b465-4c5060dd15ed"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "cd4cfa44-3593-457a-9b0a-64dc27ff94f5"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "2b643701-0ab1-4c18-8c05-bb41b7945ca7"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "6d58f2d2-e471-4f17-bacd-3e1f98ac87bf"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "318ab9c0-b51c-4f72-9359-486452053e1b"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "c0c4b046-52e8-45ba-a5f1-ef0e8693aa75"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "2995ab9f-13dd-4b1a-82e1-6cdbf98cef35"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "fc8772cf-53bf-49d6-94cf-c51145c0c735"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "e212d825-854f-4118-895e-fb88e15d0040"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "10030899-d5ee-4262-b3f1-0a7cf1d41010"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "c49d9d3b-e10e-440f-9823-2329104b1754"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "f6529cad-50af-4cf4-80c8-ba49acd2352e"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "398b27ce-1e64-4a13-805c-e2b6484506be"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "06e689f7-5539-462a-bffd-62a04e1cc039"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "66914b43-9d02-4571-b8c0-7014fcbbe158"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "7ffa2232-a129-4234-8fd4-5b63e9480de0"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "e2efa080-3cca-4cf3-a8b4-aca7b1b5540a"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "a0002fde-99c1-4bdc-ac8c-b1eab6937d29"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "ba63b0eb-adb7-4b17-96ed-cf9e5b13dc4b"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "72d98a08-25e8-4ce8-8e45-d2e6f4b0e58d"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "4cb05b75-d5cd-4399-b838-1f6dc3553b5a"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "86391e52-60d0-4909-96d1-78943cbc0e24"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "7db4b41c-693b-4b65-bd6b-5f2807886eec"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "cbe97285-b152-4d2c-820a-3cb973a9ebe7"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "847c0719-c6fb-45dc-810e-2a07cebf4e1d"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "02815263-59d1-46e1-8afe-a96c4589bc2d"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "0a07c239-48ec-4dfe-aa35-c1ba259e36d0"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "8129749b-f77b-401c-8e27-95951aa1d780"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "1a6302f4-7948-46c1-89b4-b155a835f6e5"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "fdbb7a25-d60e-4343-8de6-5abc47433980"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "f9d5cad8-1a20-4f1f-b0ad-95ef7e21a664"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "7652b295-b5ab-4cb6-83d9-13b464b45cc7"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "c2101920-19f5-4987-8454-fcf6617c5269"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "62ec62a5-614a-4fbd-878f-331746cc0b74"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "657420b0-8a16-4533-b8ca-07b766ee84eb"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "883bb662-8719-4666-86b1-862df04c9570"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "5aeb925d-18ed-45d3-b0ef-54ffa1edbcbb"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "bb964c68-352a-4f95-a1c4-c3bb4fb68d21"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "784ae87a-fedb-4a51-97dd-8e7d2ab4256e"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "1cfd6e15-0746-4a21-8198-743ca75850d1"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "aa47782b-64dc-43e9-9afe-3f233d30f52a"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "7a0a60a2-93e4-42c8-af70-eb1597d32c99"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "c7fb21d7-6ba2-4dbd-9d9d-f656d5ff06f1"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "6f6943ed-cde8-4a4e-951d-84d7cead2160"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "0e4e0d20-c6d4-451a-afe8-4741fdccaa0e"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "105e5584-e3df-43d1-8452-9baf55dc7f4e"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "82fd28a2-f236-4034-bd93-ccdb87494f33"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "dcd77b33-2f13-4f87-9a10-50261273c92e"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "1137496f-f325-4d80-8c11-1a942f344bf3"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "1223965b-5b29-499b-92ea-efd0f13486b7"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "f64391d2-bffb-468e-b8ce-52afa1a2ab9d"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "8e72cf74-162b-40d2-ad50-54e2f3a6bc2a"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "9232e757-a979-428d-9917-430fc69207aa"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "480c1745-2c4e-4f75-bc8c-b39a8f2336cf"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "1d11826b-0f44-4395-958c-9d6f8d928bec"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "06fea594-7cd1-4e24-8359-d92e9c0237ec"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "e583221f-5865-4c6e-a59b-ce3b45f4e0f0"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "1bbd57df-4268-4501-99b8-051f5b9583a1"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "3f37d0c3-6019-4af3-a4d9-eabc71c6647e"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "8161a2fd-768a-4010-8026-8e228d2cba16"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "628e9cf2-ea9c-4b9e-9b96-94f7773f5e17"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "48dafa5d-e3e3-4ecb-9ff4-f4890f5073d4"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "a25722a3-cbfa-4ce1-873f-36e4e4dcb2ae"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "bf67077c-7d58-4dcf-a1ec-eb745daaf4ff"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "04bc2ab8-c0fe-4aed-b125-925d7a38dc60"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "341ea4b5-16cd-4513-ac6b-b65850dc5bfa"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "d3329d33-00f8-4212-aaad-60a0e1e3e2c0"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "7f24ca13-105f-4a38-bef1-d413960e5d49"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "a567c6cc-2084-4018-b244-285306b16322"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "b247804d-1664-46c9-9a79-77e94bd7799d"
+      }
+    }
+  ],
+  "rest": {
+    "eleccionId": "6bc6980d-56b1-4f73-9f7e-81512fc32785",
+    "totalVotos": 100,
+    "conteos": [
+      {
+        "candidatoId": "c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+        "votos": 50
+      },
+      {
+        "candidatoId": "e92afba4-a035-4d8b-9881-2db7c482fd91",
+        "votos": 50
+      }
+    ],
+    "revision": 100,
+    "ultimaActualizacion": "2026-11-12T05:24:20.841047Z",
+    "disponible": true
+  },
+  "websocket": {
+    "eleccionId": "6bc6980d-56b1-4f73-9f7e-81512fc32785",
+    "totalVotos": 100,
+    "conteos": [
+      {
+        "candidatoId": "c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+        "votos": 50
+      },
+      {
+        "candidatoId": "e92afba4-a035-4d8b-9881-2db7c482fd91",
+        "votos": 50
+      }
+    ],
+    "revision": 100,
+    "ultimaActualizacion": "2026-11-12T05:24:20.841047Z",
+    "disponible": true
+  },
+  "websocketSnapshotsReceived": 100,
+  "persistedVoteCount": 100,
+  "persistenceQuery": "SELECT count(*) FROM votos WHERE eleccion_id = '6bc6980d-56b1-4f73-9f7e-81512fc32785'",
+  "matchedFields": [
+    "eleccionId",
+    "totalVotos",
+    "revision"
+  ],
+  "rabbitmqTrace": {
+    "queues": [
+      {
+        "name": "cuentas.creadas",
+        "messages": 0,
+        "consumers": 1
+      },
+      {
+        "name": "cuentas.crear",
+        "messages": 0,
+        "consumers": 1
+      },
+      {
+        "name": "votos.procesados",
+        "messages": 0,
+        "consumers": 1
+      }
+    ],
+    "votePublisher": [
+      "2026-11-12T05:24:19.124Z  INFO 1 --- [votacion-service] [nio-8082-exec-6] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=ebb50ae9-2c26-449f-8864-0893816efbbb votoId=dd2b392f-60fe-4ac7-b3aa-16066cfcf9f1 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.133Z  INFO 1 --- [votacion-service] [io-8082-exec-14] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=cf155640-5ee4-4bfe-be66-e0304c8850c5 votoId=d30ede86-bce8-4103-afc8-ec90a974a220 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.147Z  INFO 1 --- [votacion-service] [io-8082-exec-10] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=55ad5577-d866-4050-bbfe-e19dc79e93b2 votoId=3b9a32df-2f50-4689-bea8-e0d59e540d28 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.157Z  INFO 1 --- [votacion-service] [nio-8082-exec-2] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=3715c927-8f03-4e05-b322-c1a3fb4d6b21 votoId=2348ef54-4914-4a18-a428-a46f09e27bfa eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.160Z  INFO 1 --- [votacion-service] [nio-8082-exec-5] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=c9bcfd1e-8322-40db-ad23-16ee03267b1f votoId=0a2cc647-4299-4ed6-8c0d-bd731bae94e6 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.179Z  INFO 1 --- [votacion-service] [nio-8082-exec-6] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=94d461fb-6c55-49d7-bc17-ca5e20ea2302 votoId=eb1958d2-e2fe-40b8-954d-252659653d95 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.187Z  INFO 1 --- [votacion-service] [io-8082-exec-16] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=94e22e43-0094-402c-b3e2-989a145e3744 votoId=92df1cc1-dfc8-4320-987d-99006b470c50 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.190Z  INFO 1 --- [votacion-service] [io-8082-exec-15] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=0d9ac76b-df3a-46af-8c0e-366de6db0617 votoId=415374b7-22d6-4253-a42b-e082f97795eb eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.201Z  INFO 1 --- [votacion-service] [nio-8082-exec-3] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=7b00f40a-fa0d-4cec-b3ac-5756fab7e160 votoId=44279fcb-76d9-4579-a21c-e8a23f4ee6aa eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.202Z  INFO 1 --- [votacion-service] [io-8082-exec-12] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=6cb3ee41-d0c9-4613-a3a7-381de0fb8c8e votoId=61f3c392-002c-4b8a-a879-c6488f4c59e8 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.217Z  INFO 1 --- [votacion-service] [nio-8082-exec-2] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=335404e9-78b6-48c8-8975-623650c4ee05 votoId=1a6302f4-7948-46c1-89b4-b155a835f6e5 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.226Z  INFO 1 --- [votacion-service] [io-8082-exec-17] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=39895bf0-d7bf-4cec-8b7d-d0b6e89f34a2 votoId=de544e6b-956a-484a-8e4d-3946e78d1a51 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.241Z  INFO 1 --- [votacion-service] [nio-8082-exec-1] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=3541d558-d3eb-4d88-bb8e-ed6285e1c19f votoId=f2cf5c37-7328-4c9b-9a79-9203748e2a85 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.227Z  INFO 1 --- [votacion-service] [io-8082-exec-18] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=334cc9ce-64b4-44dd-a9f2-f0e5970d8ad6 votoId=1094f0f8-eea9-4b1d-8dae-b9411bdec6a0 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.235Z  INFO 1 --- [votacion-service] [io-8082-exec-19] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=ab1874da-14fc-4b55-98d2-a6a3901af23d votoId=362173e2-255c-457f-9e37-10f6f6f8c494 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.238Z  INFO 1 --- [votacion-service] [nio-8082-exec-7] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=33e57615-659e-4045-b9f4-6f52aa216de0 votoId=a78ca20e-c485-4371-9f32-9ae24dd8ce80 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.248Z  INFO 1 --- [votacion-service] [nio-8082-exec-9] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=ed93fedf-aee7-42cd-b0f3-5d4d48e39647 votoId=59b35008-fae8-4f32-91e9-d0367971cb85 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.254Z  INFO 1 --- [votacion-service] [io-8082-exec-11] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=0554213c-d978-40c0-8d2c-42a854d48b4a votoId=a458b5cf-1d7b-4662-840e-e21d073c9438 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.255Z  INFO 1 --- [votacion-service] [nio-8082-exec-4] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=75467cec-83cb-483f-9e26-1bf8e7bb1c51 votoId=6b6ff08a-a5e6-482c-b2f8-33ff316536c8 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.257Z  INFO 1 --- [votacion-service] [io-8082-exec-14] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=9a535e18-d7de-4bfd-ac84-4994ecc4e271 votoId=4156dfd6-85ba-4022-bb49-f9a235a95dfc eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.277Z  INFO 1 --- [votacion-service] [io-8082-exec-10] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=940fb33b-c664-42f5-8300-49d78e9c90eb votoId=54ceb550-f025-44e7-b1c5-fae1b6988716 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.282Z  INFO 1 --- [votacion-service] [io-8082-exec-16] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=d65e361c-4be5-4e6b-9c80-de5302ee8cec votoId=fc332180-ba15-4592-beb4-2658bc379886 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.293Z  INFO 1 --- [votacion-service] [io-8082-exec-13] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=1d1db463-ecce-415b-9d06-6e333ee95703 votoId=831bd78d-62c7-4634-a610-b30b9ed92b51 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.294Z  INFO 1 --- [votacion-service] [nio-8082-exec-3] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=02210775-b9fc-4bfc-bb92-69ce79afce06 votoId=795f3598-3bf0-4917-b375-0b426e65b306 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.298Z  INFO 1 --- [votacion-service] [nio-8082-exec-8] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=80f81ef0-34fe-435f-bfcc-0f3d8aca811d votoId=398b27ce-1e64-4a13-805c-e2b6484506be eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.303Z  INFO 1 --- [votacion-service] [nio-8082-exec-6] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=d50b5bea-6325-4539-8761-afaa18bc42e3 votoId=9232e757-a979-428d-9917-430fc69207aa eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.307Z  INFO 1 --- [votacion-service] [io-8082-exec-15] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=d7229813-c99a-45ad-9276-176d5b536024 votoId=7ffa2232-a129-4234-8fd4-5b63e9480de0 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.312Z  INFO 1 --- [votacion-service] [io-8082-exec-13] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=57b584e1-2ff6-475c-8f71-0197775e2d06 votoId=1d11826b-0f44-4395-958c-9d6f8d928bec eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.314Z  INFO 1 --- [votacion-service] [io-8082-exec-14] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=979b8626-ec2c-4bef-8db1-824ee0a9e44d votoId=883bb662-8719-4666-86b1-862df04c9570 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.315Z  INFO 1 --- [votacion-service] [nio-8082-exec-5] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=327049b7-9f00-4d10-9119-6d0170eb12cc votoId=2995ab9f-13dd-4b1a-82e1-6cdbf98cef35 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.316Z  INFO 1 --- [votacion-service] [nio-8082-exec-3] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=30cccf29-2dbd-49cc-919b-58cf8e01c951 votoId=3234cf1f-2323-4f03-8a1c-0d26b4c679c7 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.316Z  INFO 1 --- [votacion-service] [nio-8082-exec-7] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=d7357cae-eb04-4d4d-ab11-a517a46ab055 votoId=f94dcf0b-dd97-464c-abbe-898f2d9fd949 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.316Z  INFO 1 --- [votacion-service] [io-8082-exec-11] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=9a8692d5-3b69-4f59-8eaa-19f3b440d92e votoId=2b643701-0ab1-4c18-8c05-bb41b7945ca7 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.316Z  INFO 1 --- [votacion-service] [io-8082-exec-16] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=246293cb-ee96-4f70-ab1c-24b837a06f35 votoId=847c0719-c6fb-45dc-810e-2a07cebf4e1d eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.311Z  INFO 1 --- [votacion-service] [io-8082-exec-12] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=a103c897-fa14-4c18-b2c4-8bc640790447 votoId=20fa65d3-0852-4be8-815e-e4ade9024d6d eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.320Z  INFO 1 --- [votacion-service] [nio-8082-exec-8] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=16dc8066-74f9-408d-9745-573d14a76e2f votoId=5833d60a-7ce5-4758-b465-4c5060dd15ed eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.322Z  INFO 1 --- [votacion-service] [io-8082-exec-17] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=20e14a33-88d8-4e7a-9f13-ed90dde82432 votoId=e212d825-854f-4118-895e-fb88e15d0040 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.325Z  INFO 1 --- [votacion-service] [io-8082-exec-19] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=04a9f91f-2a2c-4cec-887d-39d2c7820c49 votoId=fc8772cf-53bf-49d6-94cf-c51145c0c735 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.326Z  INFO 1 --- [votacion-service] [nio-8082-exec-4] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=dc2dc4bd-0068-42bb-8834-a705a0a57bf9 votoId=10030899-d5ee-4262-b3f1-0a7cf1d41010 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.330Z  INFO 1 --- [votacion-service] [io-8082-exec-18] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=1cf3cb1e-1a1e-4ec9-934f-249910f1a737 votoId=c0c4b046-52e8-45ba-a5f1-ef0e8693aa75 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.335Z  INFO 1 --- [votacion-service] [nio-8082-exec-2] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=d77e41c5-e6ac-4849-8e2a-a511d5e4f311 votoId=c49d9d3b-e10e-440f-9823-2329104b1754 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.339Z  INFO 1 --- [votacion-service] [io-8082-exec-10] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=683aa1a8-6ab5-44b0-8ad9-4f1b809e0884 votoId=02815263-59d1-46e1-8afe-a96c4589bc2d eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.341Z  INFO 1 --- [votacion-service] [nio-8082-exec-6] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=76ec0287-bd5e-436f-a8b2-27f1855be8fb votoId=86391e52-60d0-4909-96d1-78943cbc0e24 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.342Z  INFO 1 --- [votacion-service] [io-8082-exec-15] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=11e8f989-11ab-44a0-8f46-b0b40fcaa40e votoId=6d58f2d2-e471-4f17-bacd-3e1f98ac87bf eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.346Z  INFO 1 --- [votacion-service] [io-8082-exec-13] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=8d09c24e-757e-4058-811f-698373b586df votoId=e2efa080-3cca-4cf3-a8b4-aca7b1b5540a eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.347Z  INFO 1 --- [votacion-service] [nio-8082-exec-5] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=c6053b94-64ae-4c86-9692-c42457092eaa votoId=cbe97285-b152-4d2c-820a-3cb973a9ebe7 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.367Z  INFO 1 --- [votacion-service] [nio-8082-exec-1] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=04d5be57-9445-44f2-92c7-c037f8e6a46d votoId=7f24ca13-105f-4a38-bef1-d413960e5d49 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.370Z  INFO 1 --- [votacion-service] [nio-8082-exec-9] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=bfeccc00-9909-46d8-b60e-100f32508e8a votoId=cd4cfa44-3593-457a-9b0a-64dc27ff94f5 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.376Z  INFO 1 --- [votacion-service] [nio-8082-exec-7] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=a92fb19b-127b-4301-8b01-60ed7fc79f6a votoId=b247804d-1664-46c9-9a79-77e94bd7799d eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.371Z  INFO 1 --- [votacion-service] [nio-8082-exec-3] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=575f68fc-6d4c-4a1b-b8e7-1ee3f6dfb298 votoId=d3329d33-00f8-4212-aaad-60a0e1e3e2c0 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.373Z  INFO 1 --- [votacion-service] [io-8082-exec-16] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=a8221d79-f474-4f36-bd0e-cadb7096e4f1 votoId=aa549494-dfad-4882-9377-901b20607d29 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.381Z  INFO 1 --- [votacion-service] [nio-8082-exec-1] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=b6d4f595-d342-497a-a2b7-bf9968288239 votoId=105e5584-e3df-43d1-8452-9baf55dc7f4e eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.384Z  INFO 1 --- [votacion-service] [io-8082-exec-19] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=78ac3e27-e519-49e7-b316-81f3c4301279 votoId=fe29ffd1-db5a-4db3-a1b8-5acce631c8dc eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.391Z  INFO 1 --- [votacion-service] [io-8082-exec-18] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=eb4a850c-c3c2-4058-ae9d-42dd8a75b060 votoId=318ab9c0-b51c-4f72-9359-486452053e1b eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.396Z  INFO 1 --- [votacion-service] [nio-8082-exec-8] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=fc46836d-6de5-43f4-9830-fa74c7306142 votoId=4cb05b75-d5cd-4399-b838-1f6dc3553b5a eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.401Z  INFO 1 --- [votacion-service] [io-8082-exec-12] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=3dd6c8fe-35ee-4d92-86a2-8aa4f03cc24d votoId=06e689f7-5539-462a-bffd-62a04e1cc039 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.404Z  INFO 1 --- [votacion-service] [nio-8082-exec-5] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=f225ce8f-fdc2-47ac-8832-721939414552 votoId=1137496f-f325-4d80-8c11-1a942f344bf3 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.404Z  INFO 1 --- [votacion-service] [io-8082-exec-11] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=a0db3297-d2f2-49cc-8774-705f1e0c9b6d votoId=66914b43-9d02-4571-b8c0-7014fcbbe158 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.396Z  INFO 1 --- [votacion-service] [nio-8082-exec-7] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=27525344-564a-43a0-8ed7-e30fddb48651 votoId=86f2eeda-8f06-42b4-9aeb-5fa040085aff eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.407Z  INFO 1 --- [votacion-service] [io-8082-exec-10] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=b464def5-67ad-4bf0-82db-6069f0980cc0 votoId=c2101920-19f5-4987-8454-fcf6617c5269 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.409Z  INFO 1 --- [votacion-service] [nio-8082-exec-2] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=58cca470-a2f7-4769-b57e-796c57ebe0dc votoId=0a07c239-48ec-4dfe-aa35-c1ba259e36d0 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.412Z  INFO 1 --- [votacion-service] [io-8082-exec-16] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=32ebe5f8-bd72-451e-9bb3-57e7996b37f9 votoId=fdbb7a25-d60e-4343-8de6-5abc47433980 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.413Z  INFO 1 --- [votacion-service] [nio-8082-exec-4] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=febac12e-c680-423d-97d7-f97eb54c02b6 votoId=a0002fde-99c1-4bdc-ac8c-b1eab6937d29 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.398Z  INFO 1 --- [votacion-service] [nio-8082-exec-9] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=8114bd7a-b5b6-4f6b-940c-b22b37c29a95 votoId=72d98a08-25e8-4ce8-8e45-d2e6f4b0e58d eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.415Z  INFO 1 --- [votacion-service] [nio-8082-exec-6] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=f496a20f-2f86-43f0-9395-324d72e3773d votoId=341ea4b5-16cd-4513-ac6b-b65850dc5bfa eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.419Z  INFO 1 --- [votacion-service] [nio-8082-exec-1] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=6dccff54-2f9e-41c5-a0f1-cb463c2a96b2 votoId=8129749b-f77b-401c-8e27-95951aa1d780 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.417Z  INFO 1 --- [votacion-service] [io-8082-exec-13] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=cabb465c-235e-4f53-aa9e-2ba3d0d7106d votoId=04bc2ab8-c0fe-4aed-b125-925d7a38dc60 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.421Z  INFO 1 --- [votacion-service] [io-8082-exec-19] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=e7202483-6625-49e9-91e0-9b8df0402ba2 votoId=3f37d0c3-6019-4af3-a4d9-eabc71c6647e eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.426Z  INFO 1 --- [votacion-service] [nio-8082-exec-3] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=57a230d7-b1a9-4af3-abe5-21aef1775e22 votoId=f3b9de01-b4cb-489d-8a75-2ccf9f2c04cb eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.428Z  INFO 1 --- [votacion-service] [io-8082-exec-15] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=c0de0603-c07d-4a4c-939c-a4aa4e60decc votoId=7652b295-b5ab-4cb6-83d9-13b464b45cc7 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.437Z  INFO 1 --- [votacion-service] [io-8082-exec-17] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=df84e4ad-c056-4ebd-98cd-248a2fae4228 votoId=8161a2fd-768a-4010-8026-8e228d2cba16 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.438Z  INFO 1 --- [votacion-service] [io-8082-exec-21] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=a53e5e12-5a85-4176-bfd6-3238c5b425a2 votoId=1cfd6e15-0746-4a21-8198-743ca75850d1 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.439Z  INFO 1 --- [votacion-service] [io-8082-exec-22] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=2bd16dd8-ad69-43d8-9434-763eacc3d5f8 votoId=f9d5cad8-1a20-4f1f-b0ad-95ef7e21a664 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.440Z  INFO 1 --- [votacion-service] [io-8082-exec-18] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=648d2a48-55e9-4de5-b995-a5cd1896fc7d votoId=62ec62a5-614a-4fbd-878f-331746cc0b74 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.445Z  INFO 1 --- [votacion-service] [io-8082-exec-20] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=984c505e-99f2-4bac-9d87-a74cad00cf3e votoId=a567c6cc-2084-4018-b244-285306b16322 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.433Z  INFO 1 --- [votacion-service] [io-8082-exec-14] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=c4bbcc4a-bd1f-430a-8434-32527b9dd40d votoId=7db4b41c-693b-4b65-bd6b-5f2807886eec eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.458Z  INFO 1 --- [votacion-service] [nio-8082-exec-8] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=ee4878c8-81e3-49ae-9aea-28b942bd09f8 votoId=dcd77b33-2f13-4f87-9a10-50261273c92e eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.460Z  INFO 1 --- [votacion-service] [io-8082-exec-12] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=1e826b62-5d71-48f8-b4d3-4d55d139e4ec votoId=a25722a3-cbfa-4ce1-873f-36e4e4dcb2ae eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.465Z  INFO 1 --- [votacion-service] [io-8082-exec-11] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=63d1e9de-4a55-4501-bbe1-a917890559fd votoId=f6529cad-50af-4cf4-80c8-ba49acd2352e eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.465Z  INFO 1 --- [votacion-service] [io-8082-exec-20] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=e4ed8c1d-a94f-4dc1-a0d3-662f95302831 votoId=0e4e0d20-c6d4-451a-afe8-4741fdccaa0e eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.476Z  INFO 1 --- [votacion-service] [io-8082-exec-23] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=778245a9-1523-4676-be42-3ab928e3d4fa votoId=c7fb21d7-6ba2-4dbd-9d9d-f656d5ff06f1 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.476Z  INFO 1 --- [votacion-service] [nio-8082-exec-9] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=3d0e97e1-d6e1-46d0-abeb-e162a53856d7 votoId=ba63b0eb-adb7-4b17-96ed-cf9e5b13dc4b eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.477Z  INFO 1 --- [votacion-service] [io-8082-exec-24] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=53eba201-1039-4ad1-a3f0-cd30d765b853 votoId=f64391d2-bffb-468e-b8ce-52afa1a2ab9d eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.479Z  INFO 1 --- [votacion-service] [io-8082-exec-18] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=241e730f-7943-4328-80b4-2665fe2e35a4 votoId=82fd28a2-f236-4034-bd93-ccdb87494f33 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.481Z  INFO 1 --- [votacion-service] [nio-8082-exec-5] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=7edeaa30-87aa-4732-b87e-0a1aade277e8 votoId=784ae87a-fedb-4a51-97dd-8e7d2ab4256e eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.482Z  INFO 1 --- [votacion-service] [nio-8082-exec-2] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=dcb57f3f-1d31-4d5b-8472-66c2dae652a9 votoId=e583221f-5865-4c6e-a59b-ce3b45f4e0f0 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.482Z  INFO 1 --- [votacion-service] [io-8082-exec-16] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=d303f2d2-2c60-4a27-ba79-ffc1e6539126 votoId=48dafa5d-e3e3-4ecb-9ff4-f4890f5073d4 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.486Z  INFO 1 --- [votacion-service] [io-8082-exec-10] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=87082343-7663-4936-b4d9-123b3450a43d votoId=1bbd57df-4268-4501-99b8-051f5b9583a1 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.495Z  INFO 1 --- [votacion-service] [nio-8082-exec-1] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=b3235944-c0f2-45fb-93a7-2136519ccd9d votoId=5aeb925d-18ed-45d3-b0ef-54ffa1edbcbb eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.495Z  INFO 1 --- [votacion-service] [io-8082-exec-15] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=2869fbd2-619b-4a4c-9d2b-91b7be15ff86 votoId=657420b0-8a16-4533-b8ca-07b766ee84eb eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.496Z  INFO 1 --- [votacion-service] [nio-8082-exec-4] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=113eff4a-acbe-490a-9a35-31e9ac969f5e votoId=480c1745-2c4e-4f75-bc8c-b39a8f2336cf eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.497Z  INFO 1 --- [votacion-service] [io-8082-exec-21] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=58b7e239-865a-4792-b93a-a52326c38360 votoId=bf67077c-7d58-4dcf-a1ec-eb745daaf4ff eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.499Z  INFO 1 --- [votacion-service] [io-8082-exec-25] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=8ad85aa9-deaf-43a0-829a-9a25f2e4731c votoId=06fea594-7cd1-4e24-8359-d92e9c0237ec eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.499Z  INFO 1 --- [votacion-service] [nio-8082-exec-3] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=f32050e9-5eca-4bab-824d-c0d47cd8c3ba votoId=1223965b-5b29-499b-92ea-efd0f13486b7 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.500Z  INFO 1 --- [votacion-service] [io-8082-exec-22] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=048cd77a-47df-4b5b-b701-5346c9e246c7 votoId=6f6943ed-cde8-4a4e-951d-84d7cead2160 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.502Z  INFO 1 --- [votacion-service] [nio-8082-exec-7] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=e277c09f-18c8-4762-ba32-6bbe775d8135 votoId=aa47782b-64dc-43e9-9afe-3f233d30f52a eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.502Z  INFO 1 --- [votacion-service] [io-8082-exec-19] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=638a1bd4-c84d-4db4-8ae5-f7e041463c13 votoId=bb964c68-352a-4f95-a1c4-c3bb4fb68d21 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.506Z  INFO 1 --- [votacion-service] [nio-8082-exec-6] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=aefd8f1f-323c-4b35-a31a-37195916612d votoId=628e9cf2-ea9c-4b9e-9b96-94f7773f5e17 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.508Z  INFO 1 --- [votacion-service] [io-8082-exec-13] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=2f7bbf15-b616-4150-978a-4576d0338282 votoId=8e72cf74-162b-40d2-ad50-54e2f3a6bc2a eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.510Z  INFO 1 --- [votacion-service] [io-8082-exec-17] e.u.v.v.application.VotacionService      : Evento voto.emitido publicado eventId=f1d248e0-2964-4928-934c-2b8c22966c8b votoId=7a0a60a2-93e4-42c8-af70-eb1597d32c99 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa"
+    ],
+    "resultConsumer": [
+      "2026-11-12T05:24:19.150Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=ebb50ae9-2c26-449f-8864-0893816efbbb votoId=dd2b392f-60fe-4ac7-b3aa-16066cfcf9f1 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.305Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=cf155640-5ee4-4bfe-be66-e0304c8850c5 votoId=d30ede86-bce8-4103-afc8-ec90a974a220 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.390Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=55ad5577-d866-4050-bbfe-e19dc79e93b2 votoId=3b9a32df-2f50-4689-bea8-e0d59e540d28 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.434Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=c9bcfd1e-8322-40db-ad23-16ee03267b1f votoId=0a2cc647-4299-4ed6-8c0d-bd731bae94e6 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.471Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=3715c927-8f03-4e05-b322-c1a3fb4d6b21 votoId=2348ef54-4914-4a18-a428-a46f09e27bfa eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.511Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=94d461fb-6c55-49d7-bc17-ca5e20ea2302 votoId=eb1958d2-e2fe-40b8-954d-252659653d95 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.539Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=94e22e43-0094-402c-b3e2-989a145e3744 votoId=92df1cc1-dfc8-4320-987d-99006b470c50 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.564Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=0d9ac76b-df3a-46af-8c0e-366de6db0617 votoId=415374b7-22d6-4253-a42b-e082f97795eb eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.586Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=7b00f40a-fa0d-4cec-b3ac-5756fab7e160 votoId=44279fcb-76d9-4579-a21c-e8a23f4ee6aa eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.608Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=6cb3ee41-d0c9-4613-a3a7-381de0fb8c8e votoId=61f3c392-002c-4b8a-a879-c6488f4c59e8 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.626Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=335404e9-78b6-48c8-8975-623650c4ee05 votoId=1a6302f4-7948-46c1-89b4-b155a835f6e5 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.643Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=39895bf0-d7bf-4cec-8b7d-d0b6e89f34a2 votoId=de544e6b-956a-484a-8e4d-3946e78d1a51 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.659Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=334cc9ce-64b4-44dd-a9f2-f0e5970d8ad6 votoId=1094f0f8-eea9-4b1d-8dae-b9411bdec6a0 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.673Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=ab1874da-14fc-4b55-98d2-a6a3901af23d votoId=362173e2-255c-457f-9e37-10f6f6f8c494 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.700Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=33e57615-659e-4045-b9f4-6f52aa216de0 votoId=a78ca20e-c485-4371-9f32-9ae24dd8ce80 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.717Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=3541d558-d3eb-4d88-bb8e-ed6285e1c19f votoId=f2cf5c37-7328-4c9b-9a79-9203748e2a85 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.732Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=ed93fedf-aee7-42cd-b0f3-5d4d48e39647 votoId=59b35008-fae8-4f32-91e9-d0367971cb85 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.748Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=0554213c-d978-40c0-8d2c-42a854d48b4a votoId=a458b5cf-1d7b-4662-840e-e21d073c9438 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.761Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=75467cec-83cb-483f-9e26-1bf8e7bb1c51 votoId=6b6ff08a-a5e6-482c-b2f8-33ff316536c8 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.774Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=9a535e18-d7de-4bfd-ac84-4994ecc4e271 votoId=4156dfd6-85ba-4022-bb49-f9a235a95dfc eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.790Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=940fb33b-c664-42f5-8300-49d78e9c90eb votoId=54ceb550-f025-44e7-b1c5-fae1b6988716 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.806Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=d65e361c-4be5-4e6b-9c80-de5302ee8cec votoId=fc332180-ba15-4592-beb4-2658bc379886 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.820Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=1d1db463-ecce-415b-9d06-6e333ee95703 votoId=831bd78d-62c7-4634-a610-b30b9ed92b51 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.837Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=02210775-b9fc-4bfc-bb92-69ce79afce06 votoId=795f3598-3bf0-4917-b375-0b426e65b306 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.852Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=80f81ef0-34fe-435f-bfcc-0f3d8aca811d votoId=398b27ce-1e64-4a13-805c-e2b6484506be eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.862Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=d50b5bea-6325-4539-8761-afaa18bc42e3 votoId=9232e757-a979-428d-9917-430fc69207aa eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.874Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=d7229813-c99a-45ad-9276-176d5b536024 votoId=7ffa2232-a129-4234-8fd4-5b63e9480de0 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.887Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=a103c897-fa14-4c18-b2c4-8bc640790447 votoId=20fa65d3-0852-4be8-815e-e4ade9024d6d eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.900Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=57b584e1-2ff6-475c-8f71-0197775e2d06 votoId=1d11826b-0f44-4395-958c-9d6f8d928bec eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.913Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=979b8626-ec2c-4bef-8db1-824ee0a9e44d votoId=883bb662-8719-4666-86b1-862df04c9570 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.925Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=327049b7-9f00-4d10-9119-6d0170eb12cc votoId=2995ab9f-13dd-4b1a-82e1-6cdbf98cef35 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.939Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=30cccf29-2dbd-49cc-919b-58cf8e01c951 votoId=3234cf1f-2323-4f03-8a1c-0d26b4c679c7 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.962Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=246293cb-ee96-4f70-ab1c-24b837a06f35 votoId=847c0719-c6fb-45dc-810e-2a07cebf4e1d eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:19.975Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=d7357cae-eb04-4d4d-ab11-a517a46ab055 votoId=f94dcf0b-dd97-464c-abbe-898f2d9fd949 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:19.990Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=9a8692d5-3b69-4f59-8eaa-19f3b440d92e votoId=2b643701-0ab1-4c18-8c05-bb41b7945ca7 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:20.024Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=16dc8066-74f9-408d-9745-573d14a76e2f votoId=5833d60a-7ce5-4758-b465-4c5060dd15ed eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:20.041Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=20e14a33-88d8-4e7a-9f13-ed90dde82432 votoId=e212d825-854f-4118-895e-fb88e15d0040 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:20.053Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=04a9f91f-2a2c-4cec-887d-39d2c7820c49 votoId=fc8772cf-53bf-49d6-94cf-c51145c0c735 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:20.069Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=dc2dc4bd-0068-42bb-8834-a705a0a57bf9 votoId=10030899-d5ee-4262-b3f1-0a7cf1d41010 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:20.083Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=1cf3cb1e-1a1e-4ec9-934f-249910f1a737 votoId=c0c4b046-52e8-45ba-a5f1-ef0e8693aa75 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:20.096Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=d77e41c5-e6ac-4849-8e2a-a511d5e4f311 votoId=c49d9d3b-e10e-440f-9823-2329104b1754 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:20.114Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=683aa1a8-6ab5-44b0-8ad9-4f1b809e0884 votoId=02815263-59d1-46e1-8afe-a96c4589bc2d eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:20.136Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=76ec0287-bd5e-436f-a8b2-27f1855be8fb votoId=86391e52-60d0-4909-96d1-78943cbc0e24 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:20.153Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=11e8f989-11ab-44a0-8f46-b0b40fcaa40e votoId=6d58f2d2-e471-4f17-bacd-3e1f98ac87bf eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:20.167Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=8d09c24e-757e-4058-811f-698373b586df votoId=e2efa080-3cca-4cf3-a8b4-aca7b1b5540a eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:20.181Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=c6053b94-64ae-4c86-9692-c42457092eaa votoId=cbe97285-b152-4d2c-820a-3cb973a9ebe7 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:20.199Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=04d5be57-9445-44f2-92c7-c037f8e6a46d votoId=7f24ca13-105f-4a38-bef1-d413960e5d49 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:20.213Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=bfeccc00-9909-46d8-b60e-100f32508e8a votoId=cd4cfa44-3593-457a-9b0a-64dc27ff94f5 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:20.227Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=575f68fc-6d4c-4a1b-b8e7-1ee3f6dfb298 votoId=d3329d33-00f8-4212-aaad-60a0e1e3e2c0 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:20.240Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=a8221d79-f474-4f36-bd0e-cadb7096e4f1 votoId=aa549494-dfad-4882-9377-901b20607d29 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:20.253Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=a92fb19b-127b-4301-8b01-60ed7fc79f6a votoId=b247804d-1664-46c9-9a79-77e94bd7799d eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:20.265Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=b6d4f595-d342-497a-a2b7-bf9968288239 votoId=105e5584-e3df-43d1-8452-9baf55dc7f4e eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:20.276Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=78ac3e27-e519-49e7-b316-81f3c4301279 votoId=fe29ffd1-db5a-4db3-a1b8-5acce631c8dc eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:20.288Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=eb4a850c-c3c2-4058-ae9d-42dd8a75b060 votoId=318ab9c0-b51c-4f72-9359-486452053e1b eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:20.303Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=27525344-564a-43a0-8ed7-e30fddb48651 votoId=86f2eeda-8f06-42b4-9aeb-5fa040085aff eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:20.314Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=fc46836d-6de5-43f4-9830-fa74c7306142 votoId=4cb05b75-d5cd-4399-b838-1f6dc3553b5a eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:20.325Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=8114bd7a-b5b6-4f6b-940c-b22b37c29a95 votoId=72d98a08-25e8-4ce8-8e45-d2e6f4b0e58d eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:20.335Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=3dd6c8fe-35ee-4d92-86a2-8aa4f03cc24d votoId=06e689f7-5539-462a-bffd-62a04e1cc039 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:20.345Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=a0db3297-d2f2-49cc-8774-705f1e0c9b6d votoId=66914b43-9d02-4571-b8c0-7014fcbbe158 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:20.355Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=f225ce8f-fdc2-47ac-8832-721939414552 votoId=1137496f-f325-4d80-8c11-1a942f344bf3 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:20.365Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=b464def5-67ad-4bf0-82db-6069f0980cc0 votoId=c2101920-19f5-4987-8454-fcf6617c5269 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:20.376Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=58cca470-a2f7-4769-b57e-796c57ebe0dc votoId=0a07c239-48ec-4dfe-aa35-c1ba259e36d0 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:20.389Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=32ebe5f8-bd72-451e-9bb3-57e7996b37f9 votoId=fdbb7a25-d60e-4343-8de6-5abc47433980 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:20.405Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=febac12e-c680-423d-97d7-f97eb54c02b6 votoId=a0002fde-99c1-4bdc-ac8c-b1eab6937d29 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:20.416Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=f496a20f-2f86-43f0-9395-324d72e3773d votoId=341ea4b5-16cd-4513-ac6b-b65850dc5bfa eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:20.425Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=cabb465c-235e-4f53-aa9e-2ba3d0d7106d votoId=04bc2ab8-c0fe-4aed-b125-925d7a38dc60 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:20.436Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=6dccff54-2f9e-41c5-a0f1-cb463c2a96b2 votoId=8129749b-f77b-401c-8e27-95951aa1d780 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:20.447Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=e7202483-6625-49e9-91e0-9b8df0402ba2 votoId=3f37d0c3-6019-4af3-a4d9-eabc71c6647e eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:20.462Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=57a230d7-b1a9-4af3-abe5-21aef1775e22 votoId=f3b9de01-b4cb-489d-8a75-2ccf9f2c04cb eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:20.474Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=c0de0603-c07d-4a4c-939c-a4aa4e60decc votoId=7652b295-b5ab-4cb6-83d9-13b464b45cc7 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:20.486Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=c4bbcc4a-bd1f-430a-8434-32527b9dd40d votoId=7db4b41c-693b-4b65-bd6b-5f2807886eec eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:20.507Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=2bd16dd8-ad69-43d8-9434-763eacc3d5f8 votoId=f9d5cad8-1a20-4f1f-b0ad-95ef7e21a664 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:20.521Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=df84e4ad-c056-4ebd-98cd-248a2fae4228 votoId=8161a2fd-768a-4010-8026-8e228d2cba16 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:20.539Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=a53e5e12-5a85-4176-bfd6-3238c5b425a2 votoId=1cfd6e15-0746-4a21-8198-743ca75850d1 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:20.556Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=648d2a48-55e9-4de5-b995-a5cd1896fc7d votoId=62ec62a5-614a-4fbd-878f-331746cc0b74 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:20.575Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=984c505e-99f2-4bac-9d87-a74cad00cf3e votoId=a567c6cc-2084-4018-b244-285306b16322 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:20.589Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=ee4878c8-81e3-49ae-9aea-28b942bd09f8 votoId=dcd77b33-2f13-4f87-9a10-50261273c92e eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:20.602Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=1e826b62-5d71-48f8-b4d3-4d55d139e4ec votoId=a25722a3-cbfa-4ce1-873f-36e4e4dcb2ae eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:20.611Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=e4ed8c1d-a94f-4dc1-a0d3-662f95302831 votoId=0e4e0d20-c6d4-451a-afe8-4741fdccaa0e eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:20.621Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=63d1e9de-4a55-4501-bbe1-a917890559fd votoId=f6529cad-50af-4cf4-80c8-ba49acd2352e eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:20.630Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=778245a9-1523-4676-be42-3ab928e3d4fa votoId=c7fb21d7-6ba2-4dbd-9d9d-f656d5ff06f1 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:20.641Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=3d0e97e1-d6e1-46d0-abeb-e162a53856d7 votoId=ba63b0eb-adb7-4b17-96ed-cf9e5b13dc4b eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:20.651Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=53eba201-1039-4ad1-a3f0-cd30d765b853 votoId=f64391d2-bffb-468e-b8ce-52afa1a2ab9d eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:20.662Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=dcb57f3f-1d31-4d5b-8472-66c2dae652a9 votoId=e583221f-5865-4c6e-a59b-ce3b45f4e0f0 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:20.675Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=241e730f-7943-4328-80b4-2665fe2e35a4 votoId=82fd28a2-f236-4034-bd93-ccdb87494f33 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:20.685Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=7edeaa30-87aa-4732-b87e-0a1aade277e8 votoId=784ae87a-fedb-4a51-97dd-8e7d2ab4256e eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:20.694Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=d303f2d2-2c60-4a27-ba79-ffc1e6539126 votoId=48dafa5d-e3e3-4ecb-9ff4-f4890f5073d4 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:20.705Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=87082343-7663-4936-b4d9-123b3450a43d votoId=1bbd57df-4268-4501-99b8-051f5b9583a1 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:20.715Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=b3235944-c0f2-45fb-93a7-2136519ccd9d votoId=5aeb925d-18ed-45d3-b0ef-54ffa1edbcbb eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:20.730Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=2869fbd2-619b-4a4c-9d2b-91b7be15ff86 votoId=657420b0-8a16-4533-b8ca-07b766ee84eb eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:20.739Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=113eff4a-acbe-490a-9a35-31e9ac969f5e votoId=480c1745-2c4e-4f75-bc8c-b39a8f2336cf eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:20.747Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=58b7e239-865a-4792-b93a-a52326c38360 votoId=bf67077c-7d58-4dcf-a1ec-eb745daaf4ff eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:20.757Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=8ad85aa9-deaf-43a0-829a-9a25f2e4731c votoId=06fea594-7cd1-4e24-8359-d92e9c0237ec eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:20.767Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=f32050e9-5eca-4bab-824d-c0d47cd8c3ba votoId=1223965b-5b29-499b-92ea-efd0f13486b7 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:20.788Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=048cd77a-47df-4b5b-b701-5346c9e246c7 votoId=6f6943ed-cde8-4a4e-951d-84d7cead2160 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:20.803Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=e277c09f-18c8-4762-ba32-6bbe775d8135 votoId=aa47782b-64dc-43e9-9afe-3f233d30f52a eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:20.814Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=638a1bd4-c84d-4db4-8ae5-f7e041463c13 votoId=bb964c68-352a-4f95-a1c4-c3bb4fb68d21 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:20.823Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=aefd8f1f-323c-4b35-a31a-37195916612d votoId=628e9cf2-ea9c-4b9e-9b96-94f7773f5e17 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=e92afba4-a035-4d8b-9881-2db7c482fd91",
+      "2026-11-12T05:24:20.831Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=2f7bbf15-b616-4150-978a-4576d0338282 votoId=8e72cf74-162b-40d2-ad50-54e2f3a6bc2a eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+      "2026-11-12T05:24:20.840Z  INFO 1 --- [resultados-service] [ntContainer#0-1] e.u.v.r.messaging.VotoEmitidoListener    : Evento voto.emitido recibido eventId=f1d248e0-2964-4928-934c-2b8c22966c8b votoId=7a0a60a2-93e4-42c8-af70-eb1597d32c99 eleccionId=6bc6980d-56b1-4f73-9f7e-81512fc32785 candidatoId=c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa"
+    ]
+  },
+  "testedAt": "2026-11-12T05:24:21.449Z"
+}

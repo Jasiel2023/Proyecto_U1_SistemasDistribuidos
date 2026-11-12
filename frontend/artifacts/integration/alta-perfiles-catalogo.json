@@ -1,0 +1,3373 @@
+{
+  "verdict": "PASS",
+  "commandToRepeat": "cd frontend; node scripts/integration/run-vote-integration.mjs",
+  "expectedVoterCount": 100,
+  "voters": [
+    {
+      "nickname": "are",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 3,
+        "nickname": "are",
+        "expiraEn": "2026-11-12T06:24:04.208165"
+      },
+      "userProfile": {
+        "id": 2,
+        "idCuenta": 3,
+        "cedula": "1720000001",
+        "correo": "are.integration@example.test",
+        "nickname": "are",
+        "nombre": "Arelys",
+        "apellido": "Ajila",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 2,
+          "idCuenta": 3,
+          "cedula": "1720000001",
+          "correo": "are.integration@example.test",
+          "nickname": "are",
+          "nombre": "Arelys",
+          "apellido": "Ajila",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "leo",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 4,
+        "nickname": "leo",
+        "expiraEn": "2026-11-12T06:24:04.463764"
+      },
+      "userProfile": {
+        "id": 3,
+        "idCuenta": 4,
+        "cedula": "1720000002",
+        "correo": "leo.integration@example.test",
+        "nickname": "leo",
+        "nombre": "Leonardo",
+        "apellido": "Votante",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 3,
+          "idCuenta": 4,
+          "cedula": "1720000002",
+          "correo": "leo.integration@example.test",
+          "nickname": "leo",
+          "nombre": "Leonardo",
+          "apellido": "Votante",
+          "rol": "VOTANTE"
+        }
+      }
+    }
+  ],
+  "additionalVoters": [
+    {
+      "nickname": "v000",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 6,
+        "nickname": "v000",
+        "expiraEn": "2026-11-12T06:24:05.623375"
+      },
+      "userProfile": {
+        "id": 4,
+        "idCuenta": 6,
+        "cedula": "1730000000",
+        "correo": "votante.000@integration.example.test",
+        "nickname": "v000",
+        "nombre": "Votante 000",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 4,
+          "idCuenta": 6,
+          "cedula": "1730000000",
+          "correo": "votante.000@integration.example.test",
+          "nickname": "v000",
+          "nombre": "Votante 000",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v001",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 5,
+        "nickname": "v001",
+        "expiraEn": "2026-11-12T06:24:05.624032"
+      },
+      "userProfile": {
+        "id": 5,
+        "idCuenta": 5,
+        "cedula": "1730000001",
+        "correo": "votante.001@integration.example.test",
+        "nickname": "v001",
+        "nombre": "Votante 001",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 5,
+          "idCuenta": 5,
+          "cedula": "1730000001",
+          "correo": "votante.001@integration.example.test",
+          "nickname": "v001",
+          "nombre": "Votante 001",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v002",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 11,
+        "nickname": "v002",
+        "expiraEn": "2026-11-12T06:24:06.030794"
+      },
+      "userProfile": {
+        "id": 10,
+        "idCuenta": 11,
+        "cedula": "1730000002",
+        "correo": "votante.002@integration.example.test",
+        "nickname": "v002",
+        "nombre": "Votante 002",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 10,
+          "idCuenta": 11,
+          "cedula": "1730000002",
+          "correo": "votante.002@integration.example.test",
+          "nickname": "v002",
+          "nombre": "Votante 002",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v003",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 13,
+        "nickname": "v003",
+        "expiraEn": "2026-11-12T06:24:06.220966"
+      },
+      "userProfile": {
+        "id": 12,
+        "idCuenta": 13,
+        "cedula": "1730000003",
+        "correo": "votante.003@integration.example.test",
+        "nickname": "v003",
+        "nombre": "Votante 003",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 12,
+          "idCuenta": 13,
+          "cedula": "1730000003",
+          "correo": "votante.003@integration.example.test",
+          "nickname": "v003",
+          "nombre": "Votante 003",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v004",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 7,
+        "nickname": "v004",
+        "expiraEn": "2026-11-12T06:24:05.670421"
+      },
+      "userProfile": {
+        "id": 6,
+        "idCuenta": 7,
+        "cedula": "1730000004",
+        "correo": "votante.004@integration.example.test",
+        "nickname": "v004",
+        "nombre": "Votante 004",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 6,
+          "idCuenta": 7,
+          "cedula": "1730000004",
+          "correo": "votante.004@integration.example.test",
+          "nickname": "v004",
+          "nombre": "Votante 004",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v005",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 14,
+        "nickname": "v005",
+        "expiraEn": "2026-11-12T06:24:06.332938"
+      },
+      "userProfile": {
+        "id": 13,
+        "idCuenta": 14,
+        "cedula": "1730000005",
+        "correo": "votante.005@integration.example.test",
+        "nickname": "v005",
+        "nombre": "Votante 005",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 13,
+          "idCuenta": 14,
+          "cedula": "1730000005",
+          "correo": "votante.005@integration.example.test",
+          "nickname": "v005",
+          "nombre": "Votante 005",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v006",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 10,
+        "nickname": "v006",
+        "expiraEn": "2026-11-12T06:24:05.928428"
+      },
+      "userProfile": {
+        "id": 9,
+        "idCuenta": 10,
+        "cedula": "1730000006",
+        "correo": "votante.006@integration.example.test",
+        "nickname": "v006",
+        "nombre": "Votante 006",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 9,
+          "idCuenta": 10,
+          "cedula": "1730000006",
+          "correo": "votante.006@integration.example.test",
+          "nickname": "v006",
+          "nombre": "Votante 006",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v007",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 12,
+        "nickname": "v007",
+        "expiraEn": "2026-11-12T06:24:06.124881"
+      },
+      "userProfile": {
+        "id": 11,
+        "idCuenta": 12,
+        "cedula": "1730000007",
+        "correo": "votante.007@integration.example.test",
+        "nickname": "v007",
+        "nombre": "Votante 007",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 11,
+          "idCuenta": 12,
+          "cedula": "1730000007",
+          "correo": "votante.007@integration.example.test",
+          "nickname": "v007",
+          "nombre": "Votante 007",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v008",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 8,
+        "nickname": "v008",
+        "expiraEn": "2026-11-12T06:24:05.755401"
+      },
+      "userProfile": {
+        "id": 7,
+        "idCuenta": 8,
+        "cedula": "1730000008",
+        "correo": "votante.008@integration.example.test",
+        "nickname": "v008",
+        "nombre": "Votante 008",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 7,
+          "idCuenta": 8,
+          "cedula": "1730000008",
+          "correo": "votante.008@integration.example.test",
+          "nickname": "v008",
+          "nombre": "Votante 008",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v009",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 9,
+        "nickname": "v009",
+        "expiraEn": "2026-11-12T06:24:05.839734"
+      },
+      "userProfile": {
+        "id": 8,
+        "idCuenta": 9,
+        "cedula": "1730000009",
+        "correo": "votante.009@integration.example.test",
+        "nickname": "v009",
+        "nombre": "Votante 009",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 8,
+          "idCuenta": 9,
+          "cedula": "1730000009",
+          "correo": "votante.009@integration.example.test",
+          "nickname": "v009",
+          "nombre": "Votante 009",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v010",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 19,
+        "nickname": "v010",
+        "expiraEn": "2026-11-12T06:24:07.126537"
+      },
+      "userProfile": {
+        "id": 18,
+        "idCuenta": 19,
+        "cedula": "1730000010",
+        "correo": "votante.010@integration.example.test",
+        "nickname": "v010",
+        "nombre": "Votante 010",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 18,
+          "idCuenta": 19,
+          "cedula": "1730000010",
+          "correo": "votante.010@integration.example.test",
+          "nickname": "v010",
+          "nombre": "Votante 010",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v011",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 15,
+        "nickname": "v011",
+        "expiraEn": "2026-11-12T06:24:06.73848"
+      },
+      "userProfile": {
+        "id": 14,
+        "idCuenta": 15,
+        "cedula": "1730000011",
+        "correo": "votante.011@integration.example.test",
+        "nickname": "v011",
+        "nombre": "Votante 011",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 14,
+          "idCuenta": 15,
+          "cedula": "1730000011",
+          "correo": "votante.011@integration.example.test",
+          "nickname": "v011",
+          "nombre": "Votante 011",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v012",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 18,
+        "nickname": "v012",
+        "expiraEn": "2026-11-12T06:24:07.034561"
+      },
+      "userProfile": {
+        "id": 17,
+        "idCuenta": 18,
+        "cedula": "1730000012",
+        "correo": "votante.012@integration.example.test",
+        "nickname": "v012",
+        "nombre": "Votante 012",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 17,
+          "idCuenta": 18,
+          "cedula": "1730000012",
+          "correo": "votante.012@integration.example.test",
+          "nickname": "v012",
+          "nombre": "Votante 012",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v013",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 16,
+        "nickname": "v013",
+        "expiraEn": "2026-11-12T06:24:06.835122"
+      },
+      "userProfile": {
+        "id": 15,
+        "idCuenta": 16,
+        "cedula": "1730000013",
+        "correo": "votante.013@integration.example.test",
+        "nickname": "v013",
+        "nombre": "Votante 013",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 15,
+          "idCuenta": 16,
+          "cedula": "1730000013",
+          "correo": "votante.013@integration.example.test",
+          "nickname": "v013",
+          "nombre": "Votante 013",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v014",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 24,
+        "nickname": "v014",
+        "expiraEn": "2026-11-12T06:24:07.594138"
+      },
+      "userProfile": {
+        "id": 23,
+        "idCuenta": 24,
+        "cedula": "1730000014",
+        "correo": "votante.014@integration.example.test",
+        "nickname": "v014",
+        "nombre": "Votante 014",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 23,
+          "idCuenta": 24,
+          "cedula": "1730000014",
+          "correo": "votante.014@integration.example.test",
+          "nickname": "v014",
+          "nombre": "Votante 014",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v015",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 17,
+        "nickname": "v015",
+        "expiraEn": "2026-11-12T06:24:06.95623"
+      },
+      "userProfile": {
+        "id": 16,
+        "idCuenta": 17,
+        "cedula": "1730000015",
+        "correo": "votante.015@integration.example.test",
+        "nickname": "v015",
+        "nombre": "Votante 015",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 16,
+          "idCuenta": 17,
+          "cedula": "1730000015",
+          "correo": "votante.015@integration.example.test",
+          "nickname": "v015",
+          "nombre": "Votante 015",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v016",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 23,
+        "nickname": "v016",
+        "expiraEn": "2026-11-12T06:24:07.506355"
+      },
+      "userProfile": {
+        "id": 22,
+        "idCuenta": 23,
+        "cedula": "1730000016",
+        "correo": "votante.016@integration.example.test",
+        "nickname": "v016",
+        "nombre": "Votante 016",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 22,
+          "idCuenta": 23,
+          "cedula": "1730000016",
+          "correo": "votante.016@integration.example.test",
+          "nickname": "v016",
+          "nombre": "Votante 016",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v017",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 20,
+        "nickname": "v017",
+        "expiraEn": "2026-11-12T06:24:07.212857"
+      },
+      "userProfile": {
+        "id": 19,
+        "idCuenta": 20,
+        "cedula": "1730000017",
+        "correo": "votante.017@integration.example.test",
+        "nickname": "v017",
+        "nombre": "Votante 017",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 19,
+          "idCuenta": 20,
+          "cedula": "1730000017",
+          "correo": "votante.017@integration.example.test",
+          "nickname": "v017",
+          "nombre": "Votante 017",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v018",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 22,
+        "nickname": "v018",
+        "expiraEn": "2026-11-12T06:24:07.416674"
+      },
+      "userProfile": {
+        "id": 21,
+        "idCuenta": 22,
+        "cedula": "1730000018",
+        "correo": "votante.018@integration.example.test",
+        "nickname": "v018",
+        "nombre": "Votante 018",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 21,
+          "idCuenta": 22,
+          "cedula": "1730000018",
+          "correo": "votante.018@integration.example.test",
+          "nickname": "v018",
+          "nombre": "Votante 018",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v019",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 21,
+        "nickname": "v019",
+        "expiraEn": "2026-11-12T06:24:07.325597"
+      },
+      "userProfile": {
+        "id": 20,
+        "idCuenta": 21,
+        "cedula": "1730000019",
+        "correo": "votante.019@integration.example.test",
+        "nickname": "v019",
+        "nombre": "Votante 019",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 20,
+          "idCuenta": 21,
+          "cedula": "1730000019",
+          "correo": "votante.019@integration.example.test",
+          "nickname": "v019",
+          "nombre": "Votante 019",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v020",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 26,
+        "nickname": "v020",
+        "expiraEn": "2026-11-12T06:24:07.981102"
+      },
+      "userProfile": {
+        "id": 25,
+        "idCuenta": 26,
+        "cedula": "1730000020",
+        "correo": "votante.020@integration.example.test",
+        "nickname": "v020",
+        "nombre": "Votante 020",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 25,
+          "idCuenta": 26,
+          "cedula": "1730000020",
+          "correo": "votante.020@integration.example.test",
+          "nickname": "v020",
+          "nombre": "Votante 020",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v021",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 29,
+        "nickname": "v021",
+        "expiraEn": "2026-11-12T06:24:08.256263"
+      },
+      "userProfile": {
+        "id": 28,
+        "idCuenta": 29,
+        "cedula": "1730000021",
+        "correo": "votante.021@integration.example.test",
+        "nickname": "v021",
+        "nombre": "Votante 021",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 28,
+          "idCuenta": 29,
+          "cedula": "1730000021",
+          "correo": "votante.021@integration.example.test",
+          "nickname": "v021",
+          "nombre": "Votante 021",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v022",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 25,
+        "nickname": "v022",
+        "expiraEn": "2026-11-12T06:24:07.89504"
+      },
+      "userProfile": {
+        "id": 24,
+        "idCuenta": 25,
+        "cedula": "1730000022",
+        "correo": "votante.022@integration.example.test",
+        "nickname": "v022",
+        "nombre": "Votante 022",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 24,
+          "idCuenta": 25,
+          "cedula": "1730000022",
+          "correo": "votante.022@integration.example.test",
+          "nickname": "v022",
+          "nombre": "Votante 022",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v023",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 27,
+        "nickname": "v023",
+        "expiraEn": "2026-11-12T06:24:08.075662"
+      },
+      "userProfile": {
+        "id": 26,
+        "idCuenta": 27,
+        "cedula": "1730000023",
+        "correo": "votante.023@integration.example.test",
+        "nickname": "v023",
+        "nombre": "Votante 023",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 26,
+          "idCuenta": 27,
+          "cedula": "1730000023",
+          "correo": "votante.023@integration.example.test",
+          "nickname": "v023",
+          "nombre": "Votante 023",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v024",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 33,
+        "nickname": "v024",
+        "expiraEn": "2026-11-12T06:24:08.643701"
+      },
+      "userProfile": {
+        "id": 32,
+        "idCuenta": 33,
+        "cedula": "1730000024",
+        "correo": "votante.024@integration.example.test",
+        "nickname": "v024",
+        "nombre": "Votante 024",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 32,
+          "idCuenta": 33,
+          "cedula": "1730000024",
+          "correo": "votante.024@integration.example.test",
+          "nickname": "v024",
+          "nombre": "Votante 024",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v025",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 30,
+        "nickname": "v025",
+        "expiraEn": "2026-11-12T06:24:08.371594"
+      },
+      "userProfile": {
+        "id": 29,
+        "idCuenta": 30,
+        "cedula": "1730000025",
+        "correo": "votante.025@integration.example.test",
+        "nickname": "v025",
+        "nombre": "Votante 025",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 29,
+          "idCuenta": 30,
+          "cedula": "1730000025",
+          "correo": "votante.025@integration.example.test",
+          "nickname": "v025",
+          "nombre": "Votante 025",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v026",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 32,
+        "nickname": "v026",
+        "expiraEn": "2026-11-12T06:24:08.552388"
+      },
+      "userProfile": {
+        "id": 31,
+        "idCuenta": 32,
+        "cedula": "1730000026",
+        "correo": "votante.026@integration.example.test",
+        "nickname": "v026",
+        "nombre": "Votante 026",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 31,
+          "idCuenta": 32,
+          "cedula": "1730000026",
+          "correo": "votante.026@integration.example.test",
+          "nickname": "v026",
+          "nombre": "Votante 026",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v027",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 28,
+        "nickname": "v027",
+        "expiraEn": "2026-11-12T06:24:08.16381"
+      },
+      "userProfile": {
+        "id": 27,
+        "idCuenta": 28,
+        "cedula": "1730000027",
+        "correo": "votante.027@integration.example.test",
+        "nickname": "v027",
+        "nombre": "Votante 027",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 27,
+          "idCuenta": 28,
+          "cedula": "1730000027",
+          "correo": "votante.027@integration.example.test",
+          "nickname": "v027",
+          "nombre": "Votante 027",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v028",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 34,
+        "nickname": "v028",
+        "expiraEn": "2026-11-12T06:24:08.733765"
+      },
+      "userProfile": {
+        "id": 33,
+        "idCuenta": 34,
+        "cedula": "1730000028",
+        "correo": "votante.028@integration.example.test",
+        "nickname": "v028",
+        "nombre": "Votante 028",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 33,
+          "idCuenta": 34,
+          "cedula": "1730000028",
+          "correo": "votante.028@integration.example.test",
+          "nickname": "v028",
+          "nombre": "Votante 028",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v029",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 31,
+        "nickname": "v029",
+        "expiraEn": "2026-11-12T06:24:08.457062"
+      },
+      "userProfile": {
+        "id": 30,
+        "idCuenta": 31,
+        "cedula": "1730000029",
+        "correo": "votante.029@integration.example.test",
+        "nickname": "v029",
+        "nombre": "Votante 029",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 30,
+          "idCuenta": 31,
+          "cedula": "1730000029",
+          "correo": "votante.029@integration.example.test",
+          "nickname": "v029",
+          "nombre": "Votante 029",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v030",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 37,
+        "nickname": "v030",
+        "expiraEn": "2026-11-12T06:24:09.289337"
+      },
+      "userProfile": {
+        "id": 36,
+        "idCuenta": 37,
+        "cedula": "1730000030",
+        "correo": "votante.030@integration.example.test",
+        "nickname": "v030",
+        "nombre": "Votante 030",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 36,
+          "idCuenta": 37,
+          "cedula": "1730000030",
+          "correo": "votante.030@integration.example.test",
+          "nickname": "v030",
+          "nombre": "Votante 030",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v031",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 35,
+        "nickname": "v031",
+        "expiraEn": "2026-11-12T06:24:09.08929"
+      },
+      "userProfile": {
+        "id": 34,
+        "idCuenta": 35,
+        "cedula": "1730000031",
+        "correo": "votante.031@integration.example.test",
+        "nickname": "v031",
+        "nombre": "Votante 031",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 34,
+          "idCuenta": 35,
+          "cedula": "1730000031",
+          "correo": "votante.031@integration.example.test",
+          "nickname": "v031",
+          "nombre": "Votante 031",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v032",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 39,
+        "nickname": "v032",
+        "expiraEn": "2026-11-12T06:24:09.481022"
+      },
+      "userProfile": {
+        "id": 38,
+        "idCuenta": 39,
+        "cedula": "1730000032",
+        "correo": "votante.032@integration.example.test",
+        "nickname": "v032",
+        "nombre": "Votante 032",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 38,
+          "idCuenta": 39,
+          "cedula": "1730000032",
+          "correo": "votante.032@integration.example.test",
+          "nickname": "v032",
+          "nombre": "Votante 032",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v033",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 38,
+        "nickname": "v033",
+        "expiraEn": "2026-11-12T06:24:09.374365"
+      },
+      "userProfile": {
+        "id": 37,
+        "idCuenta": 38,
+        "cedula": "1730000033",
+        "correo": "votante.033@integration.example.test",
+        "nickname": "v033",
+        "nombre": "Votante 033",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 37,
+          "idCuenta": 38,
+          "cedula": "1730000033",
+          "correo": "votante.033@integration.example.test",
+          "nickname": "v033",
+          "nombre": "Votante 033",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v034",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 40,
+        "nickname": "v034",
+        "expiraEn": "2026-11-12T06:24:09.562158"
+      },
+      "userProfile": {
+        "id": 39,
+        "idCuenta": 40,
+        "cedula": "1730000034",
+        "correo": "votante.034@integration.example.test",
+        "nickname": "v034",
+        "nombre": "Votante 034",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 39,
+          "idCuenta": 40,
+          "cedula": "1730000034",
+          "correo": "votante.034@integration.example.test",
+          "nickname": "v034",
+          "nombre": "Votante 034",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v035",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 36,
+        "nickname": "v035",
+        "expiraEn": "2026-11-12T06:24:09.186678"
+      },
+      "userProfile": {
+        "id": 35,
+        "idCuenta": 36,
+        "cedula": "1730000035",
+        "correo": "votante.035@integration.example.test",
+        "nickname": "v035",
+        "nombre": "Votante 035",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 35,
+          "idCuenta": 36,
+          "cedula": "1730000035",
+          "correo": "votante.035@integration.example.test",
+          "nickname": "v035",
+          "nombre": "Votante 035",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v036",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 42,
+        "nickname": "v036",
+        "expiraEn": "2026-11-12T06:24:09.73346"
+      },
+      "userProfile": {
+        "id": 41,
+        "idCuenta": 42,
+        "cedula": "1730000036",
+        "correo": "votante.036@integration.example.test",
+        "nickname": "v036",
+        "nombre": "Votante 036",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 41,
+          "idCuenta": 42,
+          "cedula": "1730000036",
+          "correo": "votante.036@integration.example.test",
+          "nickname": "v036",
+          "nombre": "Votante 036",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v037",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 44,
+        "nickname": "v037",
+        "expiraEn": "2026-11-12T06:24:09.944273"
+      },
+      "userProfile": {
+        "id": 43,
+        "idCuenta": 44,
+        "cedula": "1730000037",
+        "correo": "votante.037@integration.example.test",
+        "nickname": "v037",
+        "nombre": "Votante 037",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 43,
+          "idCuenta": 44,
+          "cedula": "1730000037",
+          "correo": "votante.037@integration.example.test",
+          "nickname": "v037",
+          "nombre": "Votante 037",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v038",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 41,
+        "nickname": "v038",
+        "expiraEn": "2026-11-12T06:24:09.643345"
+      },
+      "userProfile": {
+        "id": 40,
+        "idCuenta": 41,
+        "cedula": "1730000038",
+        "correo": "votante.038@integration.example.test",
+        "nickname": "v038",
+        "nombre": "Votante 038",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 40,
+          "idCuenta": 41,
+          "cedula": "1730000038",
+          "correo": "votante.038@integration.example.test",
+          "nickname": "v038",
+          "nombre": "Votante 038",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v039",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 43,
+        "nickname": "v039",
+        "expiraEn": "2026-11-12T06:24:09.846821"
+      },
+      "userProfile": {
+        "id": 42,
+        "idCuenta": 43,
+        "cedula": "1730000039",
+        "correo": "votante.039@integration.example.test",
+        "nickname": "v039",
+        "nombre": "Votante 039",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 42,
+          "idCuenta": 43,
+          "cedula": "1730000039",
+          "correo": "votante.039@integration.example.test",
+          "nickname": "v039",
+          "nombre": "Votante 039",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v040",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 45,
+        "nickname": "v040",
+        "expiraEn": "2026-11-12T06:24:10.311714"
+      },
+      "userProfile": {
+        "id": 44,
+        "idCuenta": 45,
+        "cedula": "1730000040",
+        "correo": "votante.040@integration.example.test",
+        "nickname": "v040",
+        "nombre": "Votante 040",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 44,
+          "idCuenta": 45,
+          "cedula": "1730000040",
+          "correo": "votante.040@integration.example.test",
+          "nickname": "v040",
+          "nombre": "Votante 040",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v041",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 53,
+        "nickname": "v041",
+        "expiraEn": "2026-11-12T06:24:11.064539"
+      },
+      "userProfile": {
+        "id": 52,
+        "idCuenta": 53,
+        "cedula": "1730000041",
+        "correo": "votante.041@integration.example.test",
+        "nickname": "v041",
+        "nombre": "Votante 041",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 52,
+          "idCuenta": 53,
+          "cedula": "1730000041",
+          "correo": "votante.041@integration.example.test",
+          "nickname": "v041",
+          "nombre": "Votante 041",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v042",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 46,
+        "nickname": "v042",
+        "expiraEn": "2026-11-12T06:24:10.421504"
+      },
+      "userProfile": {
+        "id": 45,
+        "idCuenta": 46,
+        "cedula": "1730000042",
+        "correo": "votante.042@integration.example.test",
+        "nickname": "v042",
+        "nombre": "Votante 042",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 45,
+          "idCuenta": 46,
+          "cedula": "1730000042",
+          "correo": "votante.042@integration.example.test",
+          "nickname": "v042",
+          "nombre": "Votante 042",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v043",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 48,
+        "nickname": "v043",
+        "expiraEn": "2026-11-12T06:24:10.599311"
+      },
+      "userProfile": {
+        "id": 47,
+        "idCuenta": 48,
+        "cedula": "1730000043",
+        "correo": "votante.043@integration.example.test",
+        "nickname": "v043",
+        "nombre": "Votante 043",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 47,
+          "idCuenta": 48,
+          "cedula": "1730000043",
+          "correo": "votante.043@integration.example.test",
+          "nickname": "v043",
+          "nombre": "Votante 043",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v044",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 47,
+        "nickname": "v044",
+        "expiraEn": "2026-11-12T06:24:10.50861"
+      },
+      "userProfile": {
+        "id": 46,
+        "idCuenta": 47,
+        "cedula": "1730000044",
+        "correo": "votante.044@integration.example.test",
+        "nickname": "v044",
+        "nombre": "Votante 044",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 46,
+          "idCuenta": 47,
+          "cedula": "1730000044",
+          "correo": "votante.044@integration.example.test",
+          "nickname": "v044",
+          "nombre": "Votante 044",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v045",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 49,
+        "nickname": "v045",
+        "expiraEn": "2026-11-12T06:24:10.695686"
+      },
+      "userProfile": {
+        "id": 48,
+        "idCuenta": 49,
+        "cedula": "1730000045",
+        "correo": "votante.045@integration.example.test",
+        "nickname": "v045",
+        "nombre": "Votante 045",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 48,
+          "idCuenta": 49,
+          "cedula": "1730000045",
+          "correo": "votante.045@integration.example.test",
+          "nickname": "v045",
+          "nombre": "Votante 045",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v046",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 51,
+        "nickname": "v046",
+        "expiraEn": "2026-11-12T06:24:10.87714"
+      },
+      "userProfile": {
+        "id": 50,
+        "idCuenta": 51,
+        "cedula": "1730000046",
+        "correo": "votante.046@integration.example.test",
+        "nickname": "v046",
+        "nombre": "Votante 046",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 50,
+          "idCuenta": 51,
+          "cedula": "1730000046",
+          "correo": "votante.046@integration.example.test",
+          "nickname": "v046",
+          "nombre": "Votante 046",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v047",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 50,
+        "nickname": "v047",
+        "expiraEn": "2026-11-12T06:24:10.78579"
+      },
+      "userProfile": {
+        "id": 49,
+        "idCuenta": 50,
+        "cedula": "1730000047",
+        "correo": "votante.047@integration.example.test",
+        "nickname": "v047",
+        "nombre": "Votante 047",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 49,
+          "idCuenta": 50,
+          "cedula": "1730000047",
+          "correo": "votante.047@integration.example.test",
+          "nickname": "v047",
+          "nombre": "Votante 047",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v048",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 52,
+        "nickname": "v048",
+        "expiraEn": "2026-11-12T06:24:10.969706"
+      },
+      "userProfile": {
+        "id": 51,
+        "idCuenta": 52,
+        "cedula": "1730000048",
+        "correo": "votante.048@integration.example.test",
+        "nickname": "v048",
+        "nombre": "Votante 048",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 51,
+          "idCuenta": 52,
+          "cedula": "1730000048",
+          "correo": "votante.048@integration.example.test",
+          "nickname": "v048",
+          "nombre": "Votante 048",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v049",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 54,
+        "nickname": "v049",
+        "expiraEn": "2026-11-12T06:24:11.147031"
+      },
+      "userProfile": {
+        "id": 53,
+        "idCuenta": 54,
+        "cedula": "1730000049",
+        "correo": "votante.049@integration.example.test",
+        "nickname": "v049",
+        "nombre": "Votante 049",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 53,
+          "idCuenta": 54,
+          "cedula": "1730000049",
+          "correo": "votante.049@integration.example.test",
+          "nickname": "v049",
+          "nombre": "Votante 049",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v050",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 55,
+        "nickname": "v050",
+        "expiraEn": "2026-11-12T06:24:11.550108"
+      },
+      "userProfile": {
+        "id": 54,
+        "idCuenta": 55,
+        "cedula": "1730000050",
+        "correo": "votante.050@integration.example.test",
+        "nickname": "v050",
+        "nombre": "Votante 050",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 54,
+          "idCuenta": 55,
+          "cedula": "1730000050",
+          "correo": "votante.050@integration.example.test",
+          "nickname": "v050",
+          "nombre": "Votante 050",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v051",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 57,
+        "nickname": "v051",
+        "expiraEn": "2026-11-12T06:24:11.740069"
+      },
+      "userProfile": {
+        "id": 56,
+        "idCuenta": 57,
+        "cedula": "1730000051",
+        "correo": "votante.051@integration.example.test",
+        "nickname": "v051",
+        "nombre": "Votante 051",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 56,
+          "idCuenta": 57,
+          "cedula": "1730000051",
+          "correo": "votante.051@integration.example.test",
+          "nickname": "v051",
+          "nombre": "Votante 051",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v052",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 56,
+        "nickname": "v052",
+        "expiraEn": "2026-11-12T06:24:11.645539"
+      },
+      "userProfile": {
+        "id": 55,
+        "idCuenta": 56,
+        "cedula": "1730000052",
+        "correo": "votante.052@integration.example.test",
+        "nickname": "v052",
+        "nombre": "Votante 052",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 55,
+          "idCuenta": 56,
+          "cedula": "1730000052",
+          "correo": "votante.052@integration.example.test",
+          "nickname": "v052",
+          "nombre": "Votante 052",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v053",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 60,
+        "nickname": "v053",
+        "expiraEn": "2026-11-12T06:24:12.072547"
+      },
+      "userProfile": {
+        "id": 59,
+        "idCuenta": 60,
+        "cedula": "1730000053",
+        "correo": "votante.053@integration.example.test",
+        "nickname": "v053",
+        "nombre": "Votante 053",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 59,
+          "idCuenta": 60,
+          "cedula": "1730000053",
+          "correo": "votante.053@integration.example.test",
+          "nickname": "v053",
+          "nombre": "Votante 053",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v054",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 58,
+        "nickname": "v054",
+        "expiraEn": "2026-11-12T06:24:11.846575"
+      },
+      "userProfile": {
+        "id": 57,
+        "idCuenta": 58,
+        "cedula": "1730000054",
+        "correo": "votante.054@integration.example.test",
+        "nickname": "v054",
+        "nombre": "Votante 054",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 57,
+          "idCuenta": 58,
+          "cedula": "1730000054",
+          "correo": "votante.054@integration.example.test",
+          "nickname": "v054",
+          "nombre": "Votante 054",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v055",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 59,
+        "nickname": "v055",
+        "expiraEn": "2026-11-12T06:24:11.941819"
+      },
+      "userProfile": {
+        "id": 58,
+        "idCuenta": 59,
+        "cedula": "1730000055",
+        "correo": "votante.055@integration.example.test",
+        "nickname": "v055",
+        "nombre": "Votante 055",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 58,
+          "idCuenta": 59,
+          "cedula": "1730000055",
+          "correo": "votante.055@integration.example.test",
+          "nickname": "v055",
+          "nombre": "Votante 055",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v056",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 61,
+        "nickname": "v056",
+        "expiraEn": "2026-11-12T06:24:12.172294"
+      },
+      "userProfile": {
+        "id": 60,
+        "idCuenta": 61,
+        "cedula": "1730000056",
+        "correo": "votante.056@integration.example.test",
+        "nickname": "v056",
+        "nombre": "Votante 056",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 60,
+          "idCuenta": 61,
+          "cedula": "1730000056",
+          "correo": "votante.056@integration.example.test",
+          "nickname": "v056",
+          "nombre": "Votante 056",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v057",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 64,
+        "nickname": "v057",
+        "expiraEn": "2026-11-12T06:24:12.456015"
+      },
+      "userProfile": {
+        "id": 63,
+        "idCuenta": 64,
+        "cedula": "1730000057",
+        "correo": "votante.057@integration.example.test",
+        "nickname": "v057",
+        "nombre": "Votante 057",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 63,
+          "idCuenta": 64,
+          "cedula": "1730000057",
+          "correo": "votante.057@integration.example.test",
+          "nickname": "v057",
+          "nombre": "Votante 057",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v058",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 62,
+        "nickname": "v058",
+        "expiraEn": "2026-11-12T06:24:12.281955"
+      },
+      "userProfile": {
+        "id": 61,
+        "idCuenta": 62,
+        "cedula": "1730000058",
+        "correo": "votante.058@integration.example.test",
+        "nickname": "v058",
+        "nombre": "Votante 058",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 61,
+          "idCuenta": 62,
+          "cedula": "1730000058",
+          "correo": "votante.058@integration.example.test",
+          "nickname": "v058",
+          "nombre": "Votante 058",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v059",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 63,
+        "nickname": "v059",
+        "expiraEn": "2026-11-12T06:24:12.376667"
+      },
+      "userProfile": {
+        "id": 62,
+        "idCuenta": 63,
+        "cedula": "1730000059",
+        "correo": "votante.059@integration.example.test",
+        "nickname": "v059",
+        "nombre": "Votante 059",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 62,
+          "idCuenta": 63,
+          "cedula": "1730000059",
+          "correo": "votante.059@integration.example.test",
+          "nickname": "v059",
+          "nombre": "Votante 059",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v060",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 67,
+        "nickname": "v060",
+        "expiraEn": "2026-11-12T06:24:13.030757"
+      },
+      "userProfile": {
+        "id": 66,
+        "idCuenta": 67,
+        "cedula": "1730000060",
+        "correo": "votante.060@integration.example.test",
+        "nickname": "v060",
+        "nombre": "Votante 060",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 66,
+          "idCuenta": 67,
+          "cedula": "1730000060",
+          "correo": "votante.060@integration.example.test",
+          "nickname": "v060",
+          "nombre": "Votante 060",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v061",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 72,
+        "nickname": "v061",
+        "expiraEn": "2026-11-12T06:24:13.579868"
+      },
+      "userProfile": {
+        "id": 71,
+        "idCuenta": 72,
+        "cedula": "1730000061",
+        "correo": "votante.061@integration.example.test",
+        "nickname": "v061",
+        "nombre": "Votante 061",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 71,
+          "idCuenta": 72,
+          "cedula": "1730000061",
+          "correo": "votante.061@integration.example.test",
+          "nickname": "v061",
+          "nombre": "Votante 061",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v062",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 65,
+        "nickname": "v062",
+        "expiraEn": "2026-11-12T06:24:12.845036"
+      },
+      "userProfile": {
+        "id": 64,
+        "idCuenta": 65,
+        "cedula": "1730000062",
+        "correo": "votante.062@integration.example.test",
+        "nickname": "v062",
+        "nombre": "Votante 062",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 64,
+          "idCuenta": 65,
+          "cedula": "1730000062",
+          "correo": "votante.062@integration.example.test",
+          "nickname": "v062",
+          "nombre": "Votante 062",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v063",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 66,
+        "nickname": "v063",
+        "expiraEn": "2026-11-12T06:24:12.943431"
+      },
+      "userProfile": {
+        "id": 65,
+        "idCuenta": 66,
+        "cedula": "1730000063",
+        "correo": "votante.063@integration.example.test",
+        "nickname": "v063",
+        "nombre": "Votante 063",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 65,
+          "idCuenta": 66,
+          "cedula": "1730000063",
+          "correo": "votante.063@integration.example.test",
+          "nickname": "v063",
+          "nombre": "Votante 063",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v064",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 68,
+        "nickname": "v064",
+        "expiraEn": "2026-11-12T06:24:13.140149"
+      },
+      "userProfile": {
+        "id": 67,
+        "idCuenta": 68,
+        "cedula": "1730000064",
+        "correo": "votante.064@integration.example.test",
+        "nickname": "v064",
+        "nombre": "Votante 064",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 67,
+          "idCuenta": 68,
+          "cedula": "1730000064",
+          "correo": "votante.064@integration.example.test",
+          "nickname": "v064",
+          "nombre": "Votante 064",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v065",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 69,
+        "nickname": "v065",
+        "expiraEn": "2026-11-12T06:24:13.22723"
+      },
+      "userProfile": {
+        "id": 68,
+        "idCuenta": 69,
+        "cedula": "1730000065",
+        "correo": "votante.065@integration.example.test",
+        "nickname": "v065",
+        "nombre": "Votante 065",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 68,
+          "idCuenta": 69,
+          "cedula": "1730000065",
+          "correo": "votante.065@integration.example.test",
+          "nickname": "v065",
+          "nombre": "Votante 065",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v066",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 70,
+        "nickname": "v066",
+        "expiraEn": "2026-11-12T06:24:13.345941"
+      },
+      "userProfile": {
+        "id": 69,
+        "idCuenta": 70,
+        "cedula": "1730000066",
+        "correo": "votante.066@integration.example.test",
+        "nickname": "v066",
+        "nombre": "Votante 066",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 69,
+          "idCuenta": 70,
+          "cedula": "1730000066",
+          "correo": "votante.066@integration.example.test",
+          "nickname": "v066",
+          "nombre": "Votante 066",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v067",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 74,
+        "nickname": "v067",
+        "expiraEn": "2026-11-12T06:24:13.754917"
+      },
+      "userProfile": {
+        "id": 73,
+        "idCuenta": 74,
+        "cedula": "1730000067",
+        "correo": "votante.067@integration.example.test",
+        "nickname": "v067",
+        "nombre": "Votante 067",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 73,
+          "idCuenta": 74,
+          "cedula": "1730000067",
+          "correo": "votante.067@integration.example.test",
+          "nickname": "v067",
+          "nombre": "Votante 067",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v068",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 73,
+        "nickname": "v068",
+        "expiraEn": "2026-11-12T06:24:13.660962"
+      },
+      "userProfile": {
+        "id": 72,
+        "idCuenta": 73,
+        "cedula": "1730000068",
+        "correo": "votante.068@integration.example.test",
+        "nickname": "v068",
+        "nombre": "Votante 068",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 72,
+          "idCuenta": 73,
+          "cedula": "1730000068",
+          "correo": "votante.068@integration.example.test",
+          "nickname": "v068",
+          "nombre": "Votante 068",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v069",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 71,
+        "nickname": "v069",
+        "expiraEn": "2026-11-12T06:24:13.447324"
+      },
+      "userProfile": {
+        "id": 70,
+        "idCuenta": 71,
+        "cedula": "1730000069",
+        "correo": "votante.069@integration.example.test",
+        "nickname": "v069",
+        "nombre": "Votante 069",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 70,
+          "idCuenta": 71,
+          "cedula": "1730000069",
+          "correo": "votante.069@integration.example.test",
+          "nickname": "v069",
+          "nombre": "Votante 069",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v070",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 77,
+        "nickname": "v070",
+        "expiraEn": "2026-11-12T06:24:14.23359"
+      },
+      "userProfile": {
+        "id": 76,
+        "idCuenta": 77,
+        "cedula": "1730000070",
+        "correo": "votante.070@integration.example.test",
+        "nickname": "v070",
+        "nombre": "Votante 070",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 76,
+          "idCuenta": 77,
+          "cedula": "1730000070",
+          "correo": "votante.070@integration.example.test",
+          "nickname": "v070",
+          "nombre": "Votante 070",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v071",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 75,
+        "nickname": "v071",
+        "expiraEn": "2026-11-12T06:24:14.058627"
+      },
+      "userProfile": {
+        "id": 74,
+        "idCuenta": 75,
+        "cedula": "1730000071",
+        "correo": "votante.071@integration.example.test",
+        "nickname": "v071",
+        "nombre": "Votante 071",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 74,
+          "idCuenta": 75,
+          "cedula": "1730000071",
+          "correo": "votante.071@integration.example.test",
+          "nickname": "v071",
+          "nombre": "Votante 071",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v072",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 78,
+        "nickname": "v072",
+        "expiraEn": "2026-11-12T06:24:14.332908"
+      },
+      "userProfile": {
+        "id": 77,
+        "idCuenta": 78,
+        "cedula": "1730000072",
+        "correo": "votante.072@integration.example.test",
+        "nickname": "v072",
+        "nombre": "Votante 072",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 77,
+          "idCuenta": 78,
+          "cedula": "1730000072",
+          "correo": "votante.072@integration.example.test",
+          "nickname": "v072",
+          "nombre": "Votante 072",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v073",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 80,
+        "nickname": "v073",
+        "expiraEn": "2026-11-12T06:24:14.517648"
+      },
+      "userProfile": {
+        "id": 79,
+        "idCuenta": 80,
+        "cedula": "1730000073",
+        "correo": "votante.073@integration.example.test",
+        "nickname": "v073",
+        "nombre": "Votante 073",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 79,
+          "idCuenta": 80,
+          "cedula": "1730000073",
+          "correo": "votante.073@integration.example.test",
+          "nickname": "v073",
+          "nombre": "Votante 073",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v074",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 76,
+        "nickname": "v074",
+        "expiraEn": "2026-11-12T06:24:14.14151"
+      },
+      "userProfile": {
+        "id": 75,
+        "idCuenta": 76,
+        "cedula": "1730000074",
+        "correo": "votante.074@integration.example.test",
+        "nickname": "v074",
+        "nombre": "Votante 074",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 75,
+          "idCuenta": 76,
+          "cedula": "1730000074",
+          "correo": "votante.074@integration.example.test",
+          "nickname": "v074",
+          "nombre": "Votante 074",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v075",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 81,
+        "nickname": "v075",
+        "expiraEn": "2026-11-12T06:24:14.602902"
+      },
+      "userProfile": {
+        "id": 80,
+        "idCuenta": 81,
+        "cedula": "1730000075",
+        "correo": "votante.075@integration.example.test",
+        "nickname": "v075",
+        "nombre": "Votante 075",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 80,
+          "idCuenta": 81,
+          "cedula": "1730000075",
+          "correo": "votante.075@integration.example.test",
+          "nickname": "v075",
+          "nombre": "Votante 075",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v076",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 82,
+        "nickname": "v076",
+        "expiraEn": "2026-11-12T06:24:14.688207"
+      },
+      "userProfile": {
+        "id": 81,
+        "idCuenta": 82,
+        "cedula": "1730000076",
+        "correo": "votante.076@integration.example.test",
+        "nickname": "v076",
+        "nombre": "Votante 076",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 81,
+          "idCuenta": 82,
+          "cedula": "1730000076",
+          "correo": "votante.076@integration.example.test",
+          "nickname": "v076",
+          "nombre": "Votante 076",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v077",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 83,
+        "nickname": "v077",
+        "expiraEn": "2026-11-12T06:24:14.774874"
+      },
+      "userProfile": {
+        "id": 82,
+        "idCuenta": 83,
+        "cedula": "1730000077",
+        "correo": "votante.077@integration.example.test",
+        "nickname": "v077",
+        "nombre": "Votante 077",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 82,
+          "idCuenta": 83,
+          "cedula": "1730000077",
+          "correo": "votante.077@integration.example.test",
+          "nickname": "v077",
+          "nombre": "Votante 077",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v078",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 79,
+        "nickname": "v078",
+        "expiraEn": "2026-11-12T06:24:14.432498"
+      },
+      "userProfile": {
+        "id": 78,
+        "idCuenta": 79,
+        "cedula": "1730000078",
+        "correo": "votante.078@integration.example.test",
+        "nickname": "v078",
+        "nombre": "Votante 078",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 78,
+          "idCuenta": 79,
+          "cedula": "1730000078",
+          "correo": "votante.078@integration.example.test",
+          "nickname": "v078",
+          "nombre": "Votante 078",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v079",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 84,
+        "nickname": "v079",
+        "expiraEn": "2026-11-12T06:24:14.862622"
+      },
+      "userProfile": {
+        "id": 83,
+        "idCuenta": 84,
+        "cedula": "1730000079",
+        "correo": "votante.079@integration.example.test",
+        "nickname": "v079",
+        "nombre": "Votante 079",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 83,
+          "idCuenta": 84,
+          "cedula": "1730000079",
+          "correo": "votante.079@integration.example.test",
+          "nickname": "v079",
+          "nombre": "Votante 079",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v080",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 85,
+        "nickname": "v080",
+        "expiraEn": "2026-11-12T06:24:15.185357"
+      },
+      "userProfile": {
+        "id": 84,
+        "idCuenta": 85,
+        "cedula": "1730000080",
+        "correo": "votante.080@integration.example.test",
+        "nickname": "v080",
+        "nombre": "Votante 080",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 84,
+          "idCuenta": 85,
+          "cedula": "1730000080",
+          "correo": "votante.080@integration.example.test",
+          "nickname": "v080",
+          "nombre": "Votante 080",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v081",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 87,
+        "nickname": "v081",
+        "expiraEn": "2026-11-12T06:24:15.377215"
+      },
+      "userProfile": {
+        "id": 86,
+        "idCuenta": 87,
+        "cedula": "1730000081",
+        "correo": "votante.081@integration.example.test",
+        "nickname": "v081",
+        "nombre": "Votante 081",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 86,
+          "idCuenta": 87,
+          "cedula": "1730000081",
+          "correo": "votante.081@integration.example.test",
+          "nickname": "v081",
+          "nombre": "Votante 081",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v082",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 92,
+        "nickname": "v082",
+        "expiraEn": "2026-11-12T06:24:15.824859"
+      },
+      "userProfile": {
+        "id": 91,
+        "idCuenta": 92,
+        "cedula": "1730000082",
+        "correo": "votante.082@integration.example.test",
+        "nickname": "v082",
+        "nombre": "Votante 082",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 91,
+          "idCuenta": 92,
+          "cedula": "1730000082",
+          "correo": "votante.082@integration.example.test",
+          "nickname": "v082",
+          "nombre": "Votante 082",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v083",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 86,
+        "nickname": "v083",
+        "expiraEn": "2026-11-12T06:24:15.275042"
+      },
+      "userProfile": {
+        "id": 85,
+        "idCuenta": 86,
+        "cedula": "1730000083",
+        "correo": "votante.083@integration.example.test",
+        "nickname": "v083",
+        "nombre": "Votante 083",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 85,
+          "idCuenta": 86,
+          "cedula": "1730000083",
+          "correo": "votante.083@integration.example.test",
+          "nickname": "v083",
+          "nombre": "Votante 083",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v084",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 94,
+        "nickname": "v084",
+        "expiraEn": "2026-11-12T06:24:15.998811"
+      },
+      "userProfile": {
+        "id": 93,
+        "idCuenta": 94,
+        "cedula": "1730000084",
+        "correo": "votante.084@integration.example.test",
+        "nickname": "v084",
+        "nombre": "Votante 084",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 93,
+          "idCuenta": 94,
+          "cedula": "1730000084",
+          "correo": "votante.084@integration.example.test",
+          "nickname": "v084",
+          "nombre": "Votante 084",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v085",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 88,
+        "nickname": "v085",
+        "expiraEn": "2026-11-12T06:24:15.458171"
+      },
+      "userProfile": {
+        "id": 87,
+        "idCuenta": 88,
+        "cedula": "1730000085",
+        "correo": "votante.085@integration.example.test",
+        "nickname": "v085",
+        "nombre": "Votante 085",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 87,
+          "idCuenta": 88,
+          "cedula": "1730000085",
+          "correo": "votante.085@integration.example.test",
+          "nickname": "v085",
+          "nombre": "Votante 085",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v086",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 90,
+        "nickname": "v086",
+        "expiraEn": "2026-11-12T06:24:15.640446"
+      },
+      "userProfile": {
+        "id": 89,
+        "idCuenta": 90,
+        "cedula": "1730000086",
+        "correo": "votante.086@integration.example.test",
+        "nickname": "v086",
+        "nombre": "Votante 086",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 89,
+          "idCuenta": 90,
+          "cedula": "1730000086",
+          "correo": "votante.086@integration.example.test",
+          "nickname": "v086",
+          "nombre": "Votante 086",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v087",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 89,
+        "nickname": "v087",
+        "expiraEn": "2026-11-12T06:24:15.548809"
+      },
+      "userProfile": {
+        "id": 88,
+        "idCuenta": 89,
+        "cedula": "1730000087",
+        "correo": "votante.087@integration.example.test",
+        "nickname": "v087",
+        "nombre": "Votante 087",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 88,
+          "idCuenta": 89,
+          "cedula": "1730000087",
+          "correo": "votante.087@integration.example.test",
+          "nickname": "v087",
+          "nombre": "Votante 087",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v088",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 93,
+        "nickname": "v088",
+        "expiraEn": "2026-11-12T06:24:15.918094"
+      },
+      "userProfile": {
+        "id": 92,
+        "idCuenta": 93,
+        "cedula": "1730000088",
+        "correo": "votante.088@integration.example.test",
+        "nickname": "v088",
+        "nombre": "Votante 088",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 92,
+          "idCuenta": 93,
+          "cedula": "1730000088",
+          "correo": "votante.088@integration.example.test",
+          "nickname": "v088",
+          "nombre": "Votante 088",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v089",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 91,
+        "nickname": "v089",
+        "expiraEn": "2026-11-12T06:24:15.729253"
+      },
+      "userProfile": {
+        "id": 90,
+        "idCuenta": 91,
+        "cedula": "1730000089",
+        "correo": "votante.089@integration.example.test",
+        "nickname": "v089",
+        "nombre": "Votante 089",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 90,
+          "idCuenta": 91,
+          "cedula": "1730000089",
+          "correo": "votante.089@integration.example.test",
+          "nickname": "v089",
+          "nombre": "Votante 089",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v090",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 95,
+        "nickname": "v090",
+        "expiraEn": "2026-11-12T06:24:16.350354"
+      },
+      "userProfile": {
+        "id": 94,
+        "idCuenta": 95,
+        "cedula": "1730000090",
+        "correo": "votante.090@integration.example.test",
+        "nickname": "v090",
+        "nombre": "Votante 090",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 94,
+          "idCuenta": 95,
+          "cedula": "1730000090",
+          "correo": "votante.090@integration.example.test",
+          "nickname": "v090",
+          "nombre": "Votante 090",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v091",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 98,
+        "nickname": "v091",
+        "expiraEn": "2026-11-12T06:24:16.624494"
+      },
+      "userProfile": {
+        "id": 97,
+        "idCuenta": 98,
+        "cedula": "1730000091",
+        "correo": "votante.091@integration.example.test",
+        "nickname": "v091",
+        "nombre": "Votante 091",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 97,
+          "idCuenta": 98,
+          "cedula": "1730000091",
+          "correo": "votante.091@integration.example.test",
+          "nickname": "v091",
+          "nombre": "Votante 091",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v092",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 97,
+        "nickname": "v092",
+        "expiraEn": "2026-11-12T06:24:16.530129"
+      },
+      "userProfile": {
+        "id": 96,
+        "idCuenta": 97,
+        "cedula": "1730000092",
+        "correo": "votante.092@integration.example.test",
+        "nickname": "v092",
+        "nombre": "Votante 092",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 96,
+          "idCuenta": 97,
+          "cedula": "1730000092",
+          "correo": "votante.092@integration.example.test",
+          "nickname": "v092",
+          "nombre": "Votante 092",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v093",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 96,
+        "nickname": "v093",
+        "expiraEn": "2026-11-12T06:24:16.441094"
+      },
+      "userProfile": {
+        "id": 95,
+        "idCuenta": 96,
+        "cedula": "1730000093",
+        "correo": "votante.093@integration.example.test",
+        "nickname": "v093",
+        "nombre": "Votante 093",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 95,
+          "idCuenta": 96,
+          "cedula": "1730000093",
+          "correo": "votante.093@integration.example.test",
+          "nickname": "v093",
+          "nombre": "Votante 093",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v094",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 101,
+        "nickname": "v094",
+        "expiraEn": "2026-11-12T06:24:16.893683"
+      },
+      "userProfile": {
+        "id": 100,
+        "idCuenta": 101,
+        "cedula": "1730000094",
+        "correo": "votante.094@integration.example.test",
+        "nickname": "v094",
+        "nombre": "Votante 094",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 100,
+          "idCuenta": 101,
+          "cedula": "1730000094",
+          "correo": "votante.094@integration.example.test",
+          "nickname": "v094",
+          "nombre": "Votante 094",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v095",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 99,
+        "nickname": "v095",
+        "expiraEn": "2026-11-12T06:24:16.712552"
+      },
+      "userProfile": {
+        "id": 98,
+        "idCuenta": 99,
+        "cedula": "1730000095",
+        "correo": "votante.095@integration.example.test",
+        "nickname": "v095",
+        "nombre": "Votante 095",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 98,
+          "idCuenta": 99,
+          "cedula": "1730000095",
+          "correo": "votante.095@integration.example.test",
+          "nickname": "v095",
+          "nombre": "Votante 095",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v096",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 102,
+        "nickname": "v096",
+        "expiraEn": "2026-11-12T06:24:16.978597"
+      },
+      "userProfile": {
+        "id": 101,
+        "idCuenta": 102,
+        "cedula": "1730000096",
+        "correo": "votante.096@integration.example.test",
+        "nickname": "v096",
+        "nombre": "Votante 096",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 101,
+          "idCuenta": 102,
+          "cedula": "1730000096",
+          "correo": "votante.096@integration.example.test",
+          "nickname": "v096",
+          "nombre": "Votante 096",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    },
+    {
+      "nickname": "v097",
+      "created": true,
+      "loginStatus": 200,
+      "authProfile": {
+        "userId": 100,
+        "nickname": "v097",
+        "expiraEn": "2026-11-12T06:24:16.807333"
+      },
+      "userProfile": {
+        "id": 99,
+        "idCuenta": 100,
+        "cedula": "1730000097",
+        "correo": "votante.097@integration.example.test",
+        "nickname": "v097",
+        "nombre": "Votante 097",
+        "apellido": "Prueba",
+        "rol": "VOTANTE"
+      },
+      "createResponse": {
+        "status": 201,
+        "body": {
+          "id": 99,
+          "idCuenta": 100,
+          "cedula": "1730000097",
+          "correo": "votante.097@integration.example.test",
+          "nickname": "v097",
+          "nombre": "Votante 097",
+          "apellido": "Prueba",
+          "rol": "VOTANTE"
+        }
+      }
+    }
+  ],
+  "election": {
+    "createStatus": 201,
+    "id": "0e0e38c2-1b83-416b-9190-7ad47657caf5",
+    "titulo": "Prueba doble voto 2026-11-12T05:24:17.018Z",
+    "descripcion": "Elección temporal de doble voto para pruebas de integración local",
+    "estado": "OPEN",
+    "fechaInicio": "2026-11-12T05:24:17.183504Z",
+    "fechaFin": null,
+    "candidatos": [
+      {
+        "id": "c4e4ce7d-c8fd-470a-859a-f2dce71086d3",
+        "nombre": "Candidata A",
+        "partido": "Partido A"
+      },
+      {
+        "id": "41816ea2-c345-4802-b3db-937d7decaf74",
+        "nombre": "Candidato B",
+        "partido": "Partido B"
+      }
+    ]
+  },
+  "catalogStatus": 200,
+  "catalogEntry": {
+    "id": "0e0e38c2-1b83-416b-9190-7ad47657caf5",
+    "titulo": "Prueba doble voto 2026-11-12T05:24:17.018Z",
+    "descripcion": "Elección temporal de doble voto para pruebas de integración local",
+    "estado": "OPEN",
+    "fechaInicio": "2026-11-12T05:24:17.183504Z",
+    "fechaFin": null,
+    "candidatos": [
+      {
+        "id": "c4e4ce7d-c8fd-470a-859a-f2dce71086d3",
+        "nombre": "Candidata A",
+        "partido": "Partido A"
+      },
+      {
+        "id": "41816ea2-c345-4802-b3db-937d7decaf74",
+        "nombre": "Candidato B",
+        "partido": "Partido B"
+      }
+    ]
+  },
+  "testedAt": "2026-11-12T05:24:17.222Z",
+  "consistencyElection": {
+    "createStatus": 201,
+    "id": "6bc6980d-56b1-4f73-9f7e-81512fc32785",
+    "titulo": "Prueba consistencia 100 votos 2026-11-12T05:24:18.401Z",
+    "descripcion": "Elección temporal de consistencia 100 votos para pruebas de integración local",
+    "estado": "OPEN",
+    "fechaInicio": "2026-11-12T05:24:18.412931Z",
+    "fechaFin": null,
+    "candidatos": [
+      {
+        "id": "e92afba4-a035-4d8b-9881-2db7c482fd91",
+        "nombre": "Candidata A",
+        "partido": "Partido A"
+      },
+      {
+        "id": "c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+        "nombre": "Candidato B",
+        "partido": "Partido B"
+      }
+    ]
+  }
+}

@@ -2,12 +2,15 @@ package ec.unl.votacion.usuarios.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import ec.unl.votacion.usuarios.entity.Rol;
 
 public record CrearUsuarioRequest(
+        @NotBlank(message = "La clave es obligatoria")
+        @Size(min = 6, max = 72, message = "La clave debe tener entre 6 y 72 caracteres")
+        String clave,
+
         @NotBlank(message = "La cedula es obligatoria")
         @Pattern(regexp = "\\d{10,13}", message = "La cedula debe contener entre 10 y 13 digitos")
         @Size(max = 13, message = "La cedula no puede superar los 13 caracteres")
@@ -28,6 +31,8 @@ public record CrearUsuarioRequest(
 
         @NotBlank(message = "El apellido es obligatorio")
         @Size(max = 100, message = "El apellido no puede superar los 100 caracteres")
-        String apellido
+        String apellido,
+
+        Rol rol
 ) {
 }

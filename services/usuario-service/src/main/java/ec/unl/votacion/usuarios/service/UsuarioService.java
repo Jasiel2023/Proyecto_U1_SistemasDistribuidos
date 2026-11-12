@@ -137,7 +137,7 @@ public class UsuarioService {
                 usuario.getNickname(),
                 usuario.getNombre(),
                 usuario.getApellido(),
-                usuario.getRol()
+                usuario.getRol().name()
         );
     }
 }

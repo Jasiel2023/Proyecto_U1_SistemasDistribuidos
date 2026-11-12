@@ -1,0 +1,927 @@
+{
+  "verdict": "PASS",
+  "commandToRepeat": "cd frontend; node scripts/integration/run-vote-integration.mjs",
+  "electionId": "0e0e38c2-1b83-416b-9190-7ad47657caf5",
+  "voter": "are",
+  "concurrentRequests": 100,
+  "accepted": 1,
+  "rejectedAsDuplicate": 99,
+  "responses": [
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.59186631Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.589654946Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.619277814Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.587305296Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.590720396Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.591801053Z"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "aceptado": true,
+        "mensaje": "VOTO_ACEPTADO",
+        "votoId": "81d647a1-3f12-41a4-b7ed-ea3771d1baaf"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.587109758Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.591850861Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.601598917Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.591863053Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.587358423Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.656919318Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.64312765Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.671190053Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.680601571Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.657758769Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.642705972Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.650402434Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.671190518Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.671981738Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.641832636Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.643112703Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.657909999Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.688337533Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.757708881Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.675323014Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.74404425Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.767030901Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.786687551Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.883210785Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.764101849Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.749977138Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.836807936Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.71458563Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.785036571Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.704333671Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.822576994Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.81075821Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.798724921Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.759268408Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.795281216Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.703460733Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.697175375Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.749998522Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.788806814Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.870406057Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.805602141Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.895909088Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.860418735Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.855655247Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.862095238Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.862763869Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.890064037Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.75996418Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.911807059Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.872809897Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.764129435Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.776065149Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.764423037Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.788755655Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.908128355Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.885236569Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.862095321Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.795512492Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.856822675Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.862094989Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.862452186Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.85659543Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.882623922Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.906428448Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.799160006Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.792753156Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.804338011Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.770854133Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.804003325Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.881121072Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.893640947Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.817768964Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.92084112Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.931543408Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.843636272Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.897513664Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.860197697Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.938841545Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.923800247Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.9315809Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.871183587Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.915423399Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.887976639Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.893794142Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.863954108Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.871009263Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.871155502Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.913516615Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.918492674Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.84689154Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.920879971Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.848868093Z"
+      }
+    },
+    {
+      "status": 409,
+      "body": {
+        "status": 409,
+        "codigo": "VOTO_DUPLICADO",
+        "mensaje": "VOTO_DUPLICADO: el votante ya emitio un voto en esta eleccion",
+        "timestamp": "2026-11-12T05:24:17.887956383Z"
+      }
+    }
+  ],
+  "persistedVotesBefore": 0,
+  "persistedVotesAfter": 1,
+  "persistenceQuery": "SELECT count(*) FROM votos WHERE eleccion_id = '0e0e38c2-1b83-416b-9190-7ad47657caf5'",
+  "restSnapshot": {
+    "eleccionId": "0e0e38c2-1b83-416b-9190-7ad47657caf5",
+    "totalVotos": 1,
+    "conteos": [
+      {
+        "candidatoId": "c4e4ce7d-c8fd-470a-859a-f2dce71086d3",
+        "votos": 1
+      }
+    ],
+    "revision": 1,
+    "ultimaActualizacion": "2026-11-12T05:24:17.972831Z",
+    "disponible": true
+  },
+  "testedAt": "2026-11-12T05:24:18.401Z"
+}

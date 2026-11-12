@@ -1,0 +1,132 @@
+{
+  "service": "autenticacion-service",
+  "containerId": "ae5b28036aa3",
+  "electionId": "6bc6980d-56b1-4f73-9f7e-81512fc32785",
+  "baseline": {
+    "url": "http://localhost:8081/actuator/health",
+    "method": "GET",
+    "status": 200,
+    "body": {
+      "groups": [
+        "liveness",
+        "readiness"
+      ],
+      "status": "UP"
+    },
+    "startedAt": "2026-11-12T05:25:26.456Z"
+  },
+  "baselineBusiness": {
+    "url": "http://localhost:8081/api/v1/auth/login",
+    "method": "POST",
+    "status": 200,
+    "body": {
+      "success": true,
+      "token": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhcmUiLCJ1c2VySWQiOjMsIm5pY2tuYW1lIjoiYXJlIiwiaWF0IjoxNzk0NDYxMTI2LCJleHAiOjE3OTQ0NjQ3MjZ9.VQxxeWh7cfvMhSyEsXF9LyLlSWC1dNtZicuF-eiJROHzphYWeYQVKHedgaUqESHt",
+      "tokenType": "Bearer",
+      "expiresIn": 3600,
+      "nickname": "are",
+      "mensaje": "Login exitoso"
+    },
+    "startedAt": "2026-11-12T05:25:26.527Z"
+  },
+  "stopCommand": "docker stop <container-id>",
+  "afterStopDirect": {
+    "url": "http://localhost:8081/actuator/health",
+    "method": "GET",
+    "status": null,
+    "error": "fetch failed",
+    "startedAt": "2026-11-12T05:25:28.541Z"
+  },
+  "afterStopPublic": {
+    "url": "http://localhost:8080/api/v1/auth/login",
+    "method": "POST",
+    "status": 500,
+    "body": {
+      "timestamp": "2026-11-12T05:25:31.270Z",
+      "status": 500,
+      "error": "Internal Server Error",
+      "path": "/api/v1/auth/login"
+    },
+    "startedAt": "2026-11-12T05:25:28.545Z"
+  },
+  "otherServicesDuringOutage": [
+    {
+      "service": "usuario-service",
+      "directHealthStatus": 200,
+      "businessStatus": 200,
+      "passed": true
+    },
+    {
+      "service": "votacion-service",
+      "directHealthStatus": 200,
+      "businessStatus": 200,
+      "passed": true
+    },
+    {
+      "service": "resultados-service",
+      "directHealthStatus": 200,
+      "businessStatus": 200,
+      "passed": true
+    },
+    {
+      "service": "api-gateway",
+      "directHealthStatus": 200,
+      "businessStatus": null,
+      "passed": true
+    },
+    {
+      "service": "frontend",
+      "directHealthStatus": 200,
+      "businessStatus": 200,
+      "passed": true
+    }
+  ],
+  "startCommand": "docker start <container-id>",
+  "recoveryTimeMs": 10879,
+  "dockerStartCommandMs": 396,
+  "recoveredDirect": {
+    "url": "http://localhost:8081/actuator/health",
+    "method": "GET",
+    "status": 200,
+    "body": {
+      "groups": [
+        "liveness",
+        "readiness"
+      ],
+      "status": "UP"
+    },
+    "startedAt": "2026-11-12T05:25:42.190Z"
+  },
+  "recoveredBusiness": {
+    "url": "http://localhost:8081/api/v1/auth/login",
+    "method": "POST",
+    "status": 200,
+    "body": {
+      "success": true,
+      "token": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhcmUiLCJ1c2VySWQiOjMsIm5pY2tuYW1lIjoiYXJlIiwiaWF0IjoxNzk0NDYxMTQyLCJleHAiOjE3OTQ0NjQ3NDJ9.OyPbIgrSmEgKYCYVoaMYhPMoD4DkKzIYEKO-aoSXXI1pRFFOAjU89AwfWW6lkHIB",
+      "tokenType": "Bearer",
+      "expiresIn": 3600,
+      "nickname": "are",
+      "mensaje": "Login exitoso"
+    },
+    "startedAt": "2026-11-12T05:25:42.240Z"
+  },
+  "recoveredPublic": {
+    "url": "http://localhost:8080/api/v1/auth/login",
+    "method": "POST",
+    "status": 200,
+    "body": {
+      "success": true,
+      "token": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhcmUiLCJ1c2VySWQiOjMsIm5pY2tuYW1lIjoiYXJlIiwiaWF0IjoxNzk0NDYxMTQyLCJleHAiOjE3OTQ0NjQ3NDJ9.OyPbIgrSmEgKYCYVoaMYhPMoD4DkKzIYEKO-aoSXXI1pRFFOAjU89AwfWW6lkHIB",
+      "tokenType": "Bearer",
+      "expiresIn": 3600,
+      "nickname": "are",
+      "mensaje": "Login exitoso"
+    },
+    "startedAt": "2026-11-12T05:25:42.867Z"
+  },
+  "verdict": "PASS",
+  "stopDurationMs": 701,
+  "downDetectionMs": 3962,
+  "completedAt": "2026-11-12T05:25:42.996Z"
+}

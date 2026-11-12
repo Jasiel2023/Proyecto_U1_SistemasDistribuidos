@@ -1,0 +1,94 @@
+{
+  "service": "frontend",
+  "containerId": "9866b88d44a7",
+  "electionId": "6bc6980d-56b1-4f73-9f7e-81512fc32785",
+  "baseline": {
+    "url": "http://localhost:3000/",
+    "method": "GET",
+    "status": 200,
+    "body": "<!doctype html>\r\n<html lang=\"es\">\r\n  <head>\r\n    <meta charset=\"UTF-8\" />\r\n    <link rel=\"icon\" type=\"image/svg+xml\" href=\"/favicon.svg\" />\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\r\n    <title>Sistema de Votación</title>\r\n    <script type=\"module\" crossorigin src=\"/assets/index-wmG1QXfy.js\"></script>\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/index-BBP0uKNc.css\">\n  </head>\r\n  <body>\r\n    <div id=\"root\"></div>\r\r\n  </body>\r\n</html>\r\n",
+    "startedAt": "2026-11-12T05:26:40.398Z"
+  },
+  "baselineBusiness": {
+    "url": "http://localhost:3000/",
+    "method": "GET",
+    "status": 200,
+    "body": "<!doctype html>\r\n<html lang=\"es\">\r\n  <head>\r\n    <meta charset=\"UTF-8\" />\r\n    <link rel=\"icon\" type=\"image/svg+xml\" href=\"/favicon.svg\" />\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\r\n    <title>Sistema de Votación</title>\r\n    <script type=\"module\" crossorigin src=\"/assets/index-wmG1QXfy.js\"></script>\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/index-BBP0uKNc.css\">\n  </head>\r\n  <body>\r\n    <div id=\"root\"></div>\r\r\n  </body>\r\n</html>\r\n",
+    "startedAt": "2026-11-12T05:26:40.404Z"
+  },
+  "stopCommand": "docker stop <container-id>",
+  "afterStopDirect": {
+    "url": "http://localhost:3000/",
+    "method": "GET",
+    "status": null,
+    "error": "fetch failed",
+    "startedAt": "2026-11-12T05:26:42.167Z"
+  },
+  "afterStopPublic": {
+    "url": "http://localhost:3000/",
+    "method": "GET",
+    "status": null,
+    "error": "fetch failed",
+    "startedAt": "2026-11-12T05:26:42.174Z"
+  },
+  "otherServicesDuringOutage": [
+    {
+      "service": "autenticacion-service",
+      "directHealthStatus": 200,
+      "businessStatus": 200,
+      "passed": true
+    },
+    {
+      "service": "usuario-service",
+      "directHealthStatus": 200,
+      "businessStatus": 200,
+      "passed": true
+    },
+    {
+      "service": "votacion-service",
+      "directHealthStatus": 200,
+      "businessStatus": 200,
+      "passed": true
+    },
+    {
+      "service": "resultados-service",
+      "directHealthStatus": 200,
+      "businessStatus": 200,
+      "passed": true
+    },
+    {
+      "service": "api-gateway",
+      "directHealthStatus": 200,
+      "businessStatus": null,
+      "passed": true
+    }
+  ],
+  "startCommand": "docker start <container-id>",
+  "recoveryTimeMs": 327,
+  "dockerStartCommandMs": 320,
+  "recoveredDirect": {
+    "url": "http://localhost:3000/",
+    "method": "GET",
+    "status": 200,
+    "body": "<!doctype html>\r\n<html lang=\"es\">\r\n  <head>\r\n    <meta charset=\"UTF-8\" />\r\n    <link rel=\"icon\" type=\"image/svg+xml\" href=\"/favicon.svg\" />\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\r\n    <title>Sistema de Votación</title>\r\n    <script type=\"module\" crossorigin src=\"/assets/index-wmG1QXfy.js\"></script>\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/index-BBP0uKNc.css\">\n  </head>\r\n  <body>\r\n    <div id=\"root\"></div>\r\r\n  </body>\r\n</html>\r\n",
+    "startedAt": "2026-11-12T05:26:42.645Z"
+  },
+  "recoveredBusiness": {
+    "url": "http://localhost:3000/",
+    "method": "GET",
+    "status": 200,
+    "body": "<!doctype html>\r\n<html lang=\"es\">\r\n  <head>\r\n    <meta charset=\"UTF-8\" />\r\n    <link rel=\"icon\" type=\"image/svg+xml\" href=\"/favicon.svg\" />\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\r\n    <title>Sistema de Votación</title>\r\n    <script type=\"module\" crossorigin src=\"/assets/index-wmG1QXfy.js\"></script>\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/index-BBP0uKNc.css\">\n  </head>\r\n  <body>\r\n    <div id=\"root\"></div>\r\r\n  </body>\r\n</html>\r\n",
+    "startedAt": "2026-11-12T05:26:42.651Z"
+  },
+  "recoveredPublic": {
+    "url": "http://localhost:3000/",
+    "method": "GET",
+    "status": 200,
+    "body": "<!doctype html>\r\n<html lang=\"es\">\r\n  <head>\r\n    <meta charset=\"UTF-8\" />\r\n    <link rel=\"icon\" type=\"image/svg+xml\" href=\"/favicon.svg\" />\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\r\n    <title>Sistema de Votación</title>\r\n    <script type=\"module\" crossorigin src=\"/assets/index-wmG1QXfy.js\"></script>\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/index-BBP0uKNc.css\">\n  </head>\r\n  <body>\r\n    <div id=\"root\"></div>\r\r\n  </body>\r\n</html>\r\n",
+    "startedAt": "2026-11-12T05:26:42.656Z"
+  },
+  "verdict": "PASS",
+  "stopDurationMs": 544,
+  "downDetectionMs": 1225,
+  "completedAt": "2026-11-12T05:26:42.658Z"
+}

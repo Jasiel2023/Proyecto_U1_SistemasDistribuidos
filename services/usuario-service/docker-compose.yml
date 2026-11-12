@@ -25,7 +25,7 @@ services:
     image: votacion/usuario-service:0.0.1-SNAPSHOT
     container_name: votacion-usuario-service
     ports:
-      - "8084:8083"
+      - "8084:8084"
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-usuario:5432/db_usuarios
       POSTGRES_USER: ${POSTGRES_USER:-admin}

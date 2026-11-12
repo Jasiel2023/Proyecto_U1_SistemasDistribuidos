@@ -1,0 +1,138 @@
+{
+  "service": "usuario-service",
+  "containerId": "53427ef1d886",
+  "electionId": "6bc6980d-56b1-4f73-9f7e-81512fc32785",
+  "baseline": {
+    "url": "http://localhost:8084/actuator/health",
+    "method": "GET",
+    "status": 200,
+    "body": {
+      "groups": [
+        "liveness",
+        "readiness"
+      ],
+      "status": "UP"
+    },
+    "startedAt": "2026-11-12T05:25:43.276Z"
+  },
+  "baselineBusiness": {
+    "url": "http://localhost:8084/api/v1/usuarios/cuenta/3",
+    "method": "GET",
+    "status": 200,
+    "body": {
+      "id": 2,
+      "idCuenta": 3,
+      "cedula": "1720000001",
+      "correo": "are.integration@example.test",
+      "nickname": "are",
+      "nombre": "Arelys",
+      "apellido": "Ajila",
+      "rol": "VOTANTE"
+    },
+    "startedAt": "2026-11-12T05:25:43.283Z"
+  },
+  "stopCommand": "docker stop <container-id>",
+  "afterStopDirect": {
+    "url": "http://localhost:8084/actuator/health",
+    "method": "GET",
+    "status": null,
+    "error": "fetch failed",
+    "startedAt": "2026-11-12T05:25:45.541Z"
+  },
+  "afterStopPublic": {
+    "url": "http://localhost:8080/api/v1/usuarios/cuenta/3",
+    "method": "GET",
+    "status": 500,
+    "body": {
+      "timestamp": "2026-11-12T05:25:48.179Z",
+      "status": 500,
+      "error": "Internal Server Error",
+      "path": "/api/v1/usuarios/cuenta/3"
+    },
+    "startedAt": "2026-11-12T05:25:45.546Z"
+  },
+  "otherServicesDuringOutage": [
+    {
+      "service": "autenticacion-service",
+      "directHealthStatus": 200,
+      "businessStatus": 200,
+      "passed": true
+    },
+    {
+      "service": "votacion-service",
+      "directHealthStatus": 200,
+      "businessStatus": 200,
+      "passed": true
+    },
+    {
+      "service": "resultados-service",
+      "directHealthStatus": 200,
+      "businessStatus": 200,
+      "passed": true
+    },
+    {
+      "service": "api-gateway",
+      "directHealthStatus": 200,
+      "businessStatus": null,
+      "passed": true
+    },
+    {
+      "service": "frontend",
+      "directHealthStatus": 200,
+      "businessStatus": 200,
+      "passed": true
+    }
+  ],
+  "startCommand": "docker start <container-id>",
+  "recoveryTimeMs": 10542,
+  "dockerStartCommandMs": 219,
+  "recoveredDirect": {
+    "url": "http://localhost:8084/actuator/health",
+    "method": "GET",
+    "status": 200,
+    "body": {
+      "groups": [
+        "liveness",
+        "readiness"
+      ],
+      "status": "UP"
+    },
+    "startedAt": "2026-11-12T05:25:58.666Z"
+  },
+  "recoveredBusiness": {
+    "url": "http://localhost:8084/api/v1/usuarios/cuenta/3",
+    "method": "GET",
+    "status": 200,
+    "body": {
+      "id": 2,
+      "idCuenta": 3,
+      "cedula": "1720000001",
+      "correo": "are.integration@example.test",
+      "nickname": "are",
+      "nombre": "Arelys",
+      "apellido": "Ajila",
+      "rol": "VOTANTE"
+    },
+    "startedAt": "2026-11-12T05:25:58.815Z"
+  },
+  "recoveredPublic": {
+    "url": "http://localhost:8080/api/v1/usuarios/cuenta/3",
+    "method": "GET",
+    "status": 200,
+    "body": {
+      "id": 2,
+      "idCuenta": 3,
+      "cedula": "1720000001",
+      "correo": "are.integration@example.test",
+      "nickname": "are",
+      "nombre": "Arelys",
+      "apellido": "Ajila",
+      "rol": "VOTANTE"
+    },
+    "startedAt": "2026-11-12T05:25:59.349Z"
+  },
+  "verdict": "PASS",
+  "stopDurationMs": 1045,
+  "downDetectionMs": 3846,
+  "completedAt": "2026-11-12T05:25:59.368Z"
+}

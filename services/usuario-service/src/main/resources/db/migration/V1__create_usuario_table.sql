@@ -6,7 +6,6 @@ CREATE TABLE usuario (
     nickname VARCHAR(60) NOT NULL,
     nombre VARCHAR(100) NOT NULL,
     apellido VARCHAR(100) NOT NULL,
-    rol VARCHAR(20) NOT NULL DEFAULT 'VOTANTE',
     CONSTRAINT uk_usuario_id_cuenta UNIQUE (id_cuenta),
     CONSTRAINT uk_usuario_cedula UNIQUE (cedula),
     CONSTRAINT uk_usuario_correo UNIQUE (correo),

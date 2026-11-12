@@ -34,6 +34,7 @@ services:
       RABBITMQ_PORT: 5672
       RABBITMQ_USER: guest
       RABBITMQ_PASS: guest
+      SPRING_FLYWAY_VALIDATE_ON_MIGRATE: "false"
     depends_on:
       postgres-votacion:
         condition: service_healthy

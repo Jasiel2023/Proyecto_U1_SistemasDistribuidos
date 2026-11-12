@@ -1,0 +1,235 @@
+{
+  "service": "api-gateway",
+  "containerId": "e345a8ed8110",
+  "electionId": "6bc6980d-56b1-4f73-9f7e-81512fc32785",
+  "baseline": {
+    "url": "http://localhost:8080/actuator/health",
+    "method": "GET",
+    "status": 200,
+    "body": {
+      "groups": [
+        "liveness",
+        "readiness"
+      ],
+      "status": "UP"
+    },
+    "startedAt": "2026-11-12T05:26:30.983Z"
+  },
+  "baselineBusiness": null,
+  "stopCommand": "docker stop <container-id>",
+  "afterStopDirect": {
+    "url": "http://localhost:8080/actuator/health",
+    "method": "GET",
+    "status": null,
+    "error": "fetch failed",
+    "startedAt": "2026-11-12T05:26:32.995Z"
+  },
+  "afterStopPublic": {
+    "url": "http://localhost:8080/api/elecciones",
+    "method": "GET",
+    "status": null,
+    "error": "fetch failed",
+    "startedAt": "2026-11-12T05:26:33.002Z"
+  },
+  "otherServicesDuringOutage": [
+    {
+      "service": "autenticacion-service",
+      "directHealthStatus": 200,
+      "businessStatus": 200,
+      "passed": true
+    },
+    {
+      "service": "usuario-service",
+      "directHealthStatus": 200,
+      "businessStatus": 200,
+      "passed": true
+    },
+    {
+      "service": "votacion-service",
+      "directHealthStatus": 200,
+      "businessStatus": 200,
+      "passed": true
+    },
+    {
+      "service": "resultados-service",
+      "directHealthStatus": 200,
+      "businessStatus": 200,
+      "passed": true
+    },
+    {
+      "service": "frontend",
+      "directHealthStatus": 200,
+      "businessStatus": 200,
+      "passed": true
+    }
+  ],
+  "startCommand": "docker start <container-id>",
+  "recoveryTimeMs": 6736,
+  "dockerStartCommandMs": 362,
+  "recoveredDirect": {
+    "url": "http://localhost:8080/actuator/health",
+    "method": "GET",
+    "status": 200,
+    "body": {
+      "groups": [
+        "liveness",
+        "readiness"
+      ],
+      "status": "UP"
+    },
+    "startedAt": "2026-11-12T05:26:39.691Z"
+  },
+  "recoveredBusiness": null,
+  "recoveredPublic": {
+    "url": "http://localhost:8080/api/elecciones",
+    "method": "GET",
+    "status": 200,
+    "body": [
+      {
+        "id": "6bc6980d-56b1-4f73-9f7e-81512fc32785",
+        "titulo": "Prueba consistencia 100 votos 2026-11-12T05:24:18.401Z",
+        "descripcion": "Elección temporal de consistencia 100 votos para pruebas de integración local",
+        "estado": "OPEN",
+        "fechaInicio": "2026-11-12T05:24:18.412931Z",
+        "fechaFin": null,
+        "candidatos": [
+          {
+            "id": "e92afba4-a035-4d8b-9881-2db7c482fd91",
+            "nombre": "Candidata A",
+            "partido": "Partido A"
+          },
+          {
+            "id": "c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+            "nombre": "Candidato B",
+            "partido": "Partido B"
+          }
+        ]
+      },
+      {
+        "id": "0e0e38c2-1b83-416b-9190-7ad47657caf5",
+        "titulo": "Prueba doble voto 2026-11-12T05:24:17.018Z",
+        "descripcion": "Elección temporal de doble voto para pruebas de integración local",
+        "estado": "OPEN",
+        "fechaInicio": "2026-11-12T05:24:17.183504Z",
+        "fechaFin": null,
+        "candidatos": [
+          {
+            "id": "c4e4ce7d-c8fd-470a-859a-f2dce71086d3",
+            "nombre": "Candidata A",
+            "partido": "Partido A"
+          },
+          {
+            "id": "41816ea2-c345-4802-b3db-937d7decaf74",
+            "nombre": "Candidato B",
+            "partido": "Partido B"
+          }
+        ]
+      },
+      {
+        "id": "27407a3f-fac6-4ed9-9bb2-7b887b70da63",
+        "titulo": "Prueba integración 2026-11-12T04:37:23.963Z",
+        "descripcion": "Elección temporal para pruebas de integración local",
+        "estado": "OPEN",
+        "fechaInicio": "2026-11-12T04:37:23.981375Z",
+        "fechaFin": null,
+        "candidatos": [
+          {
+            "id": "1fe6bde1-d0ca-404c-8737-036f81f51509",
+            "nombre": "Candidata A",
+            "partido": "Partido A"
+          },
+          {
+            "id": "5645b366-98b6-4169-a493-194ea4423ac7",
+            "nombre": "Candidato B",
+            "partido": "Partido B"
+          }
+        ]
+      },
+      {
+        "id": "e1b9aa40-dbb4-431f-842e-7573dd3737c9",
+        "titulo": "Prueba integración 2026-11-12T04:36:20.628Z",
+        "descripcion": "Elección temporal para pruebas de integración local",
+        "estado": "OPEN",
+        "fechaInicio": "2026-11-12T04:36:20.641942Z",
+        "fechaFin": null,
+        "candidatos": [
+          {
+            "id": "9289434a-a254-4656-b7e4-a0d77f711b8a",
+            "nombre": "Candidata A",
+            "partido": "Partido A"
+          },
+          {
+            "id": "621a9212-78a4-4bca-8e13-73f48b3e9c85",
+            "nombre": "Candidato B",
+            "partido": "Partido B"
+          }
+        ]
+      },
+      {
+        "id": "26269c0d-f5ce-46dd-8cc3-3b44b07969b8",
+        "titulo": "Prueba integración 2026-11-12T04:35:23.393Z",
+        "descripcion": "Elección temporal para pruebas de integración local",
+        "estado": "OPEN",
+        "fechaInicio": "2026-11-12T04:35:23.408384Z",
+        "fechaFin": null,
+        "candidatos": [
+          {
+            "id": "54968e71-404f-4c46-9f92-37ba78a61a75",
+            "nombre": "Candidata A",
+            "partido": "Partido A"
+          },
+          {
+            "id": "4f24ac8c-4040-4e65-87d4-1d45527a9586",
+            "nombre": "Candidato B",
+            "partido": "Partido B"
+          }
+        ]
+      },
+      {
+        "id": "0c6da107-f68c-4f2a-998d-abc173ee6b0b",
+        "titulo": "Prueba integración 2026-11-12T04:33:32.889Z",
+        "descripcion": "Elección temporal para pruebas de integración local",
+        "estado": "OPEN",
+        "fechaInicio": "2026-11-12T04:33:32.903271Z",
+        "fechaFin": null,
+        "candidatos": [
+          {
+            "id": "277bb4e2-3d34-4f2b-8b86-e846eecda200",
+            "nombre": "Candidata A",
+            "partido": "Partido A"
+          },
+          {
+            "id": "7a4a19f2-a6a0-42ee-bed0-56c2cd9280ae",
+            "nombre": "Candidato B",
+            "partido": "Partido B"
+          }
+        ]
+      },
+      {
+        "id": "121b1230-77ef-49ce-9109-d285daa94c49",
+        "titulo": "Prueba integración 2026-11-12T04:31:33.195Z",
+        "descripcion": "Elección temporal para pruebas de integración local",
+        "estado": "OPEN",
+        "fechaInicio": "2026-11-12T04:31:33.362438Z",
+        "fechaFin": null,
+        "candidatos": [
+          {
+            "id": "d2400d1e-4be5-467a-93cb-4909d11655b8",
+            "nombre": "Candidata A",
+            "partido": "Partido A"
+          },
+          {
+            "id": "3dcabd42-b663-420a-b6fc-782ccb341c07",
+            "nombre": "Candidato B",
+            "partido": "Partido B"
+          }
+        ]
+      }
+    ],
+    "startedAt": "2026-11-12T05:26:39.972Z"
+  },
+  "verdict": "PASS",
+  "stopDurationMs": 804,
+  "downDetectionMs": 1214,
+  "completedAt": "2026-11-12T05:26:40.137Z"
+}

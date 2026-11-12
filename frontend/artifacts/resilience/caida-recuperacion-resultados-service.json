@@ -1,0 +1,159 @@
+{
+  "service": "resultados-service",
+  "containerId": "b97eb7c7e747",
+  "electionId": "6bc6980d-56b1-4f73-9f7e-81512fc32785",
+  "baseline": {
+    "url": "http://localhost:8083/actuator/health",
+    "method": "GET",
+    "status": 200,
+    "body": {
+      "groups": [
+        "liveness",
+        "readiness"
+      ],
+      "status": "UP"
+    },
+    "startedAt": "2026-11-12T05:26:14.570Z"
+  },
+  "baselineBusiness": {
+    "url": "http://localhost:8083/api/resultados/elecciones/6bc6980d-56b1-4f73-9f7e-81512fc32785",
+    "method": "GET",
+    "status": 200,
+    "body": {
+      "eleccionId": "6bc6980d-56b1-4f73-9f7e-81512fc32785",
+      "totalVotos": 100,
+      "conteos": [
+        {
+          "candidatoId": "c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+          "votos": 50
+        },
+        {
+          "candidatoId": "e92afba4-a035-4d8b-9881-2db7c482fd91",
+          "votos": 50
+        }
+      ],
+      "revision": 100,
+      "ultimaActualizacion": "2026-11-12T05:24:20.841047Z",
+      "disponible": true
+    },
+    "startedAt": "2026-11-12T05:26:14.576Z"
+  },
+  "stopCommand": "docker stop <container-id>",
+  "afterStopDirect": {
+    "url": "http://localhost:8083/actuator/health",
+    "method": "GET",
+    "status": null,
+    "error": "fetch failed",
+    "startedAt": "2026-11-12T05:26:16.618Z"
+  },
+  "afterStopPublic": {
+    "url": "http://localhost:8080/api/resultados/elecciones/6bc6980d-56b1-4f73-9f7e-81512fc32785",
+    "method": "GET",
+    "status": 500,
+    "body": {
+      "timestamp": "2026-11-12T05:26:19.291Z",
+      "status": 500,
+      "error": "Internal Server Error",
+      "path": "/api/resultados/elecciones/6bc6980d-56b1-4f73-9f7e-81512fc32785"
+    },
+    "startedAt": "2026-11-12T05:26:16.622Z"
+  },
+  "otherServicesDuringOutage": [
+    {
+      "service": "autenticacion-service",
+      "directHealthStatus": 200,
+      "businessStatus": 200,
+      "passed": true
+    },
+    {
+      "service": "usuario-service",
+      "directHealthStatus": 200,
+      "businessStatus": 200,
+      "passed": true
+    },
+    {
+      "service": "votacion-service",
+      "directHealthStatus": 200,
+      "businessStatus": 200,
+      "passed": true
+    },
+    {
+      "service": "api-gateway",
+      "directHealthStatus": 200,
+      "businessStatus": null,
+      "passed": true
+    },
+    {
+      "service": "frontend",
+      "directHealthStatus": 200,
+      "businessStatus": 200,
+      "passed": true
+    }
+  ],
+  "startCommand": "docker start <container-id>",
+  "recoveryTimeMs": 10617,
+  "dockerStartCommandMs": 308,
+  "recoveredDirect": {
+    "url": "http://localhost:8083/actuator/health",
+    "method": "GET",
+    "status": 200,
+    "body": {
+      "groups": [
+        "liveness",
+        "readiness"
+      ],
+      "status": "UP"
+    },
+    "startedAt": "2026-11-12T05:26:29.889Z"
+  },
+  "recoveredBusiness": {
+    "url": "http://localhost:8083/api/resultados/elecciones/6bc6980d-56b1-4f73-9f7e-81512fc32785",
+    "method": "GET",
+    "status": 200,
+    "body": {
+      "eleccionId": "6bc6980d-56b1-4f73-9f7e-81512fc32785",
+      "totalVotos": 100,
+      "conteos": [
+        {
+          "candidatoId": "c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+          "votos": 50
+        },
+        {
+          "candidatoId": "e92afba4-a035-4d8b-9881-2db7c482fd91",
+          "votos": 50
+        }
+      ],
+      "revision": 100,
+      "ultimaActualizacion": "2026-11-12T05:24:20.841047Z",
+      "disponible": true
+    },
+    "startedAt": "2026-11-12T05:26:30.064Z"
+  },
+  "recoveredPublic": {
+    "url": "http://localhost:8080/api/resultados/elecciones/6bc6980d-56b1-4f73-9f7e-81512fc32785",
+    "method": "GET",
+    "status": 200,
+    "body": {
+      "eleccionId": "6bc6980d-56b1-4f73-9f7e-81512fc32785",
+      "totalVotos": 100,
+      "conteos": [
+        {
+          "candidatoId": "c3175e4b-51fd-4c6f-9e27-0ef9aa7d56aa",
+          "votos": 50
+        },
+        {
+          "candidatoId": "e92afba4-a035-4d8b-9881-2db7c482fd91",
+          "votos": 50
+        }
+      ],
+      "revision": 100,
+      "ultimaActualizacion": "2026-11-12T05:24:20.841047Z",
+      "disponible": true
+    },
+    "startedAt": "2026-11-12T05:26:30.665Z"
+  },
+  "verdict": "PASS",
+  "stopDurationMs": 821,
+  "downDetectionMs": 3893,
+  "completedAt": "2026-11-12T05:26:30.698Z"
+}

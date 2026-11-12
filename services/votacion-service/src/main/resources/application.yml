@@ -5,7 +5,7 @@ spring:
   application:
     name: votacion-service
   datasource:
-    url: jdbc:postgresql://localhost:5435/votaciondb
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5435/votaciondb}
     username: ${POSTGRES_USER:admin}
     password: ${POSTGRES_PASSWORD:admin}
   jpa:
@@ -16,8 +16,9 @@ spring:
         format_sql: true
   flyway:
     enabled: true
+    validate-on-migrate: ${SPRING_FLYWAY_VALIDATE_ON_MIGRATE:true}
   rabbitmq:
     host: ${RABBITMQ_HOST:localhost}
-    port: 5672
+    port: ${RABBITMQ_PORT:5672}
     username: ${RABBITMQ_USER:guest}
     password: ${RABBITMQ_PASS:guest}
