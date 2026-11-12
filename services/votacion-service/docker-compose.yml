@@ -1,0 +1,58 @@
+services:
+  postgres-votacion:
+    image: postgres:16
+    container_name: votacion-postgres-votacion
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: votaciondb
+    healthcheck:
+      test: ["CMD-SHELL", 'pg_isready -U "$$POSTGRES_USER" -d votaciondb']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - postgres_votacion_data:/var/lib/postgresql/data
+    networks:
+      - votacion-network
+
+  votacion-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8082"
+    environment:
+      POSTGRES_HOST: postgres-votacion
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: votaciondb
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: 5672
+      RABBITMQ_USER: ${RABBITMQ_USER}
+      RABBITMQ_PASS: ${RABBITMQ_PASS}
+      JWT_SECRET: ${JWT_SECRET:?Configura JWT_SECRET en el archivo .env}
+    depends_on:
+      postgres-votacion:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8082/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 25s
+    networks:
+      - votacion-network
+
+networks:
+  votacion-network:
+    external: true
+    name: votacion-network
+
+volumes:
+  postgres_votacion_data:

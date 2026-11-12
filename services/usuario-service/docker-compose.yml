@@ -1,0 +1,51 @@
+services:
+  postgres-usuario:
+    image: postgres:16
+    container_name: votacion-postgres-usuario
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-admin}
+      POSTGRES_DB: db_usuarios
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-admin} -d db_usuarios"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - postgres_usuario_data:/var/lib/postgresql/data
+    networks:
+      - votacion-network
+
+  usuario-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: votacion/usuario-service:0.0.1-SNAPSHOT
+    container_name: votacion-usuario-service
+    ports:
+      - "8084:8084"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-usuario:5432/db_usuarios
+      POSTGRES_USER: ${POSTGRES_USER:-admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-admin}
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: 5672
+      RABBITMQ_USER: guest
+      RABBITMQ_PASS: guest
+    depends_on:
+      postgres-usuario:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - votacion-network
+
+networks:
+  votacion-network:
+    external: true
+    name: votacion-network
+
+volumes:
+  postgres_usuario_data:

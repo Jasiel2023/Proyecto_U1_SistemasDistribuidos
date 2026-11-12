@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: ${RESULTADOS_DB_URL:jdbc:postgresql://localhost:5436/resultadosdb}
+    username: ${RESULTADOS_DB_USER:resultados}
+    password: ${RESULTADOS_DB_PASSWORD:resultados}
+
+logging:
+  level:
+    ec.unl.votacion.resultados: INFO

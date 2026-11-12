@@ -1,0 +1,56 @@
+services:
+  postgres-autenticacion:
+    image: postgres:16
+    container_name: votacion-postgres-autenticacion
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-admin}
+      POSTGRES_DB: autenticaciondb
+    healthcheck:
+      test: ["CMD-SHELL", 'pg_isready -U "$$POSTGRES_USER" -d autenticaciondb']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - postgres_autenticacion_data:/var/lib/postgresql/data
+    networks:
+      - votacion-network
+
+  autenticacion-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: votacion/autenticacion-service:0.0.1-SNAPSHOT
+    container_name: votacion-autenticacion-service
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-autenticacion:5432/autenticaciondb
+      POSTGRES_USER: ${POSTGRES_USER:-admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-admin}
+      JWT_SECRET: ${JWT_SECRET:?Configura JWT_SECRET en el archivo .env}
+      JWT_EXPIRATION_MS: ${JWT_EXPIRATION_MS:-3600000}
+      APP_ADMIN_ENABLED: ${APP_ADMIN_ENABLED:-true}
+      APP_ADMIN_USERNAME: ${APP_ADMIN_USERNAME:-admin}
+      APP_ADMIN_PASSWORD: ${APP_ADMIN_PASSWORD:-admin123}
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: 5672
+      RABBITMQ_USER: guest
+      RABBITMQ_PASS: guest
+    depends_on:
+      postgres-autenticacion:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - votacion-network
+
+networks:
+  votacion-network:
+    external: true
+    name: votacion-network
+
+volumes:
+  postgres_autenticacion_data:

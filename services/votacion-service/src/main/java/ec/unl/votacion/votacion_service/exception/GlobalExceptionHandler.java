@@ -1,0 +1,86 @@
+package ec.unl.votacion.votacion_service.exception;
+
+import ec.unl.votacion.votacion_service.dto.ErrorResponse;
+import org.springframework.dao.DataAccessException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import java.time.Instant;
+import java.util.stream.Collectors;
+
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ErrorResponse> manejarValidacion(
+            MethodArgumentNotValidException exception
+    ) {
+        String message = exception.getBindingResult().getFieldErrors().stream()
+                .map(this::mensajeDeCampo)
+                .collect(Collectors.joining("; "));
+
+        return error(HttpStatus.BAD_REQUEST, "VALIDATION_ERROR", message);
+    }
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<ErrorResponse> manejarBodyIlegible(
+            HttpMessageNotReadableException exception
+    ) {
+        return error(HttpStatus.BAD_REQUEST, "MALFORMED_JSON", "El cuerpo de la peticion es invalido");
+    }
+
+    @ExceptionHandler(EleccionDomainException.class)
+    public ResponseEntity<ErrorResponse> manejarDominio(
+            EleccionDomainException exception
+    ) {
+        HttpStatus status = switch (exception) {
+            case EleccionNoEncontradaException ignored -> HttpStatus.NOT_FOUND;
+            case CandidatoNoEncontradoException ignored -> HttpStatus.NOT_FOUND;
+            case EleccionCerradaException ignored -> HttpStatus.CONFLICT;
+            case CandidatoInactivoException ignored -> HttpStatus.CONFLICT;
+            case VotoDuplicadoException ignored -> HttpStatus.CONFLICT;
+            case HorarioEleccionInvalidoException ignored -> HttpStatus.BAD_REQUEST;
+            default -> HttpStatus.CONFLICT;
+        };
+
+        return error(status, exception.getClass().getSimpleName(), exception.getMessage());
+    }
+
+    @ExceptionHandler(DataAccessException.class)
+    public ResponseEntity<ErrorResponse> manejarBaseDeDatos(
+            DataAccessException exception
+    ) {
+        return error(
+                HttpStatus.SERVICE_UNAVAILABLE,
+                "DATABASE_UNAVAILABLE",
+                "No fue posible completar la operacion"
+        );
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorResponse> manejarErrorInterno(Exception exception) {
+        return error(
+                HttpStatus.INTERNAL_SERVER_ERROR,
+                "INTERNAL_ERROR",
+                "Ocurrio un error interno"
+        );
+    }
+
+    private String mensajeDeCampo(FieldError fieldError) {
+        return fieldError.getField() + ": " + fieldError.getDefaultMessage();
+    }
+
+    private ResponseEntity<ErrorResponse> error(
+            HttpStatus status,
+            String code,
+            String message
+    ) {
+        return ResponseEntity.status(status)
+                .body(new ErrorResponse(status.value(), code, message, Instant.now()));
+    }
+}
